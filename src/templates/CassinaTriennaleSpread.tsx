@@ -196,7 +196,7 @@ export const CassinaTriennaleSpread: React.FC<CassinaTriennaleSpreadProps> = ({
 
         {/* Footer */}
         <div className="w-full border-t border-[#E0E0E0] pt-3 mt-3 flex justify-between items-center text-[8.5px] font-mono tracking-[0.2em] text-[#888888] uppercase">
-          <span>BİRİM ARCHIVES / EDITORIAL SPREAD</span>
+          <span>WWW.BIRIM.COM</span>
           <span>{String(pageNumberRight).padStart(2, '0')}</span>
         </div>
       </div>

@@ -21,7 +21,7 @@ import { BirimCollectionSpread, getBirimCollectionPageCount } from './templates/
 import { BirimCategoryDivider } from './templates/BirimCategoryDivider';
 import { CassinaTriennaleSpread } from './templates/CassinaTriennaleSpread';
 import { FlexformCuratedSpread } from './templates/FlexformCuratedSpread';
-import { TableOfContentsPage, TocEntry } from './templates/TableOfContentsPage';
+import { TableOfContentsPage, TocEntry, paginateTocEntries, TocPageColumnData } from './templates/TableOfContentsPage';
 import { 
   SystemElementsPage, 
   getSystemElementsPageCount, 
@@ -232,12 +232,7 @@ export const App: React.FC = () => {
       return 'DESIGN COLLECTION';
     };
 
-    // Pre-calculate page mapping for accurate Table of Contents
-    let simPage = 1;
-    if (includeCover) simPage++;
-    if (includeEditorial) simPage++;
-    if (includeTableOfContents) simPage++;
-
+    // Pre-calculate Table of Contents entries structure
     const tocEntries: TocEntry[] = [];
     let orderIndex = 1;
 
@@ -247,7 +242,7 @@ export const App: React.FC = () => {
         order: String(orderIndex++).padStart(2, '0'),
         title: lang === 'en' ? 'ARCHITECTURAL STATEMENT' : 'MİMARİ YAKLAŞIM',
         subtitle: lang === 'en' ? 'Birim Design Philosophy' : 'Birim Tasarım Felsefesi',
-        pageNumber: includeCover ? 2 : 1,
+        pageNumber: 0,
         type: 'editorial',
       });
     }
@@ -257,18 +252,16 @@ export const App: React.FC = () => {
       if (prod) {
         const prodTitle = lang === 'en' ? prod.name.en : prod.name.tr;
         const designer = prod.designers?.[0] ? (lang === 'en' ? prod.designers[0].name.en : prod.designers[0].name.tr) : undefined;
-        const heroPage = simPage;
         tocEntries.push({
           id: `prod-${prod.slug}`,
           order: String(orderIndex++).padStart(2, '0'),
           title: prodTitle,
           subtitle: lang === 'en' ? 'Perspective & Architectural Hero' : 'Sinematik Perspektif & Mekân Kurgusu',
           designer,
-          pageNumber: heroPage,
+          pageNumber: 0,
           thumbnail: prod.cover_image?.url || prod.gallery_images?.[0]?.url,
           type: 'product',
         });
-        simPage += getProductStep(prod);
       }
     } else {
       targetCategories.forEach((cat) => {
@@ -276,18 +269,13 @@ export const App: React.FC = () => {
           (p) => p.category.id === cat.id || p.category.slug === cat.slug
         );
         const catTitle = lang === 'en' ? (cat.name.en || cat.name.tr) : cat.name.tr;
-        const catStartPage = simPage;
-        if (includeCategoryDividers) simPage++;
-
         const subItems = catProds.map((prod) => {
           const prodTitle = lang === 'en' ? prod.name.en : prod.name.tr;
           const designer = prod.designers?.[0] ? (lang === 'en' ? prod.designers[0].name.en : prod.designers[0].name.tr) : undefined;
-          const prodPage = simPage;
-          simPage += getProductStep(prod);
           return {
             title: prodTitle,
             designer,
-            pageNumber: prodPage,
+            pageNumber: 0,
             modelCount: prod.models_and_variations?.length || 1,
           };
         });
@@ -297,7 +285,7 @@ export const App: React.FC = () => {
           order: String(orderIndex++).padStart(2, '0'),
           title: catTitle,
           subtitle: `${catProds.length} ${lang === 'en' ? 'Models' : 'Ürün / Model'}`,
-          pageNumber: catStartPage,
+          pageNumber: 0,
           thumbnail: catProds[0]?.cover_image?.url || catProds[0]?.gallery_images?.[0]?.url,
           type: 'category',
           subItems,
@@ -311,10 +299,9 @@ export const App: React.FC = () => {
         order: String(orderIndex++).padStart(2, '0'),
         title: lang === 'en' ? 'MATERIAL PALETTE' : 'MALZEME & RENK KARTELASI',
         subtitle: lang === 'en' ? 'Fabric, Leather & Metal Finishes' : 'Kumaş, Deri, Masif ve Metal Kaplamalar',
-        pageNumber: simPage,
+        pageNumber: 0,
         type: 'materials',
       });
-      simPage++;
     }
 
     if (includePrices) {
@@ -323,9 +310,59 @@ export const App: React.FC = () => {
         order: String(orderIndex++).padStart(2, '0'),
         title: lang === 'en' ? 'PRICE & TECHNICAL LIST' : 'FİYAT VE TEKNİK LİSTE',
         subtitle: lang === 'en' ? 'Dimensional & Price Matrix' : 'Model Ölçüleri ve Fiyat Matrisi',
-        pageNumber: simPage,
+        pageNumber: 0,
         type: 'prices',
       });
+    }
+
+    // Dynamic TOC pagination calculation
+    const initialTocPages = includeTableOfContents ? paginateTocEntries(tocEntries, 36) : [];
+    const tocPageCount = initialTocPages.length;
+
+    // Calculate actual starting page mapping
+    let simPage = 1;
+    if (includeCover) simPage++;
+    if (includeEditorial) {
+      const ed = tocEntries.find((e) => e.id === 'editorial');
+      if (ed) ed.pageNumber = simPage;
+      simPage++;
+    }
+    simPage += tocPageCount;
+
+    if (selectedFormat === 'product') {
+      const prod = catalogData.all_products.find((p) => p.slug === selectedProduct);
+      if (prod) {
+        const prodEntry = tocEntries.find((e) => e.id === `prod-${prod.slug}`);
+        if (prodEntry) prodEntry.pageNumber = simPage;
+        simPage += getProductStep(prod);
+      }
+    } else {
+      targetCategories.forEach((cat) => {
+        const catEntry = tocEntries.find((e) => e.id === `cat-${cat.slug}`);
+        if (catEntry) catEntry.pageNumber = simPage;
+        if (includeCategoryDividers) simPage++;
+
+        const catProds = catalogData.all_products.filter(
+          (p) => p.category.id === cat.id || p.category.slug === cat.slug
+        );
+        catProds.forEach((prod, pIdx) => {
+          if (catEntry?.subItems?.[pIdx]) {
+            catEntry.subItems[pIdx].pageNumber = simPage;
+          }
+          simPage += getProductStep(prod);
+        });
+      });
+    }
+
+    if (includeMaterials) {
+      const mat = tocEntries.find((e) => e.id === 'materials');
+      if (mat) mat.pageNumber = simPage;
+      simPage++;
+    }
+
+    if (includePrices) {
+      const prc = tocEntries.find((e) => e.id === 'prices');
+      if (prc) prc.pageNumber = simPage;
       simPage++;
     }
 
@@ -357,26 +394,33 @@ export const App: React.FC = () => {
       pageCounter++;
     }
 
-    // 3. Table of Contents / İçindekiler
+    // 3. Table of Contents / İçindekiler (Multi-page support)
     if (includeTableOfContents) {
-      elements.push(
-        <div key="toc" id={`page-${pageCounter}`} className="flex justify-center">
-          <TableOfContentsPage
-            pageNumber={pageCounter}
-            entries={tocEntries}
-            format={selectedFormat}
-            categoryTitle={activeCategoryTitle}
-            lang={lang}
-            onNavigateToPage={(targetPage) => {
-              const el = document.getElementById(`page-${targetPage}`);
-              if (el) {
-                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-              }
-            }}
-          />
-        </div>
-      );
-      pageCounter++;
+      const finalTocPages = paginateTocEntries(tocEntries, 36);
+      finalTocPages.forEach((pageData: TocPageColumnData, pIdx: number) => {
+        elements.push(
+          <div key={`toc-${pIdx}`} id={`page-${pageCounter}`} className="flex justify-center">
+            <TableOfContentsPage
+              pageNumber={pageCounter}
+              tocPageIndex={pIdx}
+              totalTocPages={finalTocPages.length}
+              totalSectionsCount={tocEntries.length}
+              leftColumnEntries={pageData.left}
+              rightColumnEntries={pageData.right}
+              format={selectedFormat}
+              categoryTitle={activeCategoryTitle}
+              lang={lang}
+              onNavigateToPage={(targetPage) => {
+                const el = document.getElementById(`page-${targetPage}`);
+                if (el) {
+                  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
+            />
+          </div>
+        );
+        pageCounter++;
+      });
     }
 
     // 3. Category & Products

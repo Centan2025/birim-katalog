@@ -161,7 +161,7 @@ export const FlexformCuratedSpread: React.FC<FlexformCuratedSpreadProps> = ({
 
         {/* Footer */}
         <div className="w-full border-t border-[#E2DFD8] pt-3 mt-2 flex justify-between items-center text-[8px] font-mono tracking-[0.2em] text-[#888888] uppercase">
-          <span>BİRİM ARCHIVES // CURATED LIVING</span>
+          <span>WWW.BIRIM.COM</span>
           <span>{String(pageNumberRight).padStart(2, '0')}</span>
         </div>
       </div>
