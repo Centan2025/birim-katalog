@@ -83,10 +83,11 @@ async function syncAllCatalogData() {
     subtitle
   }`;
 
-  const productsQuery = `*[_type == "product" && !(_id in path("drafts.**"))] | order(coalesce(orderRank, sortOrder) asc, name.tr asc) {
+  const productsQuery = `*[_type == "product" && !(_id in path("drafts.**")) && isPublished == true] | order(coalesce(orderRank, sortOrder) asc, name.tr asc) {
     _id,
     "slug": coalesce(id.current, slug.current),
     name,
+    isPublished,
     category->{
       _id,
       "slug": coalesce(id.current, slug.current),
@@ -108,18 +109,20 @@ async function syncAllCatalogData() {
     media[]{
       _key,
       isCover,
+      isMirrored,
       title,
-      imageR2{ url, width, height },
-      imageDesktopR2{ url, width, height },
-      imageMobileR2{ url, width, height },
+      imageR2{ url, width, height, isMirrored },
+      imageDesktopR2{ url, width, height, isMirrored },
+      imageMobileR2{ url, width, height, isMirrored },
       "sanityAssetUrl": image.asset->url
     },
     dimensionImages[]{
       _key,
       title,
-      imageR2{ url, width, height },
-      imageDesktopR2{ url, width, height },
-      imageMobileR2{ url, width, height },
+      isMirrored,
+      imageR2{ url, width, height, isMirrored },
+      imageDesktopR2{ url, width, height, isMirrored },
+      imageMobileR2{ url, width, height, isMirrored },
       "sanityAssetUrl": image.asset->url
     },
     collectionFamily
@@ -182,10 +185,17 @@ async function syncAllCatalogData() {
       const width = imgObj.width || 3840;
       const height = imgObj.height || 2160;
       const aspect = width && height ? Number((width / height).toFixed(3)) : 1.778;
+      const isMirrored = Boolean(
+        m.isMirrored ||
+        m.imageR2?.isMirrored ||
+        m.imageDesktopR2?.isMirrored ||
+        m.imageMobileR2?.isMirrored
+      );
 
       return {
         url,
         is_cover: Boolean(m.isCover),
+        is_mirrored: isMirrored,
         width,
         height,
         aspect_ratio: aspect,
@@ -204,6 +214,12 @@ async function syncAllCatalogData() {
       const url = imgObj.url || di.sanityAssetUrl || '';
       const rawTitle = typeof di.title === 'string' ? di.title : (di.title?.tr || di.title?.en || '');
       const modelCode = sanitizeTerminology(rawTitle.trim() || `${slug.toUpperCase()}-${idx + 1}`);
+      const isMirrored = Boolean(
+        di.isMirrored ||
+        di.imageR2?.isMirrored ||
+        di.imageDesktopR2?.isMirrored ||
+        di.imageMobileR2?.isMirrored
+      );
 
       return {
         key: di._key || `dim-${slug}-${idx}`,
@@ -213,6 +229,7 @@ async function syncAllCatalogData() {
           en: modelCode
         },
         url,
+        is_mirrored: isMirrored,
         width: imgObj.width || 3840,
         height: imgObj.height || 2160,
         aspect_ratio: 1.778,
@@ -239,6 +256,7 @@ async function syncAllCatalogData() {
               en: 'TK0227-92X91-T'
             },
             url,
+            is_mirrored: false,
             width: imgObj.width || 3840,
             height: imgObj.height || 2160,
             aspect_ratio: 1.778,
@@ -267,6 +285,7 @@ async function syncAllCatalogData() {
     return {
       id: p._id,
       slug,
+      is_published: p.isPublished !== false,
       name: {
         tr: titleTr,
         en: titleEn

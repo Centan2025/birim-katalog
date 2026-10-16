@@ -41,6 +41,7 @@ export const MinottiArchitecturalSpread: React.FC<MinottiSpreadProps> = ({
   // Find best technical drawing and hero images
   const dimImages = product.dimension_images || [];
   const heroImage = product.cover_image?.url || product.gallery_images?.[0]?.url;
+  const isHeroMirrored = product.cover_image ? product.cover_image.is_mirrored : product.gallery_images?.[0]?.is_mirrored;
 
   return (
     <div className="catalog-spread-row flex flex-row gap-0 print:block">
@@ -53,6 +54,7 @@ export const MinottiArchitecturalSpread: React.FC<MinottiSpreadProps> = ({
             alt={title}
             containerClassName="absolute inset-0 w-full h-full bg-white"
             objectFit="contain"
+            isMirrored={isHeroMirrored}
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-neutral-400 uppercase tracking-widest text-xs">
@@ -123,6 +125,7 @@ export const MinottiArchitecturalSpread: React.FC<MinottiSpreadProps> = ({
                   containerClassName="w-full h-full bg-white"
                   objectFit="contain"
                   initialScale={1}
+                  isMirrored={dimImages[0].is_mirrored}
                 />
               </div>
             </div>
@@ -145,6 +148,7 @@ export const MinottiArchitecturalSpread: React.FC<MinottiSpreadProps> = ({
                       containerClassName="w-full h-full bg-white"
                       objectFit="contain"
                       initialScale={1}
+                      isMirrored={dim.is_mirrored}
                     />
                   </div>
                 </div>
@@ -169,6 +173,7 @@ export const MinottiArchitecturalSpread: React.FC<MinottiSpreadProps> = ({
                       containerClassName="w-full h-full bg-white"
                       objectFit="contain"
                       initialScale={1}
+                      isMirrored={dim.is_mirrored}
                     />
                   </div>
                 </div>

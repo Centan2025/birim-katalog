@@ -36,6 +36,7 @@ export const LookbookGalleryPage: React.FC<LookbookGalleryProps> = ({
             ? (lang === 'en' ? item.designers[0].name.en : item.designers[0].name.tr)
             : 'BİRİM STUDIO';
           const cover = item.cover_image?.url || item.gallery_images?.[0]?.url;
+          const isCoverMirrored = item.cover_image ? item.cover_image.is_mirrored : item.gallery_images?.[0]?.is_mirrored;
 
           return (
             <div 
@@ -48,7 +49,7 @@ export const LookbookGalleryPage: React.FC<LookbookGalleryProps> = ({
                   <img
                     src={cover}
                     alt={title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ${isCoverMirrored ? '-scale-x-100' : ''}`}
                     crossOrigin="anonymous"
                   />
                 ) : (

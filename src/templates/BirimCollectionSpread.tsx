@@ -8,6 +8,7 @@ export interface TechnicalItem {
   drawing_url: string;
   title?: string;
   dimensions_text?: string;
+  is_mirrored?: boolean;
 }
 
 export const extractProductDrawings = (product: CatalogProduct): TechnicalItem[] => {
@@ -24,6 +25,7 @@ export const extractProductDrawings = (product: CatalogProduct): TechnicalItem[]
           model_code: code,
           drawing_url: dim.url,
           title: typeof dim.title === 'string' ? dim.title : dim.title?.tr,
+          is_mirrored: dim.is_mirrored,
         });
       }
     }
@@ -119,9 +121,11 @@ export const BirimCollectionSpread: React.FC<BirimCollectionSpreadProps> = ({
   }
 
   const heroImage = product.cover_image?.url || product.gallery_images?.[0]?.url;
-  const detailImage = product.gallery_images && product.gallery_images.length > 1
-    ? product.gallery_images[1].url
+  const isHeroMirrored = product.cover_image ? product.cover_image.is_mirrored : product.gallery_images?.[0]?.is_mirrored;
+  const detailImageObj = product.gallery_images && product.gallery_images.length > 1
+    ? product.gallery_images[1]
     : null;
+  const detailImage = detailImageObj?.url || null;
 
   const familyName = (product.collection_and_family?.family_name || product.name.tr).toUpperCase();
 
@@ -187,6 +191,7 @@ export const BirimCollectionSpread: React.FC<BirimCollectionSpreadProps> = ({
               alt={title}
               containerClassName="w-full h-full flex items-center justify-center"
               objectFit="contain"
+              isMirrored={isHeroMirrored}
             />
           </div>
         ) : null}
@@ -199,7 +204,7 @@ export const BirimCollectionSpread: React.FC<BirimCollectionSpreadProps> = ({
             <img
               src={detailImage}
               alt={familyName}
-              className="w-full h-full object-cover"
+              className={`w-full h-full object-cover ${detailImageObj?.is_mirrored ? '-scale-x-100' : ''}`}
               loading="lazy"
             />
           </div>
@@ -267,7 +272,7 @@ export const BirimCollectionSpread: React.FC<BirimCollectionSpreadProps> = ({
                   <img
                     src={item.drawing_url}
                     alt={item.model_code}
-                    className="max-h-full max-w-full object-contain filter contrast-[1.05]"
+                    className={`max-h-full max-w-full object-contain filter contrast-[1.05] ${item.is_mirrored ? '-scale-x-100' : ''}`}
                     loading="lazy"
                   />
                 ) : (
@@ -342,7 +347,7 @@ export const BirimCollectionSpread: React.FC<BirimCollectionSpreadProps> = ({
                     <img
                       src={item.drawing_url}
                       alt={item.model_code}
-                      className="max-h-full max-w-full object-contain filter contrast-[1.05]"
+                      className={`max-h-full max-w-full object-contain filter contrast-[1.05] ${item.is_mirrored ? '-scale-x-100' : ''}`}
                       loading="lazy"
                     />
                   ) : (

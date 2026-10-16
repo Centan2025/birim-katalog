@@ -34,7 +34,9 @@ export const PoliformSpecSheet: React.FC<PoliformSpecSheetProps> = ({
     : 'BİRİM STUDIO';
 
   const heroImage = product.cover_image?.url || product.gallery_images?.[0]?.url;
-  const dimensionImg = product.dimension_images?.[0]?.url;
+  const isHeroMirrored = product.cover_image ? product.cover_image.is_mirrored : product.gallery_images?.[0]?.is_mirrored;
+  const dimensionImgObj = product.dimension_images?.[0];
+  const dimensionImg = dimensionImgObj?.url;
 
   const extractDimensionsFromCode = (code: string): string => {
     if (!code) return '';
@@ -102,6 +104,7 @@ export const PoliformSpecSheet: React.FC<PoliformSpecSheetProps> = ({
             alt={title}
             containerClassName="w-full h-full bg-white"
             objectFit="contain"
+            isMirrored={isHeroMirrored}
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-xs text-neutral-400">
@@ -163,6 +166,7 @@ export const PoliformSpecSheet: React.FC<PoliformSpecSheetProps> = ({
                 containerClassName="w-full h-full"
                 objectFit="contain"
                 initialScale={1}
+                isMirrored={dimensionImgObj?.is_mirrored}
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center text-[8.5px] text-neutral-400">

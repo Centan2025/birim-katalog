@@ -25,6 +25,7 @@ export interface PrintSuitability {
 export interface ProductImage {
   url: string;
   is_cover?: boolean;
+  is_mirrored?: boolean;
   width?: number;
   height?: number;
   aspect_ratio?: number;
@@ -39,6 +40,7 @@ export interface DimensionImage {
   model_code: string;
   title: LocalizedString | string;
   url: string;
+  is_mirrored?: boolean;
   width?: number;
   height?: number;
   aspect_ratio?: number;
@@ -59,6 +61,7 @@ export interface ModelVariation {
 export interface CatalogProduct {
   id: string;
   slug: string;
+  is_published?: boolean;
   name: LocalizedString;
   category: {
     id: string;

@@ -25,6 +25,7 @@ export const CategoryDivider: React.FC<CategoryDividerProps> = ({
     : '';
 
   const heroImage = featuredProduct?.cover_image?.url || featuredProduct?.gallery_images?.[0]?.url;
+  const isHeroMirrored = featuredProduct?.cover_image ? featuredProduct.cover_image.is_mirrored : featuredProduct?.gallery_images?.[0]?.is_mirrored;
 
   return (
     <div className="catalog-page bg-[#FFFFFF] text-[#111111] flex flex-col justify-between p-[18mm] select-none">
@@ -45,6 +46,7 @@ export const CategoryDivider: React.FC<CategoryDividerProps> = ({
             alt={title}
             containerClassName="w-full h-full bg-white"
             objectFit="contain"
+            isMirrored={isHeroMirrored}
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-xs text-neutral-400 uppercase tracking-widest">

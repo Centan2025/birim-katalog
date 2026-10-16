@@ -33,6 +33,7 @@ export const BirimCategoryDivider: React.FC<BirimCategoryDividerProps> = ({
     : (category.subtitle ? (lang === 'en' ? category.subtitle.en : category.subtitle.tr).toUpperCase() : '');
 
   const heroImage = featuredProduct?.cover_image?.url || featuredProduct?.gallery_images?.[0]?.url;
+  const isHeroMirrored = featuredProduct?.cover_image ? featuredProduct.cover_image.is_mirrored : featuredProduct?.gallery_images?.[0]?.is_mirrored;
 
   return (
     <div className="catalog-page bg-[#FFFFFF] p-[16mm] flex flex-col justify-between select-none">
@@ -70,6 +71,7 @@ export const BirimCategoryDivider: React.FC<BirimCategoryDividerProps> = ({
               alt={displayTitle}
               containerClassName="w-full h-full max-h-[130mm] flex items-center justify-center"
               objectFit="contain"
+              isMirrored={isHeroMirrored}
             />
           </div>
         ) : null}

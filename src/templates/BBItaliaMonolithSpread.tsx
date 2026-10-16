@@ -36,7 +36,9 @@ export const BBItaliaMonolithSpread: React.FC<BBItaliaSpreadProps> = ({
     : 'BİRİM STUDIO';
 
   const heroImage = product.cover_image?.url;
-  const detailImage = product.gallery_images?.[0]?.url || product.gallery_images?.[1]?.url;
+  const isHeroMirrored = product.cover_image?.is_mirrored ?? false;
+  const detailImageObj = product.gallery_images?.[0] || product.gallery_images?.[1];
+  const detailImage = detailImageObj?.url;
   const dimImages = product.dimension_images || [];
 
   return (
@@ -59,6 +61,7 @@ export const BBItaliaMonolithSpread: React.FC<BBItaliaSpreadProps> = ({
                 alt={title}
                 containerClassName="w-full h-full flex items-center justify-center"
                 objectFit="contain"
+                isMirrored={isHeroMirrored}
               />
             </div>
           ) : (
@@ -100,7 +103,7 @@ export const BBItaliaMonolithSpread: React.FC<BBItaliaSpreadProps> = ({
               <img
                 src={detailImage}
                 alt={`${title} Detay`}
-                className="w-full h-full object-cover"
+                className={`w-full h-full object-cover ${detailImageObj?.is_mirrored ? '-scale-x-100' : ''}`}
                 crossOrigin="anonymous"
               />
             ) : (
@@ -150,6 +153,7 @@ export const BBItaliaMonolithSpread: React.FC<BBItaliaSpreadProps> = ({
                   containerClassName="w-full h-full bg-white"
                   objectFit="contain"
                   initialScale={1}
+                  isMirrored={dimImages[0].is_mirrored}
                 />
               </div>
             </div>
@@ -172,6 +176,7 @@ export const BBItaliaMonolithSpread: React.FC<BBItaliaSpreadProps> = ({
                       containerClassName="w-full h-full bg-white"
                       objectFit="contain"
                       initialScale={1}
+                      isMirrored={dim.is_mirrored}
                     />
                   </div>
                 </div>
@@ -196,6 +201,7 @@ export const BBItaliaMonolithSpread: React.FC<BBItaliaSpreadProps> = ({
                       containerClassName="w-full h-full bg-white"
                       objectFit="contain"
                       initialScale={1}
+                      isMirrored={dim.is_mirrored}
                     />
                   </div>
                 </div>

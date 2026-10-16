@@ -87,6 +87,7 @@ export const SystemElementsPage: React.FC<SystemElementsPageProps> = ({
                 containerClassName="w-full h-full bg-white"
                 objectFit="contain"
                 initialScale={1}
+                isMirrored={dim.is_mirrored}
               />
             </div>
           </div>
