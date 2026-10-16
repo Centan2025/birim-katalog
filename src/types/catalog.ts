@@ -147,3 +147,11 @@ export type CategoryDividerVariant =
   | 'alt-5' // Poliform Style: Grafik Mozaik & Çoklu Model Önizleme Grid'i
   | 'alt-6'; // Birim Klasik: Resmi PDF Şablonu, Üst Çizgi & İnce Tipografi
 
+export type EditorialVariant = 
+  | 'alt-1' // Minotti Style: Klasik Tipografik Manifesto & Mimari İlkeler
+  | 'alt-2' // B&B Italia Style: Asimetrik Mimari Görsel Çıpa & Tasarım Manifestosu
+  | 'alt-3' // Flexform Style: Sıcak Atölye, Zanaat Dokusu & Malzeme Kimliği
+  | 'alt-4' // Living Divani Style: Radikal Sessizlik, Negatif Alan & Saf Aforizma
+  | 'alt-5'; // Cassina Style: 3 Temel İlke Grid'i & Tasarım Mirası
+
+

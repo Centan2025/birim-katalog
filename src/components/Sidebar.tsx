@@ -6,7 +6,8 @@ import {
   Language, 
   OutputFormat,
   CoverVariant,
-  CategoryDividerVariant
+  CategoryDividerVariant,
+  EditorialVariant
 } from '../types/catalog';
 import { BirimLogo } from './BirimLogo';
 import { 
@@ -52,6 +53,8 @@ interface SidebarProps {
   onChangeCoverVariant?: (variant: CoverVariant) => void;
   includeEditorial: boolean;
   onToggleEditorial: (val: boolean) => void;
+  editorialVariant?: EditorialVariant;
+  onChangeEditorialVariant?: (variant: EditorialVariant) => void;
   includeTableOfContents?: boolean;
   onToggleTableOfContents?: (val: boolean) => void;
   includeCategoryDividers: boolean;
@@ -88,6 +91,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
   onChangeCoverVariant,
   includeEditorial,
   onToggleEditorial,
+  editorialVariant = 'alt-1',
+  onChangeEditorialVariant,
   includeTableOfContents = false,
   onToggleTableOfContents,
   includeCategoryDividers,
@@ -636,6 +641,79 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 className="rounded border-neutral-700 text-neutral-100 focus:ring-0 w-3.5 h-3.5 accent-white"
               />
             </label>
+
+            {includeEditorial && onChangeEditorialVariant && (
+              <div className="pt-2 pb-1 border-t border-neutral-800/80 space-y-2">
+                <div className="flex justify-between items-center text-[9px] text-neutral-400">
+                  <span className="uppercase tracking-wider font-medium">Manifesto Stili:</span>
+                  <span className="font-mono text-neutral-300">
+                    {editorialVariant === 'alt-1' ? 'Alt. 1 (Minotti Tipografi)'
+                      : editorialVariant === 'alt-2' ? 'Alt. 2 (B&B Görsel Çıpa)'
+                      : editorialVariant === 'alt-3' ? 'Alt. 3 (Flexform Zanaat)'
+                      : editorialVariant === 'alt-4' ? 'Alt. 4 (Living Divani Sessiz)'
+                      : 'Alt. 5 (Cassina 3 İlke)'}
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-3 gap-1.5">
+                  <button
+                    type="button"
+                    onClick={() => onChangeEditorialVariant('alt-1')}
+                    className={`px-2 py-1.5 rounded text-[9.5px] border transition-colors ${
+                      editorialVariant === 'alt-1'
+                        ? 'border-neutral-200 bg-neutral-200 text-neutral-900 font-medium'
+                        : 'border-neutral-800 text-neutral-400 hover:border-neutral-700'
+                    }`}
+                  >
+                    Alt 1 (Minotti)
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => onChangeEditorialVariant('alt-2')}
+                    className={`px-2 py-1.5 rounded text-[9.5px] border transition-colors ${
+                      editorialVariant === 'alt-2'
+                        ? 'border-neutral-200 bg-neutral-200 text-neutral-900 font-medium'
+                        : 'border-neutral-800 text-neutral-400 hover:border-neutral-700'
+                    }`}
+                  >
+                    Alt 2 (B&B)
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => onChangeEditorialVariant('alt-3')}
+                    className={`px-2 py-1.5 rounded text-[9.5px] border transition-colors ${
+                      editorialVariant === 'alt-3'
+                        ? 'border-neutral-200 bg-neutral-200 text-neutral-900 font-medium'
+                        : 'border-neutral-800 text-neutral-400 hover:border-neutral-700'
+                    }`}
+                  >
+                    Alt 3 (Flexform)
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => onChangeEditorialVariant('alt-4')}
+                    className={`px-2 py-1.5 rounded text-[9.5px] border transition-colors ${
+                      editorialVariant === 'alt-4'
+                        ? 'border-neutral-200 bg-neutral-200 text-neutral-900 font-medium'
+                        : 'border-neutral-800 text-neutral-400 hover:border-neutral-700'
+                    }`}
+                  >
+                    Alt 4 (L.Divani)
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => onChangeEditorialVariant('alt-5')}
+                    className={`px-2 py-1.5 rounded text-[9.5px] border transition-colors ${
+                      editorialVariant === 'alt-5'
+                        ? 'border-neutral-200 bg-neutral-200 text-neutral-900 font-medium'
+                        : 'border-neutral-800 text-neutral-400 hover:border-neutral-700'
+                    }`}
+                  >
+                    Alt 5 (Cassina)
+                  </button>
+                </div>
+              </div>
+            )}
 
             <label className="flex items-center justify-between cursor-pointer">
               <span className="text-neutral-300">İçindekiler Sayfası (TOC)</span>

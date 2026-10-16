@@ -7,7 +7,8 @@ import {
   Language, 
   OutputFormat,
   CoverVariant,
-  CategoryDividerVariant
+  CategoryDividerVariant,
+  EditorialVariant
 } from './types/catalog';
 import { Sidebar } from './components/Sidebar';
 import { MasterCover } from './templates/MasterCover';
@@ -47,6 +48,7 @@ export const App: React.FC = () => {
   const [includeCover, setIncludeCover] = useState<boolean>(true);
   const [coverVariant, setCoverVariant] = useState<CoverVariant>('alt-1');
   const [includeEditorial, setIncludeEditorial] = useState<boolean>(true);
+  const [editorialVariant, setEditorialVariant] = useState<EditorialVariant>('alt-1');
   const [includeTableOfContents, setIncludeTableOfContents] = useState<boolean>(true);
   const [includeCategoryDividers, setIncludeCategoryDividers] = useState<boolean>(true);
   const [categoryDividerVariant, setCategoryDividerVariant] = useState<CategoryDividerVariant>('alt-1');
@@ -388,8 +390,14 @@ export const App: React.FC = () => {
     // 2. Brand Manifesto / Editorial
     if (includeEditorial) {
       elements.push(
-        <div key="editorial" id={`page-${pageCounter}`} className="flex justify-center">
-          <EditorialPage pageNumber={pageCounter} lang={lang} />
+        <div key={`editorial-${editorialVariant}`} id={`page-${pageCounter}`} className="flex justify-center">
+          <EditorialPage 
+            pageNumber={pageCounter} 
+            lang={lang} 
+            variant={editorialVariant}
+            featuredVisual={catalogData.featured_samples?.[0]?.cover_image?.url || catalogData.all_products[0]?.cover_image?.url}
+            secondaryVisual={catalogData.all_products[1]?.gallery_images?.[0]?.url || catalogData.all_products[1]?.cover_image?.url}
+          />
         </div>
       );
       pageCounter++;
@@ -554,6 +562,7 @@ export const App: React.FC = () => {
     includeCover,
     coverVariant,
     includeEditorial,
+    editorialVariant,
     includeTableOfContents,
     includeCategoryDividers,
     categoryDividerVariant,
@@ -590,6 +599,8 @@ export const App: React.FC = () => {
         onChangeCoverVariant={setCoverVariant}
         includeEditorial={includeEditorial}
         onToggleEditorial={setIncludeEditorial}
+        editorialVariant={editorialVariant}
+        onChangeEditorialVariant={setEditorialVariant}
         includeTableOfContents={includeTableOfContents}
         onToggleTableOfContents={setIncludeTableOfContents}
         includeCategoryDividers={includeCategoryDividers}
