@@ -40,7 +40,7 @@ export const FlexformCuratedSpread: React.FC<FlexformCuratedSpreadProps> = ({
       {/* ========================================================= */}
       {/* LEFT PAGE: 100% Full-Bleed Architectural Visual Anchor    */}
       {/* ========================================================= */}
-      <div className="catalog-page catalog-page-bleed bg-[#F4F3F0] relative overflow-hidden flex flex-col justify-between select-none border-r border-neutral-300">
+      <div className="catalog-page catalog-page-bleed bg-[#F4F3F0] relative overflow-hidden flex flex-col justify-between select-none">
         {heroImage ? (
           <InteractiveCatalogImage
             id={`flexform-hero-${product.slug}`}
@@ -93,7 +93,7 @@ export const FlexformCuratedSpread: React.FC<FlexformCuratedSpreadProps> = ({
 
         {/* Center Secondary Atelier Image & Material Rationale */}
         <div className="grid grid-cols-2 gap-5 my-2 items-center">
-          <div className="h-[44mm] bg-white border border-[#E6E3DC] overflow-hidden relative shadow-sm">
+          <div className="h-[44mm] overflow-hidden relative">
             {detailImage ? (
               <img
                 src={detailImage}
@@ -137,7 +137,7 @@ export const FlexformCuratedSpread: React.FC<FlexformCuratedSpreadProps> = ({
           {/* Dimension Grid */}
           <div className="grid grid-cols-3 gap-3 h-[45mm]">
             {dimImages.slice(0, 3).map((dim, idx) => (
-              <div key={idx} className="h-full flex flex-col items-center justify-between bg-white border border-[#E6E3DC] p-2">
+              <div key={idx} className="h-full flex flex-col items-center justify-between p-2">
                 <div className="w-full h-[30mm] flex items-center justify-center">
                   <img
                     src={dim.url}

@@ -21,6 +21,7 @@ import { BirimCollectionSpread, getBirimCollectionPageCount } from './templates/
 import { BirimCategoryDivider } from './templates/BirimCategoryDivider';
 import { CassinaTriennaleSpread } from './templates/CassinaTriennaleSpread';
 import { FlexformCuratedSpread } from './templates/FlexformCuratedSpread';
+import { TableOfContentsPage, TocEntry } from './templates/TableOfContentsPage';
 import { 
   SystemElementsPage, 
   getSystemElementsPageCount, 
@@ -46,6 +47,7 @@ export const App: React.FC = () => {
   const [includeCover, setIncludeCover] = useState<boolean>(true);
   const [coverVariant, setCoverVariant] = useState<CoverVariant>('alt-1');
   const [includeEditorial, setIncludeEditorial] = useState<boolean>(true);
+  const [includeTableOfContents, setIncludeTableOfContents] = useState<boolean>(true);
   const [includeCategoryDividers, setIncludeCategoryDividers] = useState<boolean>(true);
   const [includeMaterials, setIncludeMaterials] = useState<boolean>(true);
   const [includePrices, setIncludePrices] = useState<boolean>(false);
@@ -230,10 +232,107 @@ export const App: React.FC = () => {
       return 'DESIGN COLLECTION';
     };
 
+    // Pre-calculate page mapping for accurate Table of Contents
+    let simPage = 1;
+    if (includeCover) simPage++;
+    if (includeEditorial) simPage++;
+    if (includeTableOfContents) simPage++;
+
+    const tocEntries: TocEntry[] = [];
+    let orderIndex = 1;
+
+    if (includeEditorial) {
+      tocEntries.push({
+        id: 'editorial',
+        order: String(orderIndex++).padStart(2, '0'),
+        title: lang === 'en' ? 'ARCHITECTURAL STATEMENT' : 'MİMARİ YAKLAŞIM',
+        subtitle: lang === 'en' ? 'Birim Design Philosophy' : 'Birim Tasarım Felsefesi',
+        pageNumber: includeCover ? 2 : 1,
+        type: 'editorial',
+      });
+    }
+
+    if (selectedFormat === 'product') {
+      const prod = catalogData.all_products.find((p) => p.slug === selectedProduct);
+      if (prod) {
+        const prodTitle = lang === 'en' ? prod.name.en : prod.name.tr;
+        const designer = prod.designers?.[0] ? (lang === 'en' ? prod.designers[0].name.en : prod.designers[0].name.tr) : undefined;
+        const heroPage = simPage;
+        tocEntries.push({
+          id: `prod-${prod.slug}`,
+          order: String(orderIndex++).padStart(2, '0'),
+          title: prodTitle,
+          subtitle: lang === 'en' ? 'Perspective & Architectural Hero' : 'Sinematik Perspektif & Mekân Kurgusu',
+          designer,
+          pageNumber: heroPage,
+          thumbnail: prod.cover_image?.url || prod.gallery_images?.[0]?.url,
+          type: 'product',
+        });
+        simPage += getProductStep(prod);
+      }
+    } else {
+      targetCategories.forEach((cat) => {
+        const catProds = catalogData.all_products.filter(
+          (p) => p.category.id === cat.id || p.category.slug === cat.slug
+        );
+        const catTitle = lang === 'en' ? (cat.name.en || cat.name.tr) : cat.name.tr;
+        const catStartPage = simPage;
+        if (includeCategoryDividers) simPage++;
+
+        const subItems = catProds.map((prod) => {
+          const prodTitle = lang === 'en' ? prod.name.en : prod.name.tr;
+          const designer = prod.designers?.[0] ? (lang === 'en' ? prod.designers[0].name.en : prod.designers[0].name.tr) : undefined;
+          const prodPage = simPage;
+          simPage += getProductStep(prod);
+          return {
+            title: prodTitle,
+            designer,
+            pageNumber: prodPage,
+            modelCount: prod.models_and_variations?.length || 1,
+          };
+        });
+
+        tocEntries.push({
+          id: `cat-${cat.slug}`,
+          order: String(orderIndex++).padStart(2, '0'),
+          title: catTitle,
+          subtitle: `${catProds.length} ${lang === 'en' ? 'Models' : 'Ürün / Model'}`,
+          pageNumber: catStartPage,
+          thumbnail: catProds[0]?.cover_image?.url || catProds[0]?.gallery_images?.[0]?.url,
+          type: 'category',
+          subItems,
+        });
+      });
+    }
+
+    if (includeMaterials) {
+      tocEntries.push({
+        id: 'materials',
+        order: String(orderIndex++).padStart(2, '0'),
+        title: lang === 'en' ? 'MATERIAL PALETTE' : 'MALZEME & RENK KARTELASI',
+        subtitle: lang === 'en' ? 'Fabric, Leather & Metal Finishes' : 'Kumaş, Deri, Masif ve Metal Kaplamalar',
+        pageNumber: simPage,
+        type: 'materials',
+      });
+      simPage++;
+    }
+
+    if (includePrices) {
+      tocEntries.push({
+        id: 'prices',
+        order: String(orderIndex++).padStart(2, '0'),
+        title: lang === 'en' ? 'PRICE & TECHNICAL LIST' : 'FİYAT VE TEKNİK LİSTE',
+        subtitle: lang === 'en' ? 'Dimensional & Price Matrix' : 'Model Ölçüleri ve Fiyat Matrisi',
+        pageNumber: simPage,
+        type: 'prices',
+      });
+      simPage++;
+    }
+
     // 1. Master Cover
     if (includeCover) {
       elements.push(
-        <div key="cover" className="flex justify-center">
+        <div key="cover" id={`page-${pageCounter}`} className="flex justify-center">
           <MasterCover 
             metadata={catalogData.metadata} 
             title={getCoverTitle()}
@@ -251,8 +350,30 @@ export const App: React.FC = () => {
     // 2. Brand Manifesto / Editorial
     if (includeEditorial) {
       elements.push(
-        <div key="editorial" className="flex justify-center">
+        <div key="editorial" id={`page-${pageCounter}`} className="flex justify-center">
           <EditorialPage pageNumber={pageCounter} lang={lang} />
+        </div>
+      );
+      pageCounter++;
+    }
+
+    // 3. Table of Contents / İçindekiler
+    if (includeTableOfContents) {
+      elements.push(
+        <div key="toc" id={`page-${pageCounter}`} className="flex justify-center">
+          <TableOfContentsPage
+            pageNumber={pageCounter}
+            entries={tocEntries}
+            format={selectedFormat}
+            categoryTitle={activeCategoryTitle}
+            lang={lang}
+            onNavigateToPage={(targetPage) => {
+              const el = document.getElementById(`page-${targetPage}`);
+              if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+            }}
+          />
         </div>
       );
       pageCounter++;
@@ -264,7 +385,7 @@ export const App: React.FC = () => {
       if (prod) {
         const step = getProductStep(prod);
         elements.push(
-          <div key={`prod-${prod.slug}`} className="flex justify-center">
+          <div key={`prod-${prod.slug}`} id={`page-${pageCounter}`} className="flex justify-center">
             {renderProductItem(prod, pageCounter, pageCounter + 1)}
           </div>
         );
@@ -302,7 +423,7 @@ export const App: React.FC = () => {
         // Category Divider
         if (includeCategoryDividers) {
           elements.push(
-            <div key={`cat-divider-${cat.slug}`} className="flex justify-center">
+            <div key={`cat-divider-${cat.slug}`} id={`page-${pageCounter}`} className="flex justify-center">
               {selectedTemplate === 'birim-collection' ? (
                 <BirimCategoryDivider
                   category={cat}
@@ -328,7 +449,7 @@ export const App: React.FC = () => {
         catProds.forEach((prod) => {
           const step = getProductStep(prod);
           elements.push(
-            <div key={`prod-${prod.slug}`} className="flex justify-center">
+            <div key={`prod-${prod.slug}`} id={`page-${pageCounter}`} className="flex justify-center">
               {renderProductItem(prod, pageCounter, pageCounter + 1)}
             </div>
           );
@@ -361,7 +482,7 @@ export const App: React.FC = () => {
     // 4. Material Catalog Swatches
     if (includeMaterials) {
       elements.push(
-        <div key="materials" className="flex justify-center">
+        <div key="materials" id={`page-${pageCounter}`} className="flex justify-center">
           <MaterialCatalogPage
             categoryTitle={activeCategoryTitle}
             pageNumber={pageCounter}
@@ -379,7 +500,7 @@ export const App: React.FC = () => {
         : catalogData.all_products.filter(p => targetCategories.some(c => c.id === p.category.id || c.slug === p.category.slug));
 
       elements.push(
-        <div key="prices" className="flex justify-center">
+        <div key="prices" id={`page-${pageCounter}`} className="flex justify-center">
           <PriceListPage
             products={activeProducts}
             categoryTitle={activeCategoryTitle}
@@ -396,6 +517,7 @@ export const App: React.FC = () => {
     includeCover,
     coverVariant,
     includeEditorial,
+    includeTableOfContents,
     includeCategoryDividers,
     includeMaterials,
     includePrices,
@@ -430,6 +552,8 @@ export const App: React.FC = () => {
         onChangeCoverVariant={setCoverVariant}
         includeEditorial={includeEditorial}
         onToggleEditorial={setIncludeEditorial}
+        includeTableOfContents={includeTableOfContents}
+        onToggleTableOfContents={setIncludeTableOfContents}
         includeCategoryDividers={includeCategoryDividers}
         onToggleCategoryDividers={setIncludeCategoryDividers}
         includeMaterials={includeMaterials}

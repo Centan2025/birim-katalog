@@ -51,6 +51,8 @@ interface SidebarProps {
   onChangeCoverVariant?: (variant: CoverVariant) => void;
   includeEditorial: boolean;
   onToggleEditorial: (val: boolean) => void;
+  includeTableOfContents?: boolean;
+  onToggleTableOfContents?: (val: boolean) => void;
   includeCategoryDividers: boolean;
   onToggleCategoryDividers: (val: boolean) => void;
   includeMaterials: boolean;
@@ -83,6 +85,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
   onChangeCoverVariant,
   includeEditorial,
   onToggleEditorial,
+  includeTableOfContents = false,
+  onToggleTableOfContents,
   includeCategoryDividers,
   onToggleCategoryDividers,
   includeMaterials,
@@ -624,6 +628,16 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 type="checkbox"
                 checked={includeEditorial}
                 onChange={(e) => onToggleEditorial(e.target.checked)}
+                className="rounded border-neutral-700 text-neutral-100 focus:ring-0 w-3.5 h-3.5 accent-white"
+              />
+            </label>
+
+            <label className="flex items-center justify-between cursor-pointer">
+              <span className="text-neutral-300">İçindekiler Sayfası (TOC)</span>
+              <input
+                type="checkbox"
+                checked={includeTableOfContents}
+                onChange={(e) => onToggleTableOfContents?.(e.target.checked)}
                 className="rounded border-neutral-700 text-neutral-100 focus:ring-0 w-3.5 h-3.5 accent-white"
               />
             </label>
