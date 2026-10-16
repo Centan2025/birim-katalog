@@ -6,7 +6,8 @@ import {
   CatalogTemplateType, 
   Language, 
   OutputFormat,
-  CoverVariant
+  CoverVariant,
+  CategoryDividerVariant
 } from './types/catalog';
 import { Sidebar } from './components/Sidebar';
 import { MasterCover } from './templates/MasterCover';
@@ -18,7 +19,6 @@ import { PoliformSpecSheet } from './templates/PoliformSpecSheet';
 import { MaterialCatalogPage } from './templates/MaterialCatalogPage';
 import { PriceListPage } from './templates/PriceListPage';
 import { BirimCollectionSpread, getBirimCollectionPageCount } from './templates/BirimCollectionSpread';
-import { BirimCategoryDivider } from './templates/BirimCategoryDivider';
 import { CassinaTriennaleSpread } from './templates/CassinaTriennaleSpread';
 import { FlexformCuratedSpread } from './templates/FlexformCuratedSpread';
 import { TableOfContentsPage, TocEntry, paginateTocEntries, TocPageColumnData } from './templates/TableOfContentsPage';
@@ -49,6 +49,7 @@ export const App: React.FC = () => {
   const [includeEditorial, setIncludeEditorial] = useState<boolean>(true);
   const [includeTableOfContents, setIncludeTableOfContents] = useState<boolean>(true);
   const [includeCategoryDividers, setIncludeCategoryDividers] = useState<boolean>(true);
+  const [categoryDividerVariant, setCategoryDividerVariant] = useState<CategoryDividerVariant>('alt-1');
   const [includeMaterials, setIncludeMaterials] = useState<boolean>(true);
   const [includePrices, setIncludePrices] = useState<boolean>(false);
 
@@ -468,23 +469,15 @@ export const App: React.FC = () => {
         if (includeCategoryDividers) {
           elements.push(
             <div key={`cat-divider-${cat.slug}`} id={`page-${pageCounter}`} className="flex justify-center">
-              {selectedTemplate === 'birim-collection' ? (
-                <BirimCategoryDivider
-                  category={cat}
-                  categoryIndex={catIdx}
-                  featuredProduct={catProds[0]}
-                  pageNumber={pageCounter}
-                  lang={lang}
-                />
-              ) : (
-                <CategoryDivider
-                  category={cat}
-                  categoryIndex={catIdx}
-                  featuredProduct={catProds[0]}
-                  categoryProducts={catProds}
-                  lang={lang}
-                />
-              )}
+              <CategoryDivider
+                category={cat}
+                categoryIndex={catIdx}
+                featuredProduct={catProds[0]}
+                categoryProducts={catProds}
+                pageNumber={pageCounter}
+                lang={lang}
+                variant={categoryDividerVariant}
+              />
             </div>
           );
           pageCounter++;
@@ -600,6 +593,8 @@ export const App: React.FC = () => {
         onToggleTableOfContents={setIncludeTableOfContents}
         includeCategoryDividers={includeCategoryDividers}
         onToggleCategoryDividers={setIncludeCategoryDividers}
+        categoryDividerVariant={categoryDividerVariant}
+        onChangeCategoryDividerVariant={setCategoryDividerVariant}
         includeMaterials={includeMaterials}
         onToggleMaterials={setIncludeMaterials}
         includePrices={includePrices}

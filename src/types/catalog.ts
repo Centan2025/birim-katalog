@@ -138,3 +138,12 @@ export type CoverVariant =
   | 'alt-7'
   | 'alt-8'
   | 'alt-9';
+
+export type CategoryDividerVariant = 
+  | 'alt-1' // Minotti Style: Sinematik Geniş Görsel & Dev Mimari Tipografi
+  | 'alt-2' // B&B Italia Style: Heykelsi Monolit & İsviçre Model Fihristi
+  | 'alt-3' // Flexform Style: 100% Full-Bleed Atmosferik Görsel & Yüzen Kart
+  | 'alt-4' // Living Divani Style: Sessiz Minimalizm, Saf Beyaz Alan & Mikro Kadraj
+  | 'alt-5' // Poliform Style: Grafik Mozaik & Çoklu Model Önizleme Grid'i
+  | 'alt-6'; // Birim Klasik: Resmi PDF Şablonu, Üst Çizgi & İnce Tipografi
+

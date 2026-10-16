@@ -5,7 +5,8 @@ import {
   CatalogTemplateType, 
   Language, 
   OutputFormat,
-  CoverVariant
+  CoverVariant,
+  CategoryDividerVariant
 } from '../types/catalog';
 import { BirimLogo } from './BirimLogo';
 import { 
@@ -55,6 +56,8 @@ interface SidebarProps {
   onToggleTableOfContents?: (val: boolean) => void;
   includeCategoryDividers: boolean;
   onToggleCategoryDividers: (val: boolean) => void;
+  categoryDividerVariant?: CategoryDividerVariant;
+  onChangeCategoryDividerVariant?: (variant: CategoryDividerVariant) => void;
   includeMaterials: boolean;
   onToggleMaterials: (val: boolean) => void;
   includePrices: boolean;
@@ -89,6 +92,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
   onToggleTableOfContents,
   includeCategoryDividers,
   onToggleCategoryDividers,
+  categoryDividerVariant = 'alt-1',
+  onChangeCategoryDividerVariant,
   includeMaterials,
   onToggleMaterials,
   includePrices,
@@ -643,15 +648,102 @@ export const Sidebar: React.FC<SidebarProps> = ({
             </label>
 
             {selectedFormat !== 'product' && (
-              <label className="flex items-center justify-between cursor-pointer">
-                <span className="text-neutral-300">Kategori Ara Kapakları</span>
-                <input
-                  type="checkbox"
-                  checked={includeCategoryDividers}
-                  onChange={(e) => onToggleCategoryDividers(e.target.checked)}
-                  className="rounded border-neutral-700 text-neutral-100 focus:ring-0 w-3.5 h-3.5 accent-white"
-                />
-              </label>
+              <>
+                <label className="flex items-center justify-between cursor-pointer">
+                  <span className="text-neutral-300">Kategori Ara Kapakları</span>
+                  <input
+                    type="checkbox"
+                    checked={includeCategoryDividers}
+                    onChange={(e) => onToggleCategoryDividers(e.target.checked)}
+                    className="rounded border-neutral-700 text-neutral-100 focus:ring-0 w-3.5 h-3.5 accent-white"
+                  />
+                </label>
+
+                {includeCategoryDividers && onChangeCategoryDividerVariant && (
+                  <div className="pt-2 pb-1 border-t border-neutral-800/80 space-y-2">
+                    <div className="flex justify-between items-center text-[9px] text-neutral-400">
+                      <span className="uppercase tracking-wider font-medium">Ara Kapak Stili:</span>
+                      <span className="font-mono text-neutral-300">
+                        {categoryDividerVariant === 'alt-1' ? 'Alt. 1 (Minotti Mimari)'
+                          : categoryDividerVariant === 'alt-2' ? 'Alt. 2 (B&B Monolit)'
+                          : categoryDividerVariant === 'alt-3' ? 'Alt. 3 (Flexform Bleed)'
+                          : categoryDividerVariant === 'alt-4' ? 'Alt. 4 (Living Divani)'
+                          : categoryDividerVariant === 'alt-5' ? 'Alt. 5 (Poliform Mozaik)'
+                          : 'Alt. 6 (Birim Klasik)'}
+                      </span>
+                    </div>
+
+                    <div className="grid grid-cols-3 gap-1.5">
+                      <button
+                        type="button"
+                        onClick={() => onChangeCategoryDividerVariant('alt-1')}
+                        className={`px-2 py-1.5 rounded text-[9.5px] border transition-colors ${
+                          categoryDividerVariant === 'alt-1'
+                            ? 'border-neutral-200 bg-neutral-200 text-neutral-900 font-medium'
+                            : 'border-neutral-800 text-neutral-400 hover:border-neutral-700'
+                        }`}
+                      >
+                        Alt 1 (Minotti)
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => onChangeCategoryDividerVariant('alt-2')}
+                        className={`px-2 py-1.5 rounded text-[9.5px] border transition-colors ${
+                          categoryDividerVariant === 'alt-2'
+                            ? 'border-neutral-200 bg-neutral-200 text-neutral-900 font-medium'
+                            : 'border-neutral-800 text-neutral-400 hover:border-neutral-700'
+                        }`}
+                      >
+                        Alt 2 (B&B)
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => onChangeCategoryDividerVariant('alt-3')}
+                        className={`px-2 py-1.5 rounded text-[9.5px] border transition-colors ${
+                          categoryDividerVariant === 'alt-3'
+                            ? 'border-neutral-200 bg-neutral-200 text-neutral-900 font-medium'
+                            : 'border-neutral-800 text-neutral-400 hover:border-neutral-700'
+                        }`}
+                      >
+                        Alt 3 (Flexform)
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => onChangeCategoryDividerVariant('alt-4')}
+                        className={`px-2 py-1.5 rounded text-[9.5px] border transition-colors ${
+                          categoryDividerVariant === 'alt-4'
+                            ? 'border-neutral-200 bg-neutral-200 text-neutral-900 font-medium'
+                            : 'border-neutral-800 text-neutral-400 hover:border-neutral-700'
+                        }`}
+                      >
+                        Alt 4 (L.Divani)
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => onChangeCategoryDividerVariant('alt-5')}
+                        className={`px-2 py-1.5 rounded text-[9.5px] border transition-colors ${
+                          categoryDividerVariant === 'alt-5'
+                            ? 'border-neutral-200 bg-neutral-200 text-neutral-900 font-medium'
+                            : 'border-neutral-800 text-neutral-400 hover:border-neutral-700'
+                        }`}
+                      >
+                        Alt 5 (Poliform)
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => onChangeCategoryDividerVariant('alt-6')}
+                        className={`px-2 py-1.5 rounded text-[9.5px] border transition-colors ${
+                          categoryDividerVariant === 'alt-6'
+                            ? 'border-neutral-200 bg-neutral-200 text-neutral-900 font-medium'
+                            : 'border-neutral-800 text-neutral-400 hover:border-neutral-700'
+                        }`}
+                      >
+                        Alt 6 (Birim)
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </>
             )}
 
             <label className="flex items-center justify-between cursor-pointer">
