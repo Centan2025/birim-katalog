@@ -468,7 +468,7 @@ export const App: React.FC = () => {
         // Category Divider
         if (includeCategoryDividers) {
           elements.push(
-            <div key={`cat-divider-${cat.slug}`} id={`page-${pageCounter}`} className="flex justify-center">
+            <div key={`cat-divider-${cat.slug}-${categoryDividerVariant}`} id={`page-${pageCounter}`} className="flex justify-center">
               <CategoryDivider
                 category={cat}
                 categoryIndex={catIdx}
@@ -556,6 +556,7 @@ export const App: React.FC = () => {
     includeEditorial,
     includeTableOfContents,
     includeCategoryDividers,
+    categoryDividerVariant,
     includeMaterials,
     includePrices,
     selectedFormat,
