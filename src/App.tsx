@@ -19,6 +19,8 @@ import { MaterialCatalogPage } from './templates/MaterialCatalogPage';
 import { PriceListPage } from './templates/PriceListPage';
 import { BirimCollectionSpread, getBirimCollectionPageCount } from './templates/BirimCollectionSpread';
 import { BirimCategoryDivider } from './templates/BirimCategoryDivider';
+import { CassinaTriennaleSpread } from './templates/CassinaTriennaleSpread';
+import { FlexformCuratedSpread } from './templates/FlexformCuratedSpread';
 import { 
   SystemElementsPage, 
   getSystemElementsPageCount, 
@@ -125,6 +127,28 @@ export const App: React.FC = () => {
         />
       );
     }
+    if (selectedTemplate === 'cassina-editorial') {
+      return (
+        <CassinaTriennaleSpread
+          key={product.id || product.slug}
+          product={product}
+          pageNumberLeft={leftPageNum}
+          pageNumberRight={rightPageNum}
+          lang={lang}
+        />
+      );
+    }
+    if (selectedTemplate === 'flexform-curated') {
+      return (
+        <FlexformCuratedSpread
+          key={product.id || product.slug}
+          product={product}
+          pageNumberLeft={leftPageNum}
+          pageNumberRight={rightPageNum}
+          lang={lang}
+        />
+      );
+    }
     if (selectedTemplate === 'birim-collection') {
       return (
         <BirimCollectionSpread
@@ -159,7 +183,12 @@ export const App: React.FC = () => {
       if (selectedTemplate === 'poliform-specsheet') {
         return 1;
       }
-      const extraSystemPages = (selectedTemplate === 'minotti-architectural' || selectedTemplate === 'bb-italia-monolith')
+      const extraSystemPages = (
+        selectedTemplate === 'minotti-architectural' || 
+        selectedTemplate === 'bb-italia-monolith' ||
+        selectedTemplate === 'cassina-editorial' ||
+        selectedTemplate === 'flexform-curated'
+      )
         ? getSystemElementsPageCount(product)
         : 0;
       return 2 + extraSystemPages;
@@ -239,7 +268,12 @@ export const App: React.FC = () => {
             {renderProductItem(prod, pageCounter, pageCounter + 1)}
           </div>
         );
-        if (selectedTemplate === 'minotti-architectural' || selectedTemplate === 'bb-italia-monolith') {
+        if (
+          selectedTemplate === 'minotti-architectural' || 
+          selectedTemplate === 'bb-italia-monolith' ||
+          selectedTemplate === 'cassina-editorial' ||
+          selectedTemplate === 'flexform-curated'
+        ) {
           const chunks = getSystemElementsChunks(prod);
           chunks.forEach((chunk, chunkIdx) => {
             elements.push(
@@ -298,7 +332,12 @@ export const App: React.FC = () => {
               {renderProductItem(prod, pageCounter, pageCounter + 1)}
             </div>
           );
-          if (selectedTemplate === 'minotti-architectural' || selectedTemplate === 'bb-italia-monolith') {
+          if (
+            selectedTemplate === 'minotti-architectural' || 
+            selectedTemplate === 'bb-italia-monolith' ||
+            selectedTemplate === 'cassina-editorial' ||
+            selectedTemplate === 'flexform-curated'
+          ) {
             const chunks = getSystemElementsChunks(prod);
             chunks.forEach((chunk, chunkIdx) => {
               elements.push(

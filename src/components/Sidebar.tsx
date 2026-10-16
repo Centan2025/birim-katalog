@@ -413,6 +413,46 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 1-Sayfa Compact Föy: Üst yarı %50 fotoğraf, alt sol editoryal, alt sağ teknik çizim ve model tablosu.
               </p>
             </div>
+
+            {/* Cassina Triennale */}
+            <div
+              onClick={() => onChangeTemplate('cassina-editorial')}
+              className={`p-2.5 rounded-lg border cursor-pointer transition-all ${
+                selectedTemplate === 'cassina-editorial'
+                  ? 'border-neutral-300 bg-neutral-900 text-white'
+                  : 'border-neutral-800/80 bg-neutral-900/40 text-neutral-400 hover:border-neutral-700'
+              }`}
+            >
+              <div className="flex justify-between items-center">
+                <span className="font-medium text-[11px]">Cassina Triennale</span>
+                {selectedTemplate === 'cassina-editorial' && (
+                  <Check className="w-3.5 h-3.5 text-neutral-200" />
+                )}
+              </div>
+              <p className="text-[9px] text-neutral-500 mt-1 leading-relaxed">
+                2-Sayfa Spread: Sol editoryal monografi & çift makro detay (FIG. 01 & 02), Sağ yüzen perspektif & alt CAD teknik bandı.
+              </p>
+            </div>
+
+            {/* Flexform Curated */}
+            <div
+              onClick={() => onChangeTemplate('flexform-curated')}
+              className={`p-2.5 rounded-lg border cursor-pointer transition-all ${
+                selectedTemplate === 'flexform-curated'
+                  ? 'border-neutral-300 bg-neutral-900 text-white'
+                  : 'border-neutral-800/80 bg-neutral-900/40 text-neutral-400 hover:border-neutral-700'
+              }`}
+            >
+              <div className="flex justify-between items-center">
+                <span className="font-medium text-[11px]">Flexform Curated</span>
+                {selectedTemplate === 'flexform-curated' && (
+                  <Check className="w-3.5 h-3.5 text-neutral-200" />
+                )}
+              </div>
+              <p className="text-[9px] text-neutral-500 mt-1 leading-relaxed">
+                2-Sayfa Spread: Sol %100 tam boy bleed fotoğraf, Sağ sıcak editoryal zanaat hikayesi, ikincil zanaat görseli & 3 sütun teknik şematik.
+              </p>
+            </div>
           </div>
         </div>
 

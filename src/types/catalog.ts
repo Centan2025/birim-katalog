@@ -118,11 +118,13 @@ export interface CatalogData {
 }
 
 export type CatalogTemplateType = 
+  | 'birim-collection'     // Birebir PDF Tasarımı: Üst logo çizgisi, büyük zarif tipografi, koleksiyonel hero görsel, alt detay ve teknik çizim gridi
   | 'minotti-architectural' // 2-Sayfa Spread: Sol tam boy sinematik görsel, Sağ: Büyük mimari tipografi, kısa manifesto, 2D teknik çizim
   | 'bb-italia-monolith'    // 2-Sayfa Spread: Sol izole stüdyo heykelsi duruş + bol boşluk, Sağ: Detay grid'i + ölçü ve model tablosu
   | 'poliform-specsheet'    // 1-Sayfa Compact Föy: Üst yarı %55 mimari görsel, alt sol hikaye + tasarımcı, alt sağ CAD ölçüleri & model detayları
-  | 'lookbook-gallery'     // Çoklu ürün grid sayfası (özet indeks veya 2 ürün/sayfa)
-  | 'birim-collection';     // Birebir PDF Tasarımı: Üst logo çizgisi, büyük zarif tipografi, koleksiyonel hero görsel, alt detay ve teknik çizim gridi
+  | 'cassina-editorial'     // 2-Sayfa Spread: Sol editoryal monografi & çift makro detay, Sağ büyük perspektif & CAD bandı
+  | 'flexform-curated'      // 2-Sayfa Spread: Sol tam boy sinematik bleed, Sağ sıcak editoryal zanaat ve mimari şematikler
+  | 'lookbook-gallery';     // Çoklu ürün grid sayfası (özet indeks veya 2 ürün/sayfa)
 
 export type OutputFormat = 'master' | 'category' | 'product';
 export type Language = 'tr' | 'en';
