@@ -31,7 +31,9 @@ export const CategoryDivider: React.FC<CategoryDividerProps> = ({
       {/* Top Header Folio */}
       <div className="flex justify-between items-center text-[11px] tracking-[0.25em] uppercase text-neutral-600 font-medium border-b border-neutral-300 pb-3">
         <BirimLogo variant="black" className="h-7 w-auto object-contain" />
-        <span className="font-mono text-neutral-500">BÖLÜM {indexStr} / KOLEKSİYON</span>
+        <span className="font-mono text-neutral-500">
+          {lang === 'en' ? `SECTION ${indexStr} / COLLECTION` : `BÖLÜM ${indexStr} / KOLEKSİYON`}
+        </span>
       </div>
 
       {/* Featured Visual Container (Cinematic Category Anchor with Pan & Zoom - Frameless) */}
@@ -79,7 +81,7 @@ export const CategoryDivider: React.FC<CategoryDividerProps> = ({
         {categoryProducts.length > 0 && (
           <div className="pt-2">
             <span className="text-[8px] tracking-[0.2em] uppercase text-neutral-400 font-medium block mb-1.5">
-              BU BÖLÜMDE YER ALAN MODELLER ({categoryProducts.length})
+              {lang === 'en' ? `PRODUCTS IN THIS SECTION (${categoryProducts.length})` : `BU BÖLÜMDE YER ALAN MODELLER (${categoryProducts.length})`}
             </span>
             <div className="flex flex-wrap gap-1.5 max-h-[16mm] overflow-hidden">
               {categoryProducts.slice(0, 12).map((p, idx) => (

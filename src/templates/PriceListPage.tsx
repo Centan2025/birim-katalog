@@ -28,7 +28,7 @@ export const PriceListPage: React.FC<PriceListPageProps> = ({
           </h2>
         </div>
         <span className="text-[9px] font-mono tracking-widest text-neutral-500 uppercase">
-          PARA BİRİMİ: {currency}
+          {lang === 'en' ? `CURRENCY: ${currency}` : `PARA BİRİMİ: ${currency}`}
         </span>
       </div>
 
@@ -37,11 +37,11 @@ export const PriceListPage: React.FC<PriceListPageProps> = ({
         <table className="w-full text-left border-collapse">
           <thead>
             <tr className="border-b border-neutral-900 text-[8px] tracking-[0.2em] uppercase text-neutral-600 font-semibold">
-              <th className="py-2 pl-1">ÜRÜN / MODEL</th>
-              <th className="py-2">MODEL KODU</th>
-              <th className="py-2">ÖLÇÜLER (W x D x H)</th>
-              <th className="py-2">KATEGORİ</th>
-              <th className="py-2 text-right pr-1">FİYAT ({currency})</th>
+              <th className="py-2 pl-1">{lang === 'en' ? 'PRODUCT / MODEL' : 'ÜRÜN / MODEL'}</th>
+              <th className="py-2">{lang === 'en' ? 'MODEL CODE' : 'MODEL KODU'}</th>
+              <th className="py-2">{lang === 'en' ? 'DIMENSIONS (W x D x H)' : 'ÖLÇÜLER (W x D x H)'}</th>
+              <th className="py-2">{lang === 'en' ? 'CATEGORY' : 'KATEGORİ'}</th>
+              <th className="py-2 text-right pr-1">{lang === 'en' ? `PRICE (${currency})` : `FİYAT (${currency})`}</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-neutral-100 text-[8.5px]">

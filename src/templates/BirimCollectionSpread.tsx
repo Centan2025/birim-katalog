@@ -152,7 +152,7 @@ export const BirimCollectionSpread: React.FC<BirimCollectionSpreadProps> = ({
       {/* Top Header */}
       <div className="w-full">
         <div className="flex items-center justify-between">
-          <BirimLogo variant="black" className="h-7 w-auto object-contain -ml-4" />
+          <BirimLogo variant="black" className="h-7 w-auto object-contain" />
         </div>
         <div className="w-full border-b border-[#D8D8D8] mt-3" />
       </div>
@@ -230,7 +230,7 @@ export const BirimCollectionSpread: React.FC<BirimCollectionSpreadProps> = ({
   // PAGE 2+: TECHNICAL DRAWINGS (PDF Pages 3, 6, 7)
   // ==========================================
   if (!isMultiModel && drawings.length > 0) {
-    // LAYOUT A: STACKED HORIZONTAL ROWS (PDF Page 3)
+    // LAYOUT A: STACKED ROWS
     pages.push(
       <div
         key={`tech-stacked-${product.slug}`}
@@ -239,7 +239,7 @@ export const BirimCollectionSpread: React.FC<BirimCollectionSpreadProps> = ({
         {/* Top Header */}
         <div className="w-full">
           <div className="flex items-center justify-between">
-            <BirimLogo variant="black" className="h-7 w-auto object-contain -ml-4" />
+            <BirimLogo variant="black" className="h-7 w-auto object-contain" />
           </div>
           <div className="w-full border-b border-[#D8D8D8] mt-3" />
         </div>
@@ -254,27 +254,15 @@ export const BirimCollectionSpread: React.FC<BirimCollectionSpreadProps> = ({
           </p>
         </div>
 
-        {/* Stacked Rows */}
+        {/* Stacked Rows with visual on top and model code centered below */}
         <div className="flex-1 flex flex-col justify-around py-2">
           {drawings.map((item, idx) => (
             <div
               key={item.model_code || idx}
-              className="w-full border-b border-[#E5E7EB] pb-5 mb-5 last:border-b-0 last:pb-0 last:mb-0 flex items-center"
+              className="w-full border-b border-[#E5E7EB] pb-4 mb-4 last:border-b-0 last:pb-0 last:mb-0 flex flex-col items-center text-center"
             >
-              {/* Left Column: Product Code */}
-              <div className="w-[35%] pr-4">
-                <span className="text-[11px] font-medium tracking-[0.12em] text-[#222222] font-mono block">
-                  {item.model_code}
-                </span>
-                {item.dimensions_text && (
-                  <span className="text-[9px] text-neutral-500 font-mono block mt-1">
-                    {item.dimensions_text}
-                  </span>
-                )}
-              </div>
-
-              {/* Right Column: Technical Drawing */}
-              <div className="w-[65%] h-[46mm] flex items-center justify-center">
+              {/* Technical Drawing */}
+              <div className="w-full h-[46mm] flex items-center justify-center">
                 {item.drawing_url ? (
                   <img
                     src={item.drawing_url}
@@ -285,6 +273,18 @@ export const BirimCollectionSpread: React.FC<BirimCollectionSpreadProps> = ({
                 ) : (
                   <span className="text-[9px] text-neutral-400 font-mono">
                     {lang === 'en' ? 'Drawing not available' : 'Teknik çizim mevcut değil'}
+                  </span>
+                )}
+              </div>
+
+              {/* Product Code Centered Below Drawing */}
+              <div className="mt-2.5 text-center">
+                <span className="text-[11px] font-medium tracking-[0.12em] text-[#222222] font-mono block">
+                  {item.model_code}
+                </span>
+                {item.dimensions_text && (
+                  <span className="text-[9px] text-neutral-500 font-mono block mt-0.5">
+                    {item.dimensions_text}
                   </span>
                 )}
               </div>
@@ -316,7 +316,7 @@ export const BirimCollectionSpread: React.FC<BirimCollectionSpreadProps> = ({
           {/* Top Header */}
           <div className="w-full">
             <div className="flex items-center justify-between">
-              <BirimLogo variant="black" className="h-7 w-auto object-contain -ml-4" />
+              <BirimLogo variant="black" className="h-7 w-auto object-contain" />
             </div>
             <div className="w-full border-b border-[#D8D8D8] mt-3" />
           </div>
@@ -335,7 +335,7 @@ export const BirimCollectionSpread: React.FC<BirimCollectionSpreadProps> = ({
           {/* 2-Column x 3-Row Grid */}
           <div className="flex-1 grid grid-cols-2 grid-rows-3 gap-x-10 gap-y-6 items-center content-center py-2">
             {chunk.map((item, idx) => (
-              <div key={item.model_code || idx} className="flex flex-col items-start w-full">
+              <div key={item.model_code || idx} className="flex flex-col items-center w-full text-center">
                 {/* CAD Drawing */}
                 <div className="w-full h-[45mm] flex items-center justify-center">
                   {item.drawing_url ? (
@@ -351,10 +351,15 @@ export const BirimCollectionSpread: React.FC<BirimCollectionSpreadProps> = ({
                     </div>
                   )}
                 </div>
-                {/* Model Code Below Drawing */}
-                <span className="text-[10px] font-medium tracking-[0.12em] text-[#222222] font-mono mt-3">
+                {/* Model Code Centered Below Drawing */}
+                <span className="text-[10px] font-medium tracking-[0.12em] text-[#222222] font-mono mt-3 text-center block">
                   {item.model_code}
                 </span>
+                {item.dimensions_text && (
+                  <span className="text-[9px] text-neutral-500 font-mono mt-0.5 text-center block">
+                    {item.dimensions_text}
+                  </span>
+                )}
               </div>
             ))}
           </div>

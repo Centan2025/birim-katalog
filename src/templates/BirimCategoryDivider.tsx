@@ -39,7 +39,7 @@ export const BirimCategoryDivider: React.FC<BirimCategoryDividerProps> = ({
       {/* Top Header Folio */}
       <div className="w-full">
         <div className="flex items-center justify-between">
-          <BirimLogo variant="black" className="h-7 w-auto object-contain -ml-4" />
+          <BirimLogo variant="black" className="h-7 w-auto object-contain" />
         </div>
         <div className="w-full border-b border-[#D8D8D8] mt-3" />
       </div>

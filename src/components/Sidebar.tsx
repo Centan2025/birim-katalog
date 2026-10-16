@@ -11,7 +11,6 @@ import { BirimLogo } from './BirimLogo';
 import { 
   Layers, 
   Printer, 
-  Globe, 
   Sliders, 
   Check, 
   Sparkles,
@@ -210,15 +209,31 @@ export const Sidebar: React.FC<SidebarProps> = ({
           </p>
         </div>
 
-        {/* Language Switcher */}
-        <button
-          onClick={() => onChangeLang(lang === 'tr' ? 'en' : 'tr')}
-          className="flex items-center space-x-1.5 px-2.5 py-1 text-[10px] font-mono rounded bg-neutral-800 hover:bg-neutral-700 text-neutral-200 transition-colors"
-          title="Dili Değiştir"
-        >
-          <Globe className="w-3 h-3 text-neutral-400" />
-          <span className="font-semibold uppercase">{lang}</span>
-        </button>
+        {/* Language Switcher Tabs */}
+        <div className="flex items-center p-0.5 bg-neutral-900 border border-neutral-800 rounded-md">
+          <button
+            onClick={() => onChangeLang('tr')}
+            className={`px-2 py-1 text-[10px] font-mono rounded font-medium transition-all ${
+              lang === 'tr'
+                ? 'bg-neutral-100 text-neutral-950 font-semibold shadow-sm'
+                : 'text-neutral-400 hover:text-white'
+            }`}
+            title="Türkçe Katalog"
+          >
+            TR
+          </button>
+          <button
+            onClick={() => onChangeLang('en')}
+            className={`px-2 py-1 text-[10px] font-mono rounded font-medium transition-all ${
+              lang === 'en'
+                ? 'bg-neutral-100 text-neutral-950 font-semibold shadow-sm'
+                : 'text-neutral-400 hover:text-white'
+            }`}
+            title="English Catalog"
+          >
+            EN
+          </button>
+        </div>
       </div>
 
       {/* Scrollable Configuration Body */}
@@ -227,7 +242,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
         <div className="space-y-2.5">
           <label className="text-[9.5px] font-semibold tracking-[0.2em] text-neutral-400 uppercase flex items-center gap-1.5">
             <Layers className="w-3.5 h-3.5 text-neutral-400" />
-            1. Katalog Kapsamı
+            1. {lang === 'en' ? 'Catalog Scope' : 'Katalog Kapsamı'}
           </label>
           <div className="grid grid-cols-3 gap-1.5 p-1 bg-neutral-900 rounded-lg border border-neutral-800">
             <button
@@ -238,7 +253,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   : 'text-neutral-400 hover:text-white'
               }`}
             >
-              Tüm Katalog
+              {lang === 'en' ? 'Full Catalog' : 'Tüm Katalog'}
             </button>
             <button
               onClick={() => onChangeFormat('category')}
@@ -248,7 +263,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   : 'text-neutral-400 hover:text-white'
               }`}
             >
-              Kategori
+              {lang === 'en' ? 'Category' : 'Kategori'}
             </button>
             <button
               onClick={() => onChangeFormat('product')}
@@ -258,7 +273,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   : 'text-neutral-400 hover:text-white'
               }`}
             >
-              Ürün Föyü
+              {lang === 'en' ? 'Product Sheet' : 'Ürün Föyü'}
             </button>
           </div>
         </div>
@@ -267,18 +282,21 @@ export const Sidebar: React.FC<SidebarProps> = ({
         {selectedFormat === 'category' && (
           <div className="space-y-2">
             <label className="text-[9.5px] font-semibold tracking-[0.15em] text-neutral-400 uppercase">
-              Hedef Kategori ({categories.length})
+              {lang === 'en' ? `Target Category (${categories.length})` : `Hedef Kategori (${categories.length})`}
             </label>
             <select
               value={selectedCategory}
               onChange={(e) => onChangeCategory(e.target.value)}
               className="w-full bg-neutral-900 border border-neutral-800 rounded px-2.5 py-1.5 text-neutral-200 text-xs focus:outline-none focus:border-neutral-500"
             >
-              {categories.map((c) => (
-                <option key={c.slug} value={c.slug}>
-                  {c.name.tr} ({c.product_count} Ürün)
-                </option>
-              ))}
+              {categories.map((c) => {
+                const name = lang === 'en' ? (c.name.en || c.name.tr) : c.name.tr;
+                return (
+                  <option key={c.slug} value={c.slug}>
+                    {name} ({c.product_count} {lang === 'en' ? 'Products' : 'Ürün'})
+                  </option>
+                );
+              })}
             </select>
           </div>
         )}
@@ -286,18 +304,22 @@ export const Sidebar: React.FC<SidebarProps> = ({
         {selectedFormat === 'product' && (
           <div className="space-y-2">
             <label className="text-[9.5px] font-semibold tracking-[0.15em] text-neutral-400 uppercase">
-              Hedef Ürün ({products.length})
+              {lang === 'en' ? `Target Product (${products.length})` : `Hedef Ürün (${products.length})`}
             </label>
             <select
               value={selectedProduct}
               onChange={(e) => onChangeProduct(e.target.value)}
               className="w-full bg-neutral-900 border border-neutral-800 rounded px-2.5 py-1.5 text-neutral-200 text-xs focus:outline-none focus:border-neutral-500"
             >
-              {products.map((p) => (
-                <option key={p.slug} value={p.slug}>
-                  {p.name.tr} [{p.category.name.tr}]
-                </option>
-              ))}
+              {products.map((p) => {
+                const prodName = lang === 'en' ? (p.name.en || p.name.tr) : p.name.tr;
+                const catName = lang === 'en' ? (p.category.name.en || p.category.name.tr) : p.category.name.tr;
+                return (
+                  <option key={p.slug} value={p.slug}>
+                    {prodName} [{catName}]
+                  </option>
+                );
+              })}
             </select>
           </div>
         )}

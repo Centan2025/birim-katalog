@@ -24,6 +24,7 @@ const CoverAlt1: React.FC<MasterCoverProps> = ({
   subtitle = "COLLECTION",
   year = "2026",
   pageNumber = 1,
+  lang = 'tr',
 }) => {
   return (
     <div className="catalog-page bg-[#FFFFFF] px-[12mm] py-[20mm] flex flex-col justify-between select-none relative h-full">
@@ -55,7 +56,7 @@ const CoverAlt1: React.FC<MasterCoverProps> = ({
           <div className="w-[48mm] border-t border-[#888888] my-4" />
 
           <p className="text-[8.5px] tracking-[0.24em] text-[#666666] uppercase font-light">
-            MİMARİ TASARIM &nbsp;&amp;&nbsp; ÇAĞDAŞ MOBİLYA
+            {lang === 'en' ? 'ARCHITECTURAL DESIGN & CONTEMPORARY FURNITURE' : 'MİMARİ TASARIM & ÇAĞDAŞ MOBİLYA'}
           </p>
         </div>
       </div>
@@ -205,6 +206,7 @@ const CoverAlt4: React.FC<MasterCoverProps> = ({
   subtitle = "COLLECTION",
   year = "2026",
   pageNumber = 1,
+  lang = 'tr',
 }) => {
   const shortYear = year.slice(-2);
 
@@ -255,7 +257,7 @@ const CoverAlt4: React.FC<MasterCoverProps> = ({
             </h1>
             <div className="w-[45mm] border-t border-[#111111] my-4" />
             <p className="text-[8.5px] tracking-[0.26em] text-[#555555] uppercase font-light leading-relaxed max-w-[100mm]">
-              MİMARİ TASARIM &amp; ÇAĞDAŞ MOBİLYA
+              {lang === 'en' ? 'ARCHITECTURAL DESIGN & CONTEMPORARY FURNITURE' : 'MİMARİ TASARIM & ÇAĞDAŞ MOBİLYA'}
             </p>
           </div>
         </div>
@@ -350,6 +352,7 @@ const CoverAlt6: React.FC<MasterCoverProps> = ({
   subtitle = "COLLECTION",
   year = "2026",
   pageNumber = 1,
+  lang = 'tr',
 }) => {
   return (
     <div className="catalog-page bg-[#FFFFFF] p-[20mm] flex select-none relative overflow-hidden h-full">
@@ -378,7 +381,9 @@ const CoverAlt6: React.FC<MasterCoverProps> = ({
           </div>
           <div className="w-[45mm] border-t border-[#111111] mb-5" />
           <p className="text-[8px] tracking-[0.24em] text-[#666666] uppercase font-light leading-relaxed max-w-[95mm]">
-            MİMARİ TASARIM VE ÇAĞDAŞ MOBİLYA ÜRETİMİNDE ÖZGÜN FORMLAR VE MEKÂNSAL DİL.
+            {lang === 'en'
+              ? 'DISTINCT FORMS, MATERIAL DIALOGUE AND SPATIAL EXPERIENCE IN ARCHITECTURAL FURNITURE.'
+              : 'MİMARİ TASARIM VE ÇAĞDAŞ MOBİLYA ÜRETİMİNDE ÖZGÜN FORMLAR VE MEKÂNSAL DİL.'}
           </p>
         </div>
 

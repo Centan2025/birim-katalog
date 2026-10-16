@@ -39,7 +39,7 @@ export const MaterialCatalogPage: React.FC<MaterialCatalogPageProps> = ({
         <div className="flex items-center space-x-4">
           <BirimLogo variant="black" className="h-4 w-auto object-contain" />
           <span className="text-[11px] tracking-[0.2em] uppercase font-light text-neutral-900 border-l border-neutral-300 pl-3">
-            {categoryTitle} — MALZEME & KARTELA DİZİNİ
+            {categoryTitle} — {lang === 'en' ? 'MATERIALS & FINISHES INDEX' : 'MALZEME & KARTELA DİZİNİ'}
           </span>
         </div>
         <span className="text-[8.5px] font-mono text-neutral-400">
