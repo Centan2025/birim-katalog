@@ -1,0 +1,4377 @@
+{
+  "cat-tekli-ler": {
+    "scale": 1.72,
+    "x": -11,
+    "y": -40
+  },
+  "minotti-hero-tk0243-bench": {
+    "scale": 2.2,
+    "x": 22,
+    "y": 4
+  },
+  "dim-tk0243-bench-0": {
+    "scale": 1.72,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-tk0236-bulb": {
+    "scale": 2.68,
+    "x": 0,
+    "y": 0
+  },
+  "dim-tk0236-bulb-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-tk0222-bir": {
+    "scale": 1.72,
+    "x": 0,
+    "y": 0
+  },
+  "dim-tk0222-bir-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-tk0222-bir-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-tk0222-bir-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-tk0222-bir-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-tk0187-cube": {
+    "scale": 1.4,
+    "x": 41,
+    "y": 2
+  },
+  "dim-tk0187-cube-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-tk0238-diamond": {
+    "scale": 2.84,
+    "x": 0,
+    "y": 0
+  },
+  "dim-tk0238-diamond-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-tk0228-duru": {
+    "scale": 2.52,
+    "x": -11,
+    "y": -2
+  },
+  "dim-tk0228-duru-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-tk0227-feel": {
+    "scale": 2.04,
+    "x": 0,
+    "y": 0
+  },
+  "dim-tk0227-feel-0": {
+    "scale": 1.56,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-TK0255-fossil": {
+    "scale": 1.8,
+    "x": 41,
+    "y": -5
+  },
+  "dim-TK0255-fossil-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-tk0221-his": {
+    "scale": 1.96,
+    "x": 37,
+    "y": 5
+  },
+  "dim-tk0221-his-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-tk0207-kum": {
+    "scale": 2.28,
+    "x": 13,
+    "y": -15
+  },
+  "dim-tk0207-kum-0": {
+    "scale": 1.8,
+    "x": 0,
+    "y": 0
+  },
+  "dim-tk0207-kum-1": {
+    "scale": 1.88,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-tk0244-la": {
+    "scale": 1.8,
+    "x": 0,
+    "y": 0
+  },
+  "dim-tk0244-la-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-tk0185-limit": {
+    "scale": 1.72,
+    "x": -19,
+    "y": -1
+  },
+  "dim-tk0185-limit-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-tk0185-limit-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-tk0175-rich": {
+    "scale": 1.72,
+    "x": 0,
+    "y": 0
+  },
+  "dim-tk0175-rich-0": {
+    "scale": 1.48,
+    "x": 0,
+    "y": 0
+  },
+  "dim-tk0175-rich-1": {
+    "scale": 1.48,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-tk0202-safa": {
+    "scale": 1.8,
+    "x": 69,
+    "y": 4
+  },
+  "dim-tk0202-safa-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-tk0252-sense": {
+    "scale": 1.64,
+    "x": 0,
+    "y": 0
+  },
+  "dim-tk0252-sense-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-tk0237-simple": {
+    "scale": 2.6,
+    "x": 31,
+    "y": -59
+  },
+  "dim-tk0237-simple-0": {
+    "scale": 1.08,
+    "x": -1,
+    "y": 4
+  },
+  "minotti-hero-tk0208-sin": {
+    "scale": 1.96,
+    "x": 0,
+    "y": 0
+  },
+  "dim-tk0208-sin-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-tk0213a-tay-i": {
+    "scale": 1.96,
+    "x": 87,
+    "y": -5
+  },
+  "dim-tk0213a-tay-i-0": {
+    "scale": 1.4,
+    "x": -11,
+    "y": 3
+  },
+  "minotti-hero-tk0213-tay-ii": {
+    "scale": 1.96,
+    "x": 33,
+    "y": 0
+  },
+  "dim-tk0213-tay-ii-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-tk0251-tayra": {
+    "scale": 2.52,
+    "x": 0,
+    "y": 0
+  },
+  "dim-tk0251-tayra-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "cat-kanepeler": {
+    "scale": 1.32,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-kn0243-bench": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0243-bench-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0243-bench-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0243-bench-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0243-bench-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-kn0230-dora": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0230-dora-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0230-dora-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0230-dora-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0230-dora-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0230-dora-4": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-kn0219-ego": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0219-ego-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0219-ego-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0219-ego-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0219-ego-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0219-ego-4": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0219-ego-5": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0219-ego-6": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0219-ego-7": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0219-ego-8": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0219-ego-9": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0219-ego-10": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0219-ego-11": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-kn0205-espas": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0205-espas-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0205-espas-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0205-espas-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0205-espas-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0205-espas-4": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0205-espas-5": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0205-espas-6": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0205-espas-7": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0205-espas-8": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0205-espas-9": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0205-espas-10": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0205-espas-11": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0205-espas-12": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0205-espas-13": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0205-espas-14": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-kn0227-feel": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0227-feel-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0227-feel-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0227-feel-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0227-feel-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0227-feel-4": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0227-feel-5": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0227-feel-6": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0227-feel-7": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0227-feel-8": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0227-feel-9": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0227-feel-10": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0227-feel-11": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0227-feel-12": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0227-feel-13": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0227-feel-14": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-kn0225-hera": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0225-hera-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0225-hera-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0225-hera-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0225-hera-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0225-hera-4": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0225-hera-5": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-kn0248-jud": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0248-jud-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0248-jud-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0248-jud-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0248-jud-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-kn0234-kaf": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0234-kaf-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0234-kaf-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0234-kaf-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0234-kaf-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0234-kaf-4": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0234-kaf-5": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-kn0220-kali": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0220-kali-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0220-kali-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0220-kali-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0220-kali-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-kn0247-kuz": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0247-kuz-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-kn0244-la": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0244-la-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0244-la-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0244-la-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0244-la-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0244-la-4": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0244-la-5": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0244-la-6": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0244-la-7": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0244-la-8": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0244-la-9": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-kn0209-luna": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0209-luna-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0209-luna-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0209-luna-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0209-luna-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0209-luna-4": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0209-luna-5": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0209-luna-6": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0209-luna-7": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0209-luna-8": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0209-luna-9": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0209-luna-10": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0209-luna-11": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0209-luna-12": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0209-luna-13": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0209-luna-14": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0209-luna-15": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-kn0200-moon": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0200-moon-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-kn0216-mira": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0216-mira-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0216-mira-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-kn0217-opus-a": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0217-opus-a-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0217-opus-a-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0217-opus-a-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0217-opus-a-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0217-opus-a-4": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0217-opus-a-5": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0217-opus-a-6": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0217-opus-a-7": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0217-opus-a-8": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0217-opus-a-9": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0217-opus-a-10": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0217-opus-a-11": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0217-opus-a-12": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0217-opus-a-13": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0217-opus-a-14": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0217-opus-a-15": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0217-opus-a-16": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-kn0217-opus-b": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0217-opus-b-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0217-opus-b-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0217-opus-b-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0217-opus-b-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0217-opus-b-4": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0217-opus-b-5": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0217-opus-b-6": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0217-opus-b-7": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0217-opus-b-8": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0217-opus-b-9": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0217-opus-b-10": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0217-opus-b-11": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0217-opus-b-12": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0217-opus-b-13": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0217-opus-b-14": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0217-opus-b-15": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0217-opus-b-16": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0217-opus-b-17": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0217-opus-b-18": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0217-opus-b-19": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0217-opus-b-20": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-kn0241-poly": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-kn0175-rich": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0175-rich-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0175-rich-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0175-rich-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0175-rich-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0175-rich-4": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0175-rich-5": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-kn0250-riva": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0250-riva-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0250-riva-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0250-riva-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0250-riva-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0250-riva-4": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0250-riva-5": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-kn0181-soft": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0181-soft-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0181-soft-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0181-soft-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0181-soft-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0181-soft-4": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0181-soft-5": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0181-soft-6": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0181-soft-7": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0181-soft-8": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0181-soft-9": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0181-soft-10": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0181-soft-11": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0181-soft-12": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0181-soft-13": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0181-soft-14": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0181-soft-15": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-kn0180-solo": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0180-solo-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0180-solo-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0180-solo-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0180-solo-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0180-solo-4": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0180-solo-5": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0180-solo-6": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-kn0203-su": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0203-su-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0203-su-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-kn0213-tayii": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0213-tayii-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0213-tayii-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-kn0229-tor": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0229-tor-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0229-tor-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0229-tor-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0229-tor-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0229-tor-4": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0229-tor-5": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0229-tor-6": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-kn0245-CLOUD": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0245-CLOUD-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0245-CLOUD-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0245-CLOUD-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kn0245-CLOUD-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0245-CLOUD-4": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0245-CLOUD-5": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0245-CLOUD-6": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0245-CLOUD-7": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0245-CLOUD-8": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0245-CLOUD-9": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0245-CLOUD-10": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0245-CLOUD-11": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0245-CLOUD-12": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0245-CLOUD-13": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kn0245-CLOUD-14": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "cat-puflar": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-pf0207-kum-puf": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-pf0003-nox": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "cat-masalar": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-ms0008-alan": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-ms0008-alan-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-ms0008-alan-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-ms0008-alan-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-ms0008-alan-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-ms0008-alan-4": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-ms0008-alan-5": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-ms0008-alan-6": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-ms0011-arya": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-ms0011-arya-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-ms0011-arya-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-ms0011-arya-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-ms0011-arya-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-ms0011-arya-4": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-ms0011-arya-5": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-ms0011-arya-6": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-ms0011-arya-7": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-ms0011-arya-8": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-ms0017-han": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-ms0017-han-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-ms0017-han-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-ms0017-han-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-ms0017-han-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-ms0016-peony": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-ms0016-peony-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-ms0016-peony-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-ms0016-peony-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-ms0013-zet": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-ms0013-zet-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-ms0013-zet-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-ms0013-zet-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-ms0013-zet-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-ms0018-SAN": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-ms0018-SAN-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-ms0018-SAN-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-ms0018-SAN-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-ms0018-SAN-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "cat-sandalyeler": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-sn0013-an": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sn0013-an-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-sn0016-karo-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sn0016-karo-1-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-sn0017-karo-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sn0017-karo-2-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-sn0005-kod": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sn0005-kod-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sn0005-kod-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-sn0018-sean": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sn0018-sean-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-sn0014-ses": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sn0014-ses-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "cat-depolamalar": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-dp0010-ares": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-dp0010-ares-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-dp0010-ares-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-dp0010-ares-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-dp0010-ares-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-dp0010-ares-4": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-dp0010-ares-5": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-dp0010-ares-6": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-dp0010-ares-7": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-dp0010-ares-8": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-dp0006-cab": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-dp0006-cab-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-dp0006-cab-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-dp0006-cab-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-dp0006-cab-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-dp0006-cab-4": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-dp0006-cab-5": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-dp0006-cab-6": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-dp0006-cab-7": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-dp0006-cab-8": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-dp0006-cab-9": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-dp0006-cab-10": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-dp0006-cab-11": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-dp0006-cab-12": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-dp0006-cab-13": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-dp0006-cab-14": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-dp0006-cab-15": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-dp0006-cab-16": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-dp0006-cab-17": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-dp0015-flux-bufe": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-dp0015-flux-bufe-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-dp0015-flux-bufe-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-dp0015-flux-bufe-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-dp0015-flux-konsol": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-dp0015-flux-konsol-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-dp0004-mes": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-dp0004-mes-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-dp0004-mes-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-dp0011-mut": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-dp0011-mut-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-dp0011-mut-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-dp0011-mut-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-dp0011-mut-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-dp0013-set": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-dp0013-set-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-dp0013-set-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-dp0013-set-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-dp0013-set-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-dp0013-set-4": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-dp0013-set-5": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-dp0013-set-6": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-dp0012-shadow": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-dp0012-shadow-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-dp0012-shadow-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-dp0012-shadow-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-dp0012-shadow-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-dp0012-shadow-4": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-dp0012-shadow-5": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-dp0012-shadow-6": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-dp0012-shadow-7": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-dp0012-shadow-8": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-dp0012-shadow-9": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-dp0014-tau-bufe": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-dp0014-tau-konsol": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-dp006-cab-bench": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "cat-dresuarlar": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-dr002-tab-bank": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-dr002-tab-dresuar": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-dr0001-tin-dresuar": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "cat-sehpalar": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-sh0023-base": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sh0023-base-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sh0023-base-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sh0023-base-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sh0023-base-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-sh0023-base-4": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-sh0023-base-5": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-sh0023-base-6": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-sh0023-base-7": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-sh0006-calm": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sh0006-calm-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sh0006-calm-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sh0006-calm-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sh0006-calm-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-sh0026-core": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sh0026-core-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sh0026-core-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sh0026-core-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sh0026-core-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-sh0026-core-4": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-sh0026-core-5": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-sh0026-core-6": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-sh0026-core-7": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-sh0026-core-8": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-sh0026-core-9": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-sh0026-core-10": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-sh0026-core-11": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-sh0026-core-12": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-sh0014-doros": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sh0014-doros-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sh0014-doros-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sh0014-doros-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sh0014-doros-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-sh0014-doros-4": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-sh0014-doros-5": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-sh0014-doros-6": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-sh0014-doros-7": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-sh0014-doros-8": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-sh0014-doros-9": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-sh0014-doros-10": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-sh0013-metis": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sh0013-metis-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sh0013-metis-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sh0013-metis-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sh0013-metis-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-sh0013-metis-4": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-sh0018-palm": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sh0018-palm-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sh0018-palm-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sh0018-palm-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-sh0015-pan": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sh0015-pan-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sh0015-pan-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sh0015-pan-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sh0015-pan-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-sh0015-pan-4": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-sh0015-pan-5": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-sh0015-pan-6": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-sh0015-pan-7": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-sh0015-pan-8": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-sh0015-pan-9": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-sh0016-riga": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sh0016-riga-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sh0016-riga-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sh0016-riga-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-sh0030-sahi": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sh0030-sahi-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sh0030-sahi-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-sh0028-step": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sh0028-step-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-sh0033-sur": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-sh0017-tin": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sh0017-tin-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sh0017-tin-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sh0017-tin-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-sh0017-tin-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-sh0017-tin-4": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-sh0017-tin-5": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-sh0017-tin-6": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "cat-yataklar": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-kr0013a-hug-i": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kr0013a-hug-i-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kr0013a-hug-i-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kr0013a-hug-i-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-kr0013b-hug-ii": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kr0013b-hug-ii-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kr0013b-hug-ii-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kr0013b-hug-ii-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-kr0007-navi": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kr0007-navi-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kr0007-navi-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kr0007-navi-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-kr0012-neo": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-kr0014-sky": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kr0014-sky-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kr0014-sky-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kr0014-sky-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kr0014-sky-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kr0014-sky-4": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kr0014-sky-5": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kr0014-sky-6": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kr0014-sky-7": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kr0014-sky-8": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "annex-dim-kr0014-sky-9": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-kr0003-soft": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kr0003-soft-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-kr0016-tay-bed": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kr0016-tay-bed-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kr0016-tay-bed-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kr0016-tay-bed-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-kr0009-tribun": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kr0009-tribun-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kr0009-tribun-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-kr0009-tribun-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "cat-raf-si-stemleri": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-dv0011-dean": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-dv0011-dean-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "minotti-hero-dv0010-peon": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-dv0010-peon-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-dv0010-peon-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "dim-dv0010-peon-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "birim-cat-divider-tekli-ler": {
+    "scale": 1.96,
+    "x": -7,
+    "y": -44
+  },
+  "birim-hero-tk0243-bench": {
+    "scale": 1.72,
+    "x": -14,
+    "y": -46
+  },
+  "birim-hero-tk0236-bulb": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "birim-hero-tk0222-bir": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "birim-hero-tk0187-cube": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "birim-hero-tk0238-diamond": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "birim-hero-tk0228-duru": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "birim-hero-tk0227-feel": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "birim-hero-TK0255-fossil": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "birim-hero-tk0221-his": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "birim-hero-tk0207-kum": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "birim-hero-tk0244-la": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "birim-hero-tk0185-limit": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "birim-hero-tk0175-rich": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "birim-hero-tk0202-safa": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "birim-hero-tk0252-sense": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "birim-hero-tk0237-simple": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "birim-hero-tk0208-sin": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "birim-hero-tk0213a-tay-i": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "birim-hero-tk0213-tay-ii": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "birim-hero-tk0251-tayra": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-tk0243-bench": {
+    "scale": 2.52,
+    "x": 41,
+    "y": -6
+  },
+  "bb-dim-tk0243-bench-0": {
+    "scale": 1.4,
+    "x": -3,
+    "y": 8
+  },
+  "bb-hero-tk0236-bulb": {
+    "scale": 2.92,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-tk0236-bulb-0": {
+    "scale": 1.08,
+    "x": -4,
+    "y": 11
+  },
+  "bb-hero-tk0222-bir": {
+    "scale": 1.8,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-tk0222-bir-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-tk0222-bir-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-tk0222-bir-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-tk0222-bir-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-tk0187-cube": {
+    "scale": 1.48,
+    "x": 30,
+    "y": -3
+  },
+  "bb-dim-tk0187-cube-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-tk0238-diamond": {
+    "scale": 3.08,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-tk0238-diamond-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-tk0228-duru": {
+    "scale": 2.92,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-tk0228-duru-0": {
+    "scale": 0.92,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-tk0227-feel": {
+    "scale": 2.12,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-tk0227-feel-0": {
+    "scale": 1.16,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-TK0255-fossil": {
+    "scale": 1.8,
+    "x": 22,
+    "y": 5
+  },
+  "bb-dim-TK0255-fossil-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-tk0221-his": {
+    "scale": 1.96,
+    "x": 34,
+    "y": 20
+  },
+  "bb-dim-tk0221-his-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-tk0207-kum": {
+    "scale": 2.36,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-tk0207-kum-0": {
+    "scale": 1.48,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-tk0207-kum-1": {
+    "scale": 1.56,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-tk0244-la": {
+    "scale": 1.88,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-tk0244-la-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-tk0185-limit": {
+    "scale": 1.88,
+    "x": -29,
+    "y": -7
+  },
+  "bb-dim-tk0185-limit-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-tk0185-limit-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-tk0175-rich": {
+    "scale": 1.88,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-tk0175-rich-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-tk0175-rich-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-tk0202-safa": {
+    "scale": 1.72,
+    "x": 9,
+    "y": -3
+  },
+  "bb-dim-tk0202-safa-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-tk0252-sense": {
+    "scale": 1.72,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-tk0252-sense-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-tk0237-simple": {
+    "scale": 2.6,
+    "x": 0,
+    "y": -59
+  },
+  "bb-dim-tk0237-simple-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-tk0208-sin": {
+    "scale": 1.96,
+    "x": -21,
+    "y": 16
+  },
+  "bb-dim-tk0208-sin-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-tk0213a-tay-i": {
+    "scale": 1.96,
+    "x": 34,
+    "y": 1
+  },
+  "bb-dim-tk0213a-tay-i-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-tk0213-tay-ii": {
+    "scale": 2.04,
+    "x": 12,
+    "y": -9
+  },
+  "bb-dim-tk0213-tay-ii-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-tk0251-tayra": {
+    "scale": 2.76,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-tk0251-tayra-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-tk0243-bench": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-tk0243-bench": {
+    "scale": 0.68,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-tk0236-bulb": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-tk0236-bulb": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-tk0222-bir": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-tk0222-bir": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-tk0187-cube": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-tk0187-cube": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-tk0238-diamond": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-tk0238-diamond": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-tk0228-duru": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-tk0228-duru": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-tk0227-feel": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-tk0227-feel": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-TK0255-fossil": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-TK0255-fossil": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-tk0221-his": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-tk0221-his": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-tk0207-kum": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-tk0207-kum": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-tk0244-la": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-tk0244-la": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-tk0185-limit": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-tk0185-limit": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-tk0175-rich": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-tk0175-rich": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-tk0202-safa": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-tk0202-safa": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-tk0252-sense": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-tk0252-sense": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-tk0237-simple": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-tk0237-simple": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-tk0208-sin": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-tk0208-sin": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-tk0213a-tay-i": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-tk0213a-tay-i": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-tk0213-tay-ii": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-tk0213-tay-ii": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-tk0251-tayra": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-tk0251-tayra": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-kn0243-bench": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-kn0243-bench": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-kn0230-dora": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-kn0230-dora": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-kn0219-ego": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-kn0219-ego": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-kn0205-espas": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-kn0205-espas": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-kn0227-feel": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-kn0227-feel": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-kn0225-hera": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-kn0225-hera": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-kn0248-jud": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-kn0248-jud": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-kn0234-kaf": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-kn0234-kaf": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-kn0220-kali": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-kn0220-kali": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-kn0247-kuz": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-kn0247-kuz": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-kn0244-la": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-kn0244-la": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-kn0209-luna": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-kn0209-luna": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-kn0200-moon": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-kn0200-moon": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-kn0216-mira": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-kn0216-mira": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-kn0217-opus-a": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-kn0217-opus-a": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-kn0217-opus-b": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-kn0217-opus-b": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-kn0241-poly": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-kn0175-rich": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-kn0175-rich": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-kn0250-riva": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-kn0250-riva": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-kn0181-soft": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-kn0181-soft": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-kn0180-solo": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-kn0180-solo": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-kn0203-su": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-kn0203-su": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-kn0213-tayii": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-kn0213-tayii": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-kn0229-tor": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-kn0229-tor": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-kn0245-CLOUD": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-kn0245-CLOUD": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-pf0207-kum-puf": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-pf0003-nox": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-ms0008-alan": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-ms0008-alan": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-ms0011-arya": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-ms0011-arya": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-ms0017-han": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-ms0017-han": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-ms0016-peony": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-ms0016-peony": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-ms0013-zet": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-ms0013-zet": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-ms0018-SAN": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-ms0018-SAN": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-sn0013-an": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-sn0013-an": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-sn0016-karo-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-sn0016-karo-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-sn0017-karo-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-sn0017-karo-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-sn0005-kod": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-sn0005-kod": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-sn0018-sean": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-sn0018-sean": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-sn0014-ses": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-sn0014-ses": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-dp0010-ares": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-dp0010-ares": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-dp0006-cab": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-dp0006-cab": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-dp0015-flux-bufe": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-dp0015-flux-bufe": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-dp0015-flux-konsol": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-dp0015-flux-konsol": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-dp0004-mes": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-dp0004-mes": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-dp0011-mut": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-dp0011-mut": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-dp0013-set": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-dp0013-set": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-dp0012-shadow": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-dp0012-shadow": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-dp0014-tau-bufe": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-dp0014-tau-konsol": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-dp006-cab-bench": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-dr002-tab-bank": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-dr002-tab-dresuar": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-dr0001-tin-dresuar": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-sh0023-base": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-sh0023-base": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-sh0006-calm": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-sh0006-calm": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-sh0026-core": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-sh0026-core": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-sh0014-doros": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-sh0014-doros": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-sh0013-metis": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-sh0013-metis": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-sh0018-palm": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-sh0018-palm": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-sh0015-pan": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-sh0015-pan": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-sh0016-riga": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-sh0016-riga": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-sh0030-sahi": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-sh0030-sahi": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-sh0028-step": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-sh0028-step": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-sh0033-sur": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-sh0017-tin": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-sh0017-tin": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-kr0013a-hug-i": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-kr0013a-hug-i": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-kr0013b-hug-ii": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-kr0013b-hug-ii": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-kr0007-navi": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-kr0007-navi": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-kr0012-neo": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-kr0014-sky": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-kr0014-sky": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-kr0003-soft": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-kr0003-soft": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-kr0016-tay-bed": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-kr0016-tay-bed": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-kr0009-tribun": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-kr0009-tribun": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-dv0011-dean": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-dv0011-dean": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-hero-dv0010-peon": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "poliform-dim-dv0010-peon": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-kn0243-bench": {
+    "scale": 1.32,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0243-bench-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0243-bench-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0243-bench-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0243-bench-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-kn0230-dora": {
+    "scale": 1.16,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0230-dora-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0230-dora-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0230-dora-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0230-dora-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-kn0219-ego": {
+    "scale": 1.16,
+    "x": -20,
+    "y": -1
+  },
+  "bb-dim-kn0219-ego-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0219-ego-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0219-ego-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0219-ego-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-kn0205-espas": {
+    "scale": 1.24,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0205-espas-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0205-espas-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0205-espas-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0205-espas-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-kn0227-feel": {
+    "scale": 1.32,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0227-feel-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0227-feel-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0227-feel-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0227-feel-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-kn0225-hera": {
+    "scale": 1.16,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0225-hera-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0225-hera-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0225-hera-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0225-hera-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-kn0248-jud": {
+    "scale": 1.16,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0248-jud-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0248-jud-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0248-jud-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0248-jud-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-kn0234-kaf": {
+    "scale": 1.08,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0234-kaf-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0234-kaf-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0234-kaf-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0234-kaf-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-kn0220-kali": {
+    "scale": 1.08,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0220-kali-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0220-kali-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0220-kali-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0220-kali-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-kn0247-kuz": {
+    "scale": 1.4,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0247-kuz-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-kn0244-la": {
+    "scale": 1.08,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0244-la-0": {
+    "scale": 1.16,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0244-la-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0244-la-2": {
+    "scale": 1.29,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0244-la-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-kn0209-luna": {
+    "scale": 1.24,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0209-luna-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0209-luna-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0209-luna-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0209-luna-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-kn0200-moon": {
+    "scale": 1.24,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0200-moon-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-kn0216-mira": {
+    "scale": 1.24,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0216-mira-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0216-mira-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-kn0217-opus-a": {
+    "scale": 1.16,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0217-opus-a-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0217-opus-a-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0217-opus-a-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0217-opus-a-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-kn0217-opus-b": {
+    "scale": 1.08,
+    "x": -1,
+    "y": 0
+  },
+  "bb-dim-kn0217-opus-b-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0217-opus-b-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0217-opus-b-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0217-opus-b-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-kn0241-poly": {
+    "scale": 1.4,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-kn0175-rich": {
+    "scale": 1.32,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0175-rich-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0175-rich-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0175-rich-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0175-rich-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-kn0250-riva": {
+    "scale": 1.16,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0250-riva-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0250-riva-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0250-riva-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0250-riva-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-kn0181-soft": {
+    "scale": 1.16,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0181-soft-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0181-soft-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0181-soft-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0181-soft-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-kn0180-solo": {
+    "scale": 1.32,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0180-solo-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0180-solo-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0180-solo-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0180-solo-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-kn0203-su": {
+    "scale": 1.24,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0203-su-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0203-su-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-kn0213-tayii": {
+    "scale": 1.48,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0213-tayii-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0213-tayii-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-kn0229-tor": {
+    "scale": 1.4,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0229-tor-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0229-tor-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0229-tor-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0229-tor-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-hero-kn0245-CLOUD": {
+    "scale": 1.24,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0245-CLOUD-0": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0245-CLOUD-1": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0245-CLOUD-2": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "bb-dim-kn0245-CLOUD-3": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  }
+}

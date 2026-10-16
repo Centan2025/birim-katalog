@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --paper-bg: #FFFFFF;
+    --paper-text: #111111;
+    --paper-sub: #666666;
+    --paper-line: #E5E5E5;
+  }
+}
+
+/* =========================================================
+   TRUE 300 DPI A4 PRINT PIPELINE (PİXEL KUSURSUZ BASKI)
+   ========================================================= */
+
+@page {
+  size: 210mm 297mm;
+  margin: 0mm !important;
+}
+
+@page :left {
+  margin: 0mm !important;
+}
+
+@page :right {
+  margin: 0mm !important;
+}
+
+@media print {
+  /* Sayfa genel reset: siyah arka planları ve taşmaları yok et */
+  html, body {
+    width: 210mm !important;
+    height: auto !important;
+    min-height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #FFFFFF !important;
+    color: #111111 !important;
+    overflow: visible !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Ekran arayüzünü (Sidebar, butonlar, zoom) tamamen gizle */
+  .no-print,
+  aside,
+  nav,
+  button {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  /* Layout taşıyıcıları: flex ve scroll kilitlerini kaldır */
+  .app-layout-root {
+    display: block !important;
+    position: static !important;
+    width: 210mm !important;
+    height: auto !important;
+    background: #FFFFFF !important;
+    overflow: visible !important;
+  }
+
+  .catalog-viewport-main {
+    display: block !important;
+    position: static !important;
+    width: 210mm !important;
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: #FFFFFF !important;
+    overflow: visible !important;
+  }
+
+  .catalog-canvas-container {
+    display: block !important;
+    width: 210mm !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+    gap: 0 !important;
+    background: #FFFFFF !important;
+    overflow: visible !important;
+  }
+
+  /* 2-Sayfa yanyana spreadleri baskıda alt alta bağımsız A4 sayfalara dönüştür */
+  .catalog-spread-row {
+    display: block !important;
+    width: 210mm !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Her A4 sayfa net 210x297mm, kenar boşluksuz, kesin sayfa sonlandırma */
+  .catalog-page {
+    width: 210mm !important;
+    height: 297mm !important;
+    min-width: 210mm !important;
+    min-height: 297mm !important;
+    max-width: 210mm !important;
+    max-height: 297mm !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    border: none !important;
+    overflow: hidden !important;
+    position: relative !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+}
+
+/* =========================================================
+   SCREEN PREVIEW SIMULATION (EKRAN ÖNİZLEMESİ)
+   ========================================================= */
+
+.catalog-page {
+  width: 210mm;
+  height: 297mm;
+  box-sizing: border-box;
+  position: relative;
+  background-color: #FFFFFF;
+  color: #111111;
+  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.5);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+/* Hairline borders */
+.hairline-b {
+  border-bottom: 0.5px solid #E5E5E5;
+}
+.hairline-t {
+  border-top: 0.5px solid #E5E5E5;
+}
+.hairline-r {
+  border-right: 0.5px solid #E5E5E5;
+}
+.hairline-l {
+  border-left: 0.5px solid #E5E5E5;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #171717;
+}
+::-webkit-scrollbar-thumb {
+  background: #333333;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4F4F4F;
+}
