@@ -56,7 +56,7 @@ export const SystemElementsPage: React.FC<SystemElementsPageProps> = ({
     <div className="catalog-page bg-[#FFFFFF] p-[20mm] flex flex-col justify-between select-none">
       {/* Top Folio Header with Left-Aligned Logo */}
       <div className="flex justify-between items-center text-[10px] tracking-[0.25em] text-neutral-500 uppercase hairline-b pb-3">
-        <BirimLogo variant="black" className="h-6 w-auto object-contain -ml-3" />
+        <BirimLogo variant="black" className="h-6 w-auto object-contain" />
         <span>{categoryName} / {title}</span>
       </div>
 
