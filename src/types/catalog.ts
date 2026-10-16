@@ -126,4 +126,13 @@ export type CatalogTemplateType =
 
 export type OutputFormat = 'master' | 'category' | 'product';
 export type Language = 'tr' | 'en';
-export type CoverVariant = 'alt-1' | 'alt-2' | 'alt-3' | 'alt-4' | 'alt-5' | 'alt-6';
+export type CoverVariant = 
+  | 'alt-1' 
+  | 'alt-2' 
+  | 'alt-3' 
+  | 'alt-4' 
+  | 'alt-5' 
+  | 'alt-6'
+  | 'alt-7'
+  | 'alt-8'
+  | 'alt-9';

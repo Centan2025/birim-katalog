@@ -418,6 +418,231 @@ const CoverAlt6: React.FC<MasterCoverProps> = ({
   );
 };
 
+/**
+ * ALTERNATİF 7: Galeri Çerçeveli Minimalist Monograf (Gallery Frame Monograph)
+ * - İnce 1px iç galeri çerçevesi, köşe mimari register artı (+) işaretleri
+ * - Geniş negatif boşluk, merkezde büyük BİRİM logosu
+ * - Alt kısımda 3 sütunlu editoryal mikro-tipografi ve arşiv kodları
+ */
+const CoverAlt7: React.FC<MasterCoverProps> = ({
+  subtitle = "COLLECTION",
+  year = "2026",
+  pageNumber = 1,
+  lang = 'tr',
+}) => {
+  return (
+    <div className="catalog-page bg-[#FFFFFF] p-[16mm] flex flex-col justify-between select-none relative h-full overflow-hidden">
+      {/* Outer Inset Fine Gallery Frame */}
+      <div className="absolute inset-[12mm] border border-[#E8E8E6] pointer-events-none" />
+
+      {/* 4 Corner Crosshair Registration Marks */}
+      <div className="absolute top-[10.5mm] left-[10.5mm] text-[#999999] text-[11px] font-mono select-none pointer-events-none">+</div>
+      <div className="absolute top-[10.5mm] right-[10.5mm] text-[#999999] text-[11px] font-mono select-none pointer-events-none">+</div>
+      <div className="absolute bottom-[10.5mm] left-[10.5mm] text-[#999999] text-[11px] font-mono select-none pointer-events-none">+</div>
+      <div className="absolute bottom-[10.5mm] right-[10.5mm] text-[#999999] text-[11px] font-mono select-none pointer-events-none">+</div>
+
+      {/* Top Header */}
+      <div className="relative z-10 w-full pt-[4mm] px-[4mm]">
+        <div className="flex justify-between items-center text-[8.5px] tracking-[0.3em] text-[#777777] uppercase font-light">
+          <span>BİRİM ARCHITECTURAL ARCHIVE</span>
+          <span>VOL. {year}</span>
+        </div>
+        <div className="w-full border-b border-[#E8E8E6] mt-3" />
+      </div>
+
+      {/* Center Hero Identity & Monograph Title */}
+      <div className="relative z-10 w-full flex-1 flex flex-col items-center justify-center py-[20mm]">
+        <div className="w-[175mm] max-w-[90%] mb-8">
+          <BirimLogo 
+            variant="black" 
+            className="w-full h-auto object-contain block" 
+            alt="BİRİM"
+          />
+        </div>
+
+        <div className="w-[40mm] border-t border-[#111111] mb-6" />
+
+        <div className="text-center space-y-3 max-w-[140mm]">
+          <h1 className="text-[28px] font-extralight tracking-[0.32em] text-[#111111] uppercase leading-none">
+            {subtitle}
+          </h1>
+          <p className="text-[8.5px] tracking-[0.28em] text-[#777777] uppercase font-light">
+            {lang === 'en' 
+              ? 'CONTEMPORARY FURNITURE & ARCHITECTURAL FORMS' 
+              : 'ÇAĞDAŞ MOBİLYA & MİMARİ FORMLAR'}
+          </p>
+        </div>
+      </div>
+
+      {/* Bottom 3-Column Micro-Typography */}
+      <div className="relative z-10 w-full pb-[4mm] px-[4mm]">
+        <div className="w-full border-t border-[#E8E8E6] mb-3" />
+        <div className="grid grid-cols-3 gap-4 items-end text-[7.5px] tracking-[0.25em] text-[#888888] uppercase font-mono">
+          <div>EDITION // {year}</div>
+          <div className="text-center">WWW.BIRIM.COM</div>
+          <div className="text-right">FOLIO {String(pageNumber).padStart(2, '0')}</div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+/**
+ * ALTERNATİF 8: Koyu Stüdyo Monolit (Dark Studio Monograph)
+ * - Derin antrasit/siyah fon (#121212)
+ * - Arka planda devasa '26 filigranı, üstte parlak beyaz BİRİM logosu
+ * - Lüks İtalyan monografi tipografisi, ince beyaz kılavuz çizgileri
+ */
+const CoverAlt8: React.FC<MasterCoverProps> = ({
+  subtitle = "COLLECTION",
+  year = "2026",
+  pageNumber = 1,
+  lang = 'tr',
+}) => {
+  const shortYear = year.slice(-2);
+
+  return (
+    <div className="catalog-page bg-[#121212] text-white p-[20mm] flex flex-col justify-between select-none relative h-full overflow-hidden">
+      {/* Subtle Background Watermark '26 */}
+      <div className="absolute right-[-10mm] bottom-[18mm] text-[260px] font-extralight tracking-[-0.05em] text-[#1C1C1C] leading-none select-none pointer-events-none font-sans">
+        {shortYear}
+      </div>
+
+      {/* Top Header */}
+      <div className="relative z-10 w-full">
+        <div className="flex justify-between items-center text-[8.5px] tracking-[0.35em] text-[#888888] uppercase font-light">
+          <span>BİRİM STUDIO</span>
+          <span>EST. ISTANBUL // {year}</span>
+        </div>
+        <div className="w-full border-b border-[#262626] mt-3" />
+      </div>
+
+      {/* Center Monolithic Identity */}
+      <div className="relative z-10 w-full my-auto py-[20mm] flex flex-col items-start">
+        <div className="w-[180mm] mb-12">
+          <BirimLogo 
+            variant="white" 
+            className="w-full h-auto object-contain block object-left" 
+            alt="BİRİM"
+          />
+        </div>
+
+        <div className="w-[45mm] border-t border-[#444444] mb-6" />
+
+        <div className="space-y-3">
+          <div className="text-[10px] tracking-[0.35em] text-[#888888] uppercase font-mono">
+            PORTFOLIO // {year}
+          </div>
+          <h1 className="text-[40px] font-light tracking-[0.2em] text-[#F5F5F5] uppercase leading-none">
+            {subtitle}
+          </h1>
+          <p className="text-[8.5px] tracking-[0.26em] text-[#AAAAAA] uppercase font-light leading-relaxed max-w-[110mm]">
+            {lang === 'en' 
+              ? 'A CURATED SELECTION OF CONTEMPORARY ARCHITECTURAL OBJECTS.' 
+              : 'ÖZGÜN ÇAĞDAŞ MİMARİ TASARIM VE MOBİLYA SEÇKİSİ.'}
+          </p>
+        </div>
+      </div>
+
+      {/* Bottom Meta */}
+      <div className="relative z-10 w-full border-t border-[#262626] pt-3 flex justify-between items-center text-[8px] font-mono tracking-[0.25em] text-[#777777] uppercase">
+        <span>WWW.BIRIM.COM</span>
+        <span>ARCHIVE REF. 26-A</span>
+        <span>{String(pageNumber).padStart(2, '0')}</span>
+      </div>
+    </div>
+  );
+};
+
+/**
+ * ALTERNATİF 9: İsviçre Izgara & Brütalist Tipografi (Swiss Architectural Grid)
+ * - Sıcak alabaster kağıt fonu (#FAF8F5)
+ * - 4-çeyrek mimari kılavuz çizgileri, teknik parametreler
+ * - Cesur editoryal tipografi ve asimetrik modern denge
+ */
+const CoverAlt9: React.FC<MasterCoverProps> = ({
+  subtitle = "COLLECTION",
+  year = "2026",
+  pageNumber = 1,
+  lang = 'tr',
+}) => {
+  return (
+    <div className="catalog-page bg-[#FAF8F5] p-[18mm] flex flex-col justify-between select-none relative h-full overflow-hidden">
+      {/* Center Horizontal & Vertical Fine Grid Lines */}
+      <div className="absolute top-[48%] left-0 right-0 border-b border-[#E2DFD8] pointer-events-none" />
+      <div className="absolute top-0 bottom-0 left-[55%] border-r border-[#E2DFD8] pointer-events-none" />
+
+      {/* Center Axis Crosshair */}
+      <div className="absolute top-[48%] left-[55%] -translate-x-1/2 -translate-y-1/2 text-[#A8A49C] text-[12px] font-mono pointer-events-none">
+        +
+      </div>
+
+      {/* TOP HALF */}
+      <div className="relative z-10 w-full h-[44%] flex justify-between">
+        {/* Top-Left: Logo & Main Classification */}
+        <div className="w-[52%] pr-6 flex flex-col justify-between">
+          <div className="w-[125mm]">
+            <BirimLogo 
+              variant="black" 
+              className="w-full h-auto object-contain block object-left" 
+              alt="BİRİM"
+            />
+          </div>
+          <div className="text-[9px] tracking-[0.28em] text-[#777777] uppercase font-light">
+            FURNITURE ARCHIVE &nbsp;/&nbsp; {year}
+          </div>
+        </div>
+
+        {/* Top-Right: Technical Specification Matrix */}
+        <div className="w-[42%] pl-6 flex flex-col justify-between text-[8px] font-mono tracking-[0.2em] text-[#666666] leading-relaxed">
+          <div className="space-y-1">
+            <div className="text-[#999999] uppercase">SPECIFICATION</div>
+            <div>SERIES: ARCHITECTURAL</div>
+            <div>YEAR: {year}</div>
+            <div>LOCATION: ISTANBUL</div>
+          </div>
+          <div className="text-[7.5px] text-[#888888] uppercase">
+            EDITION: OFFICIAL MONOGRAPH
+          </div>
+        </div>
+      </div>
+
+      {/* BOTTOM HALF */}
+      <div className="relative z-10 w-full h-[48%] flex justify-between pt-6">
+        {/* Bottom-Left: Massive Year & Subtitle */}
+        <div className="w-[52%] pr-6 flex flex-col justify-between">
+          <div className="space-y-2">
+            <div className="text-[80px] font-extralight tracking-[-0.04em] text-[#111111] leading-[0.85] font-sans">
+              {year}
+            </div>
+            <h1 className="text-[32px] font-light tracking-[0.2em] text-[#111111] uppercase leading-none">
+              {subtitle}
+            </h1>
+          </div>
+
+          <div className="text-[8px] font-mono tracking-[0.25em] text-[#777777] uppercase">
+            WWW.BIRIM.COM
+          </div>
+        </div>
+
+        {/* Bottom-Right: Architectural Manifesto & Folio */}
+        <div className="w-[42%] pl-6 flex flex-col justify-between">
+          <p className="text-[8.5px] tracking-[0.22em] text-[#555555] uppercase font-light leading-relaxed">
+            {lang === 'en'
+              ? 'AN ARCHITECTURAL EXPLORATION OF TIMELESS FORMS, CRAFT AND MINIMALIST PROPORTIONS.'
+              : 'ZAMANSIZ FORMLAR, MALZEME DİYALOĞU VE MİMARİ ORANLARIN ÇAĞDAŞ TASARIM KEŞFİ.'}
+          </p>
+
+          <div className="flex justify-between items-center text-[8px] font-mono tracking-widest text-[#777777]">
+            <span>ISTANBUL</span>
+            <span>{String(pageNumber).padStart(2, '0')}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export const MasterCover: React.FC<MasterCoverProps> = (props) => {
   const { variant = 'alt-1' } = props;
   if (variant === 'alt-2') return <CoverAlt2 {...props} />;
@@ -425,5 +650,8 @@ export const MasterCover: React.FC<MasterCoverProps> = (props) => {
   if (variant === 'alt-4') return <CoverAlt4 {...props} />;
   if (variant === 'alt-5') return <CoverAlt5 {...props} />;
   if (variant === 'alt-6') return <CoverAlt6 {...props} />;
+  if (variant === 'alt-7') return <CoverAlt7 {...props} />;
+  if (variant === 'alt-8') return <CoverAlt8 {...props} />;
+  if (variant === 'alt-9') return <CoverAlt9 {...props} />;
   return <CoverAlt1 {...props} />;
 };

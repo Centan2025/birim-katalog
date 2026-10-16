@@ -443,7 +443,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
                       : coverVariant === 'alt-3' ? 'Alt. 3 (Yatay Mimari)'
                       : coverVariant === 'alt-4' ? 'Alt. 4 (Dikey Sol)'
                       : coverVariant === 'alt-5' ? 'Alt. 5 (Dikey Siyah Blok)'
-                      : 'Alt. 6 (Dikey Sağ)'}
+                      : coverVariant === 'alt-6' ? 'Alt. 6 (Dikey Sağ)'
+                      : coverVariant === 'alt-7' ? 'Alt. 7 (Galeri Çerçeve)'
+                      : coverVariant === 'alt-8' ? 'Alt. 8 (Koyu Monolit)'
+                      : 'Alt. 9 (İsviçre Izgara)'}
                   </span>
                 </div>
 
@@ -527,6 +530,48 @@ export const Sidebar: React.FC<SidebarProps> = ({
                       title="Alternatif 6: Dikey Sağ Kılavuz & Poster Tipografisi"
                     >
                       Alt. 6 (Sağ)
+                    </button>
+                  </div>
+                </div>
+
+                {/* Modern & Editoryal Alternatifler */}
+                <div className="space-y-1 pt-1">
+                  <div className="text-[8px] text-neutral-500 uppercase tracking-widest font-mono">
+                    Modern Monograf & Koyu
+                  </div>
+                  <div className="grid grid-cols-3 gap-1.5">
+                    <button
+                      onClick={() => onChangeCoverVariant('alt-7')}
+                      className={`py-1.5 px-1.5 text-[9px] rounded font-medium transition-all text-center border ${
+                        coverVariant === 'alt-7'
+                          ? 'bg-neutral-100 text-neutral-950 border-white shadow'
+                          : 'bg-neutral-800/80 text-neutral-300 border-neutral-700 hover:bg-neutral-800 hover:text-white'
+                      }`}
+                      title="Alternatif 7: Galeri Çerçeveli Minimalist Monograf"
+                    >
+                      Alt. 7 (Galeri)
+                    </button>
+                    <button
+                      onClick={() => onChangeCoverVariant('alt-8')}
+                      className={`py-1.5 px-1.5 text-[9px] rounded font-medium transition-all text-center border ${
+                        coverVariant === 'alt-8'
+                          ? 'bg-neutral-100 text-neutral-950 border-white shadow'
+                          : 'bg-neutral-800/80 text-neutral-300 border-neutral-700 hover:bg-neutral-800 hover:text-white'
+                      }`}
+                      title="Alternatif 8: Koyu Stüdyo Monolit (Mat Antrasit)"
+                    >
+                      Alt. 8 (Koyu)
+                    </button>
+                    <button
+                      onClick={() => onChangeCoverVariant('alt-9')}
+                      className={`py-1.5 px-1.5 text-[9px] rounded font-medium transition-all text-center border ${
+                        coverVariant === 'alt-9'
+                          ? 'bg-neutral-100 text-neutral-950 border-white shadow'
+                          : 'bg-neutral-800/80 text-neutral-300 border-neutral-700 hover:bg-neutral-800 hover:text-white'
+                      }`}
+                      title="Alternatif 9: İsviçre Izgara & Brütalist Tipografi"
+                    >
+                      Alt. 9 (Izgara)
                     </button>
                   </div>
                 </div>
