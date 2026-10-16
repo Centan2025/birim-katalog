@@ -358,7 +358,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               </p>
             </div>
 
-            {/* Minotti Architectural */}
+            {/* Architectural Spread */}
             <div
               onClick={() => onChangeTemplate('minotti-architectural')}
               className={`p-2.5 rounded-lg border cursor-pointer transition-all ${
@@ -368,7 +368,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               }`}
             >
               <div className="flex justify-between items-center">
-                <span className="font-medium text-[11px]">Minotti Architectural</span>
+                <span className="font-medium text-[11px]">Architectural Spread (Mimari Çift Sayfa)</span>
                 {selectedTemplate === 'minotti-architectural' && (
                   <Check className="w-3.5 h-3.5 text-neutral-200" />
                 )}
@@ -378,7 +378,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               </p>
             </div>
 
-            {/* B&B Italia Monolith */}
+            {/* Monolith Studio */}
             <div
               onClick={() => onChangeTemplate('bb-italia-monolith')}
               className={`p-2.5 rounded-lg border cursor-pointer transition-all ${
@@ -388,7 +388,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               }`}
             >
               <div className="flex justify-between items-center">
-                <span className="font-medium text-[11px]">B&B Italia Monolith</span>
+                <span className="font-medium text-[11px]">Monolith Studio (Heykelsi Çift Sayfa)</span>
                 {selectedTemplate === 'bb-italia-monolith' && (
                   <Check className="w-3.5 h-3.5 text-neutral-200" />
                 )}
@@ -398,7 +398,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               </p>
             </div>
 
-            {/* Poliform Spec Sheet */}
+            {/* Compact Spec Sheet */}
             <div
               onClick={() => onChangeTemplate('poliform-specsheet')}
               className={`p-2.5 rounded-lg border cursor-pointer transition-all ${
@@ -408,7 +408,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               }`}
             >
               <div className="flex justify-between items-center">
-                <span className="font-medium text-[11px]">Poliform Spec Sheet</span>
+                <span className="font-medium text-[11px]">Compact Spec Sheet (Kompakt Tek Sayfa)</span>
                 {selectedTemplate === 'poliform-specsheet' && (
                   <Check className="w-3.5 h-3.5 text-neutral-200" />
                 )}
@@ -418,7 +418,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               </p>
             </div>
 
-            {/* Cassina Triennale */}
+            {/* Editorial Spread */}
             <div
               onClick={() => onChangeTemplate('cassina-editorial')}
               className={`p-2.5 rounded-lg border cursor-pointer transition-all ${
@@ -428,7 +428,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               }`}
             >
               <div className="flex justify-between items-center">
-                <span className="font-medium text-[11px]">Cassina Triennale</span>
+                <span className="font-medium text-[11px]">Editorial Spread (Editoryal & Çift Detay)</span>
                 {selectedTemplate === 'cassina-editorial' && (
                   <Check className="w-3.5 h-3.5 text-neutral-200" />
                 )}
@@ -438,7 +438,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               </p>
             </div>
 
-            {/* Flexform Curated */}
+            {/* Curated Spread */}
             <div
               onClick={() => onChangeTemplate('flexform-curated')}
               className={`p-2.5 rounded-lg border cursor-pointer transition-all ${
@@ -448,7 +448,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               }`}
             >
               <div className="flex justify-between items-center">
-                <span className="font-medium text-[11px]">Flexform Curated</span>
+                <span className="font-medium text-[11px]">Curated Spread (Tam Boy Bleed & Zanaat)</span>
                 {selectedTemplate === 'flexform-curated' && (
                   <Check className="w-3.5 h-3.5 text-neutral-200" />
                 )}

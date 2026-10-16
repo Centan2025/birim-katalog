@@ -127,7 +127,7 @@ export const FlexformCuratedSpread: React.FC<FlexformCuratedSpreadProps> = ({
         <div className="w-full border-t border-[#E2DFD8] pt-3">
           <div className="flex justify-between items-baseline mb-2">
             <span className="text-[8.5px] tracking-[0.25em] uppercase font-medium text-neutral-700">
-              {lang === 'en' ? 'ARCHITECTURAL SCHEMATICS' : 'MİMARİ ÇİZİMLER VE ÖLÇÜLER'}
+              {lang === 'en' ? 'DIMENSIONS' : 'ÖLÇÜLER'}
             </span>
             <span className="text-[8px] font-mono text-neutral-400">
               UNIT: CM
@@ -161,7 +161,7 @@ export const FlexformCuratedSpread: React.FC<FlexformCuratedSpreadProps> = ({
 
         {/* Footer */}
         <div className="w-full border-t border-[#E2DFD8] pt-3 mt-2 flex justify-between items-center text-[8px] font-mono tracking-[0.2em] text-[#888888] uppercase">
-          <span>FLEXFORM CURATED LIVING // BİRİM</span>
+          <span>BİRİM ARCHIVES // CURATED LIVING</span>
           <span>{String(pageNumberRight).padStart(2, '0')}</span>
         </div>
       </div>

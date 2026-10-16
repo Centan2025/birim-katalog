@@ -162,7 +162,7 @@ export const CassinaTriennaleSpread: React.FC<CassinaTriennaleSpreadProps> = ({
         <div className="w-full border-t border-[#EAEAEA] pt-3">
           <div className="flex justify-between items-baseline mb-2">
             <span className="text-[9px] tracking-[0.2em] uppercase font-medium text-neutral-800">
-              {lang === 'en' ? 'TECHNICAL SPECIFICATIONS' : 'TEKNİK ÇİZİMLER VE ÖLÇÜLER'}
+              {lang === 'en' ? 'DIMENSIONS' : 'ÖLÇÜLER'}
             </span>
             <span className="text-[8px] font-mono text-neutral-400">
               {dimImages.length} {lang === 'en' ? 'MODELS' : 'MODEL'}
@@ -196,7 +196,7 @@ export const CassinaTriennaleSpread: React.FC<CassinaTriennaleSpreadProps> = ({
 
         {/* Footer */}
         <div className="w-full border-t border-[#E0E0E0] pt-3 mt-3 flex justify-between items-center text-[8.5px] font-mono tracking-[0.2em] text-[#888888] uppercase">
-          <span>BİRİM / CASSIANA EDITORIAL SPREAD</span>
+          <span>BİRİM ARCHIVES / EDITORIAL SPREAD</span>
           <span>{String(pageNumberRight).padStart(2, '0')}</span>
         </div>
       </div>
