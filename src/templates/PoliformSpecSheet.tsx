@@ -233,7 +233,6 @@ export const PoliformSpecSheet: React.FC<PoliformSpecSheetProps> = ({
 
       {/* Bottom Technical Footer */}
       <div className="flex justify-between items-center border-t border-neutral-200 pt-2.5 mt-2 text-[8px] tracking-[0.2em] text-neutral-400 uppercase">
-        <span>BİRİM MOBİLYA A.Ş. — TEKNİK VERİ FÖYÜ</span>
         <span>WWW.BIRIM.COM</span>
         <span className="font-mono">{String(pageNumber).padStart(3, '0')}</span>
       </div>
