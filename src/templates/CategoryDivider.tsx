@@ -27,15 +27,15 @@ export const CategoryDivider: React.FC<CategoryDividerProps> = ({
   const heroImage = featuredProduct?.cover_image?.url || featuredProduct?.gallery_images?.[0]?.url;
 
   return (
-    <div className="catalog-page bg-[#FFFFFF] text-[#111111] flex flex-col justify-between p-[18mm] select-none border-r border-neutral-200">
+    <div className="catalog-page bg-[#FFFFFF] text-[#111111] flex flex-col justify-between p-[18mm] select-none">
       {/* Top Header Folio */}
       <div className="flex justify-between items-center text-[11px] tracking-[0.25em] uppercase text-neutral-600 font-medium border-b border-neutral-300 pb-3">
         <BirimLogo variant="black" className="h-7 w-auto object-contain" />
         <span className="font-mono text-neutral-500">BÖLÜM {indexStr} / KOLEKSİYON</span>
       </div>
 
-      {/* Featured Visual Container (Cinematic Category Anchor with Pan & Zoom) */}
-      <div className="my-4 h-[120mm] w-full bg-white overflow-hidden relative border border-neutral-200 shadow-sm">
+      {/* Featured Visual Container (Cinematic Category Anchor with Pan & Zoom - Frameless) */}
+      <div className="my-4 h-[120mm] w-full bg-white overflow-hidden relative">
         {heroImage ? (
           <InteractiveCatalogImage
             id={`cat-${category.slug}`}

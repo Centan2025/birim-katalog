@@ -82,10 +82,7 @@ const CoverAlt2: React.FC<MasterCoverProps> = ({
   const shortYear = year.slice(-2);
 
   return (
-    <div className="catalog-page bg-[#F8F8F6] p-[20mm] pl-[28mm] flex flex-col justify-between select-none relative h-full overflow-hidden">
-      {/* Left Solid Black Spine Strip */}
-      <div className="absolute left-0 top-0 bottom-0 w-[6mm] bg-[#111111]" />
-
+    <div className="catalog-page bg-[#FFFFFF] p-[20mm] flex flex-col justify-between select-none relative h-full overflow-hidden">
       {/* Top Header with Dominant BİRİM Logo and Section Line */}
       <div className="w-full pt-1">
         <div className="w-full">
