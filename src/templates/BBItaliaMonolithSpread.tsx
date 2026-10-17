@@ -42,7 +42,7 @@ export const BBItaliaMonolithSpread: React.FC<BBItaliaSpreadProps> = ({
   const dimImages = product.dimension_images || [];
 
   return (
-    <div className="catalog-spread-row flex flex-row gap-0 print:block">
+    <div className="catalog-spread-row flex flex-row gap-0">
       {/* LEFT PAGE: Pure Sculptural Object on Pure White Background */}
       <div className="catalog-page bg-[#FFFFFF] p-[20mm] flex flex-col justify-between select-none border-r border-neutral-200">
         {/* Top Folio */}
@@ -66,19 +66,19 @@ export const BBItaliaMonolithSpread: React.FC<BBItaliaSpreadProps> = ({
             </div>
           ) : (
             <div className="h-48 flex items-center justify-center text-neutral-400 text-xs">
-              Görsel Hazırlanıyor
+              {lang === 'en' ? 'Image in Preparation' : 'Görsel Hazırlanıyor'}
             </div>
           )}
         </div>
 
         {/* Bottom Hero Identifier */}
-        <div className="flex justify-between items-end border-t border-neutral-300 pt-4">
+        <div className="flex justify-between items-end pt-4">
           <div>
             <h2 className="text-[28px] font-light tracking-[0.2em] uppercase text-neutral-900 leading-none">
               {title}
             </h2>
             <p className="text-[9px] tracking-[0.25em] text-neutral-500 uppercase mt-1">
-              DESIGN {designersStr}
+              {lang === 'en' ? 'DESIGN:' : 'TASARIM:'} {designersStr}
             </p>
           </div>
           <span className="text-[9px] font-mono tracking-widest text-neutral-400">
@@ -91,7 +91,7 @@ export const BBItaliaMonolithSpread: React.FC<BBItaliaSpreadProps> = ({
       <div className="catalog-page bg-[#FFFFFF] p-[20mm] flex flex-col justify-between select-none">
         {/* Top Folio */}
         <div className="flex justify-between items-center text-[9px] tracking-[0.3em] uppercase text-neutral-400 hairline-b pb-3">
-          <span>TECHNICAL & MATERIALS</span>
+          <span>{lang === 'en' ? 'TECHNICAL & MATERIALS' : 'TEKNİK & MALZEME'}</span>
           <span>{title}</span>
         </div>
 
@@ -102,13 +102,13 @@ export const BBItaliaMonolithSpread: React.FC<BBItaliaSpreadProps> = ({
             {detailImage ? (
               <img
                 src={detailImage}
-                alt={`${title} Detay`}
+                alt={`${title} ${lang === 'en' ? 'Detail' : 'Detay'}`}
                 className={`w-full h-full object-cover ${detailImageObj?.is_mirrored ? '-scale-x-100' : ''}`}
                 crossOrigin="anonymous"
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center text-[9px] text-neutral-400">
-                Detay Görseli
+                {lang === 'en' ? 'Detail Visual' : 'Detay Görseli'}
               </div>
             )}
           </div>
@@ -116,10 +116,10 @@ export const BBItaliaMonolithSpread: React.FC<BBItaliaSpreadProps> = ({
           {/* Text Synopsis */}
           <div className="space-y-3">
             <span className="text-[8px] tracking-[0.25em] uppercase text-neutral-400 font-medium block">
-              DESIGN RATIONALE
+              {lang === 'en' ? 'DESIGN RATIONALE' : 'TASARIM GEREKÇESİ'}
             </span>
             <p className="text-[9.5px] leading-[1.7] text-neutral-600 font-light text-justify">
-              {desc || 'Zarif detaylar ve mimari orantılarla mekanın dengesini kuran çağdaş form dili.'}
+              {desc || (lang === 'en' ? 'A contemporary form language establishing the balance of spaces with elegant details and architectural proportions.' : 'Zarif detaylar ve mimari orantılarla mekanın dengesini kuran çağdaş form dili.')}
             </p>
           </div>
         </div>
@@ -134,7 +134,7 @@ export const BBItaliaMonolithSpread: React.FC<BBItaliaSpreadProps> = ({
 
           {dimImages.length === 0 && (
             <div className="h-[75mm] w-full bg-white flex items-center justify-center text-[10px] text-neutral-400 font-light">
-              Teknik ölçü çizimi mevcut değil
+              {lang === 'en' ? 'Technical drawing not available' : 'Teknik ölçü çizimi mevcut değil'}
             </div>
           )}
 
@@ -213,8 +213,8 @@ export const BBItaliaMonolithSpread: React.FC<BBItaliaSpreadProps> = ({
 
 
         {/* Bottom Folio */}
-        <div className="flex justify-between items-center text-[9px] tracking-[0.25em] text-neutral-400 hairline-t pt-3">
-          <span className="uppercase">BİRİM MOBİLYA</span>
+        <div className="flex justify-between items-center text-[9px] tracking-[0.25em] text-neutral-400 pt-3">
+          <span className="uppercase">{lang === 'en' ? 'BIRIM FURNITURE' : 'BİRİM MOBİLYA'}</span>
           <span className="font-mono">{String(pageNumberRight).padStart(3, '0')}</span>
         </div>
       </div>

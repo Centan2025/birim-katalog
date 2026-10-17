@@ -31,15 +31,15 @@ const CoverAlt1: React.FC<MasterCoverProps> = ({
       {/* Top Header */}
       <div className="w-full">
         <div className="text-[8.5px] tracking-[0.28em] text-[#888888] uppercase font-light">
-          DESIGN OBJECTS &nbsp;/&nbsp; {year}
+          {lang === 'en' ? 'DESIGN OBJECTS' : 'TASARIM NESNELERİ'} &nbsp;/&nbsp; {year}
         </div>
         <div className="w-full border-b border-[#E0E0E0] mt-3" />
       </div>
 
       {/* Main Left-Aligned Grid - Exactly matching reference */}
       <div className="w-full pt-[52mm] pb-[20mm] flex flex-col items-start">
-        {/* Dominant BİRİM Brand Mark - Oversized, flush to left margin */}
-        <div className="w-[190mm] mb-[34mm]">
+        {/* Dominant BİRİM Brand Mark */}
+        <div className="w-[55mm] mb-[24mm]">
           <BirimLogo 
             variant="black" 
             className="w-full h-auto object-contain object-left block" 
@@ -63,7 +63,7 @@ const CoverAlt1: React.FC<MasterCoverProps> = ({
 
       {/* Bottom Footer */}
       <div className="w-full flex justify-between items-center text-[8px] font-mono tracking-widest text-[#888888]">
-        <span>BIRIM.COM</span>
+        <span className="lowercase">www.birim.com</span>
         <span>{String(pageNumber).padStart(2, '0')}</span>
       </div>
     </div>
@@ -75,27 +75,31 @@ const CoverAlt1: React.FC<MasterCoverProps> = ({
  * - Sol kenarda dikey siyah cilt şeridi (spine band)
  * - En üstte tam en BİRİM logosu, altında boydan boya çizgi ve "A COLLECTION OF DESIGN"
  * - Orta-alt alanda devasa "26" editoryal rakamı, altında "DESIGN COLLECTION" ve boydan boya alt çizgi
- * - Altta "WWW.BIRIM.COM"
+ * - Altta "www.birim.com"
  */
 const CoverAlt2: React.FC<MasterCoverProps> = ({
+  subtitle,
   year = "2026",
+  lang = 'tr',
 }) => {
   const shortYear = year.slice(-2);
+  const firstWord = subtitle ? subtitle.split(' ')[0] : (lang === 'en' ? 'DESIGN' : 'TASARIM');
+  const secondWord = subtitle ? subtitle.split(' ').slice(1).join(' ') || (lang === 'en' ? 'COLLECTION' : 'KOLEKSİYONU') : (lang === 'en' ? 'COLLECTION' : 'KOLEKSİYONU');
 
   return (
     <div className="catalog-page bg-[#FFFFFF] p-[20mm] flex flex-col justify-between select-none relative h-full overflow-hidden">
       {/* Top Header with Dominant BİRİM Logo and Section Line */}
       <div className="w-full pt-1">
-        <div className="w-full">
+        <div className="w-[50mm]">
           <BirimLogo 
             variant="black" 
-            className="w-full h-auto object-contain block" 
+            className="w-full h-auto object-contain block object-left" 
             alt="BİRİM"
           />
         </div>
-        <div className="w-full border-b border-[#D0D0CE] mt-8 mb-3" />
+        <div className="w-full border-b border-[#D0D0CE] mt-6 mb-3" />
         <div className="text-[7.5px] tracking-[0.3em] text-[#888888] uppercase font-light">
-          A COLLECTION OF DESIGN
+          {lang === 'en' ? 'A COLLECTION OF DESIGN' : 'ÖZGÜN TASARIM KOLEKSİYONU'}
         </div>
       </div>
 
@@ -112,17 +116,17 @@ const CoverAlt2: React.FC<MasterCoverProps> = ({
         {/* Stacked Title - Larger */}
         <div className="space-y-2">
           <div className="text-[34px] font-light tracking-[0.22em] text-[#1A1A1A] uppercase leading-none">
-            DESIGN
+            {firstWord}
           </div>
           <div className="text-[34px] font-light tracking-[0.22em] text-[#1A1A1A] uppercase leading-none">
-            COLLECTION
+            {secondWord}
           </div>
         </div>
       </div>
 
       {/* Bottom Footer */}
-      <div className="w-full text-[8px] font-mono tracking-[0.25em] text-[#888888] uppercase">
-        WWW.BIRIM.COM
+      <div className="w-full text-[8px] font-mono tracking-[0.25em] text-[#888888] lowercase">
+        www.birim.com
       </div>
     </div>
   );
@@ -133,11 +137,16 @@ const CoverAlt2: React.FC<MasterCoverProps> = ({
  * - Katmanlı bej mimari düzlemler, teknik yay çizgisi
  * - Üstte devasa BİRİM logosu ve "BIRIM / 2026"
  * - Ortada sol dikey ayraç çizgisi, yanında "DESIGN COLLECTION" ve "A STUDY OF FORM, MATERIAL AND SPACE"
- * - Altta "WWW.BIRIM.COM"
+ * - Altta "www.birim.com"
  */
 const CoverAlt3: React.FC<MasterCoverProps> = ({
+  subtitle,
   year = "2026",
+  lang = 'tr',
 }) => {
+  const firstWord = subtitle ? subtitle.split(' ')[0] : (lang === 'en' ? 'DESIGN' : 'TASARIM');
+  const secondWord = subtitle ? subtitle.split(' ').slice(1).join(' ') || (lang === 'en' ? 'COLLECTION' : 'KOLEKSİYONU') : (lang === 'en' ? 'COLLECTION' : 'KOLEKSİYONU');
+
   return (
     <div className="catalog-page bg-[#F5F3ED] p-[20mm] flex flex-col justify-between select-none relative h-full overflow-hidden">
       {/* Background Architectural Geometry: Tone Panels */}
@@ -157,10 +166,10 @@ const CoverAlt3: React.FC<MasterCoverProps> = ({
       {/* Foreground Content */}
       {/* Top Brand Block */}
       <div className="relative z-10 w-full pt-1">
-        <div className="w-full">
+        <div className="w-[50mm]">
           <BirimLogo 
             variant="black" 
-            className="w-full h-auto object-contain block" 
+            className="w-full h-auto object-contain block object-left" 
             alt="BİRİM"
           />
         </div>
@@ -177,21 +186,21 @@ const CoverAlt3: React.FC<MasterCoverProps> = ({
         <div className="space-y-4">
           <div className="space-y-1">
             <h1 className="text-[28px] font-light tracking-[0.22em] text-[#111111] uppercase leading-[1.05]">
-              DESIGN
+              {firstWord}
             </h1>
             <h1 className="text-[28px] font-light tracking-[0.22em] text-[#111111] uppercase leading-[1.05]">
-              COLLECTION
+              {secondWord}
             </h1>
           </div>
           <p className="text-[7.5px] tracking-[0.28em] text-[#666666] uppercase font-medium">
-            A STUDY OF FORM, MATERIAL AND SPACE
+            {lang === 'en' ? 'A STUDY OF FORM, MATERIAL AND SPACE' : 'FORM, MALZEME VE MEKÂNIN DİYALOĞU'}
           </p>
         </div>
       </div>
 
       {/* Bottom Footer */}
-      <div className="relative z-10 w-full text-[8px] font-mono tracking-[0.25em] text-[#888888] uppercase">
-        WWW.BIRIM.COM
+      <div className="relative z-10 w-full text-[8px] font-mono tracking-[0.25em] text-[#888888] lowercase">
+        www.birim.com
       </div>
     </div>
   );
@@ -219,11 +228,11 @@ const CoverAlt4: React.FC<MasterCoverProps> = ({
         </div>
 
         {/* Vertical BİRİM Logo */}
-        <div className="w-[22mm] h-[190mm] relative flex items-center justify-center my-auto">
-          <div className="absolute w-[190mm] h-[22mm] -rotate-90 origin-center flex items-center justify-center">
+        <div className="w-[18mm] h-[60mm] relative flex items-center justify-center my-auto">
+          <div className="absolute w-[60mm] h-[18mm] -rotate-90 origin-center flex items-center justify-center">
             <BirimLogo 
               variant="black" 
-              className="w-[190mm] h-auto object-contain block" 
+              className="w-[60mm] h-auto object-contain block" 
               alt="BİRİM"
             />
           </div>
@@ -239,8 +248,8 @@ const CoverAlt4: React.FC<MasterCoverProps> = ({
         {/* Top Header Line */}
         <div className="w-full">
           <div className="flex justify-between items-center text-[8px] tracking-[0.3em] text-[#888888] uppercase font-light">
-            <span>DESIGN OBJECTS</span>
-            <span>ARCHITECTURAL MONOGRAPH</span>
+            <span>{lang === 'en' ? 'DESIGN OBJECTS' : 'TASARIM NESNELERİ'}</span>
+            <span>{lang === 'en' ? 'ARCHITECTURAL MONOGRAPH' : 'MİMARİ MONOGRAF'}</span>
           </div>
           <div className="w-full border-b border-[#EBEBEB] mt-3" />
         </div>
@@ -264,7 +273,7 @@ const CoverAlt4: React.FC<MasterCoverProps> = ({
 
         {/* Bottom Meta */}
         <div className="w-full flex justify-between items-center text-[8px] font-mono tracking-[0.25em] text-[#888888]">
-          <span>WWW.BIRIM.COM</span>
+          <span className="lowercase">www.birim.com</span>
           <span>ISTANBUL</span>
         </div>
       </div>
@@ -278,10 +287,14 @@ const CoverAlt4: React.FC<MasterCoverProps> = ({
  * - Sağ alanda mimari bej/beyaz fon, editoryal 26, DESIGN COLLECTION ve manifesto
  */
 const CoverAlt5: React.FC<MasterCoverProps> = ({
-  subtitle = "COLLECTION",
+  subtitle,
   year = "2026",
+  lang = 'tr',
 }) => {
   const shortYear = year.slice(-2);
+  const cleanSubtitle = subtitle 
+    ? subtitle.toUpperCase().replace(/^DESIGN\s+/i, '').replace(/^TASARIM\s+/i, '') 
+    : (lang === 'en' ? 'COLLECTION' : 'KOLEKSİYONU');
 
   return (
     <div className="catalog-page bg-[#FAFAF8] flex select-none relative overflow-hidden h-full">
@@ -292,18 +305,18 @@ const CoverAlt5: React.FC<MasterCoverProps> = ({
         </div>
         
         {/* White Logo Vertical */}
-        <div className="w-[26mm] h-[180mm] relative flex items-center justify-center my-auto">
-          <div className="absolute w-[180mm] h-[26mm] -rotate-90 origin-center flex items-center justify-center">
+        <div className="w-[18mm] h-[60mm] relative flex items-center justify-center my-auto">
+          <div className="absolute w-[60mm] h-[18mm] -rotate-90 origin-center flex items-center justify-center">
             <BirimLogo 
               variant="white" 
-              className="w-[180mm] h-auto object-contain block" 
+              className="w-[60mm] h-auto object-contain block" 
               alt="BİRİM"
             />
           </div>
         </div>
 
-        <div className="text-[7.5px] font-mono tracking-[0.2em] text-[#666666]">
-          BIRIM.COM
+        <div className="text-[7.5px] font-mono tracking-[0.2em] text-[#666666] lowercase">
+          www.birim.com
         </div>
       </div>
 
@@ -311,7 +324,7 @@ const CoverAlt5: React.FC<MasterCoverProps> = ({
       <div className="flex-1 p-[20mm] flex flex-col justify-between h-full">
         <div className="w-full">
           <div className="text-[8px] tracking-[0.3em] text-[#888888] uppercase font-light">
-            ARCHITECTURAL FURNITURE &nbsp;/&nbsp; {subtitle}
+            {lang === 'en' ? 'ARCHITECTURAL FURNITURE' : 'MİMARİ MOBİLYA'} &nbsp;/&nbsp; {cleanSubtitle}
           </div>
           <div className="w-full border-b border-[#E0E0DD] mt-3" />
         </div>
@@ -323,14 +336,14 @@ const CoverAlt5: React.FC<MasterCoverProps> = ({
           <div className="w-full border-b border-[#D0D0CE] mt-6 mb-7" />
           <div className="space-y-2">
             <div className="text-[32px] font-light tracking-[0.22em] text-[#1A1A1A] uppercase leading-none">
-              DESIGN
+              {lang === 'en' ? 'DESIGN' : 'TASARIM'}
             </div>
             <div className="text-[32px] font-light tracking-[0.22em] text-[#1A1A1A] uppercase leading-none">
-              {subtitle}
+              {cleanSubtitle}
             </div>
           </div>
           <p className="text-[8px] tracking-[0.25em] text-[#777777] uppercase font-light mt-6">
-            A STUDY OF FORM, MATERIAL AND SPACE
+            {lang === 'en' ? 'A STUDY OF FORM, MATERIAL AND SPACE' : 'FORM, MALZEME VE MEKÂNIN DİYALOĞU'}
           </p>
         </div>
 
@@ -354,6 +367,8 @@ const CoverAlt6: React.FC<MasterCoverProps> = ({
   pageNumber = 1,
   lang = 'tr',
 }) => {
+  const cleanSubtitle = subtitle.toUpperCase().replace(/^DESIGN\s+/i, '') || 'COLLECTION';
+
   return (
     <div className="catalog-page bg-[#FFFFFF] p-[20mm] flex select-none relative overflow-hidden h-full">
       {/* Left/Center Main Editorial Area */}
@@ -361,7 +376,7 @@ const CoverAlt6: React.FC<MasterCoverProps> = ({
         {/* Top Header */}
         <div className="w-full">
           <div className="text-[8.5px] tracking-[0.3em] text-[#888888] uppercase font-light">
-            BİRİM &nbsp;/&nbsp; {year} CATALOGUE
+            BİRİM &nbsp;/&nbsp; {year} {lang === 'en' ? 'CATALOGUE' : 'KATALOĞU'}
           </div>
           <div className="w-full border-b border-[#EAEAEA] mt-3" />
         </div>
@@ -369,14 +384,14 @@ const CoverAlt6: React.FC<MasterCoverProps> = ({
         {/* Center Typography */}
         <div className="my-auto py-[15mm]">
           <div className="text-[9px] tracking-[0.35em] text-[#999999] uppercase font-medium mb-4">
-            OFFICIAL PORTFOLIO
+            {lang === 'en' ? 'OFFICIAL PORTFOLIO' : 'RESMİ PORTFOLYO'}
           </div>
           <div className="space-y-2 mb-8">
             <h1 className="text-[42px] font-extralight tracking-[0.18em] text-[#111111] uppercase leading-[0.95]">
-              DESIGN
+              {lang === 'en' ? 'DESIGN' : 'TASARIM'}
             </h1>
             <h1 className="text-[42px] font-extralight tracking-[0.18em] text-[#111111] uppercase leading-[0.95]">
-              {subtitle}
+              {cleanSubtitle}
             </h1>
           </div>
           <div className="w-[45mm] border-t border-[#111111] mb-5" />
@@ -389,7 +404,7 @@ const CoverAlt6: React.FC<MasterCoverProps> = ({
 
         {/* Bottom Meta */}
         <div className="w-full flex justify-between items-center text-[8px] font-mono tracking-widest text-[#888888]">
-          <span>WWW.BIRIM.COM</span>
+          <span className="lowercase">www.birim.com</span>
           <span>{String(pageNumber).padStart(2, '0')}</span>
         </div>
       </div>
@@ -400,11 +415,11 @@ const CoverAlt6: React.FC<MasterCoverProps> = ({
           '{year.slice(-2)}
         </div>
 
-        <div className="w-[20mm] h-[190mm] relative flex items-center justify-center my-auto">
-          <div className="absolute w-[190mm] h-[20mm] rotate-90 origin-center flex items-center justify-center">
+        <div className="w-[18mm] h-[60mm] relative flex items-center justify-center my-auto">
+          <div className="absolute w-[60mm] h-[18mm] rotate-90 origin-center flex items-center justify-center">
             <BirimLogo 
               variant="black" 
-              className="w-[190mm] h-auto object-contain block" 
+              className="w-[60mm] h-auto object-contain block" 
               alt="BİRİM"
             />
           </div>
@@ -444,7 +459,7 @@ const CoverAlt7: React.FC<MasterCoverProps> = ({
       {/* Top Header */}
       <div className="relative z-10 w-full pt-[4mm] px-[4mm]">
         <div className="flex justify-between items-center text-[8.5px] tracking-[0.3em] text-[#777777] uppercase font-light">
-          <span>BİRİM ARCHITECTURAL ARCHIVE</span>
+          <span>{lang === 'en' ? 'BİRİM ARCHITECTURAL ARCHIVE' : 'BİRİM MİMARİ ARŞİVİ'}</span>
           <span>VOL. {year}</span>
         </div>
         <div className="w-full border-b border-[#E8E8E6] mt-3" />
@@ -452,7 +467,7 @@ const CoverAlt7: React.FC<MasterCoverProps> = ({
 
       {/* Center Hero Identity & Monograph Title */}
       <div className="relative z-10 w-full flex-1 flex flex-col items-center justify-center py-[20mm]">
-        <div className="w-[175mm] max-w-[90%] mb-8">
+        <div className="w-[52mm] max-w-[35%] mb-8">
           <BirimLogo 
             variant="black" 
             className="w-full h-auto object-contain block" 
@@ -476,10 +491,9 @@ const CoverAlt7: React.FC<MasterCoverProps> = ({
 
       {/* Bottom 3-Column Micro-Typography */}
       <div className="relative z-10 w-full pb-[4mm] px-[4mm]">
-        <div className="w-full border-t border-[#E8E8E6] mb-3" />
         <div className="grid grid-cols-3 gap-4 items-end text-[7.5px] tracking-[0.25em] text-[#888888] uppercase font-mono">
-          <div>EDITION // {year}</div>
-          <div className="text-center">WWW.BIRIM.COM</div>
+          <div>{lang === 'en' ? 'EDITION' : 'EDİSYON'} {year}</div>
+          <div className="text-center lowercase">www.birim.com</div>
           <div className="text-right">FOLIO {String(pageNumber).padStart(2, '0')}</div>
         </div>
       </div>
@@ -489,37 +503,37 @@ const CoverAlt7: React.FC<MasterCoverProps> = ({
 
 /**
  * ALTERNATİF 8: Koyu Stüdyo Monolit (Dark Studio Monograph)
- * - Derin antrasit/siyah fon (#121212)
- * - Arka planda devasa '26 filigranı, üstte parlak beyaz BİRİM logosu
- * - Lüks İtalyan monografi tipografisi, ince beyaz kılavuz çizgileri
+ * - Derin mat antrasit/siyah fon (#0E0E10)
+ * - Sade, yalın mimari tipografi ve ferah negatif alan
+ * - Gereksiz filigran ve kalabalıklardan arındırılmış saf lüks tasarım
  */
 const CoverAlt8: React.FC<MasterCoverProps> = ({
+  title,
   subtitle = "COLLECTION",
   year = "2026",
   pageNumber = 1,
   lang = 'tr',
 }) => {
-  const shortYear = year.slice(-2);
+  const displayTitle = (title || subtitle || (lang === 'en' ? 'COLLECTION' : 'KOLEKSİYON')).toUpperCase();
 
   return (
-    <div className="catalog-page bg-[#121212] text-white p-[20mm] flex flex-col justify-between select-none relative h-full overflow-hidden">
-      {/* Subtle Background Watermark '26 */}
-      <div className="absolute right-[-10mm] bottom-[18mm] text-[260px] font-extralight tracking-[-0.05em] text-[#1C1C1C] leading-none select-none pointer-events-none font-sans">
-        {shortYear}
-      </div>
-
+    <div 
+      className="catalog-page !bg-[#0E0E10] !text-[#F5F5F5] p-[20mm] flex flex-col justify-between select-none relative h-full overflow-hidden"
+      style={{ backgroundColor: '#0E0E10', color: '#F5F5F5' }}
+    >
       {/* Top Header */}
-      <div className="relative z-10 w-full">
-        <div className="flex justify-between items-center text-[8.5px] tracking-[0.35em] text-[#888888] uppercase font-light">
-          <span>BİRİM STUDIO</span>
-          <span>EST. ISTANBUL // {year}</span>
+      <div className="relative z-10 w-full shrink-0">
+        <div className="flex justify-between items-center text-[8.5px] tracking-[0.3em] text-[#666668] uppercase font-mono">
+          <span>{lang === 'en' ? 'DESIGN ARCHIVE' : 'TASARIM ARŞİVİ'}</span>
+          <span>ISTANBUL &nbsp;/&nbsp; {year}</span>
         </div>
-        <div className="w-full border-b border-[#262626] mt-3" />
+        <div className="w-full border-b border-[#202024] mt-3.5" />
       </div>
 
       {/* Center Monolithic Identity */}
-      <div className="relative z-10 w-full my-auto py-[20mm] flex flex-col items-start">
-        <div className="w-[180mm] mb-12">
+      <div className="relative z-10 w-full my-auto py-[10mm] flex flex-col items-start">
+        {/* Dominant White Birim Logo */}
+        <div className="w-[52mm] mb-8">
           <BirimLogo 
             variant="white" 
             className="w-full h-auto object-contain block object-left" 
@@ -527,28 +541,26 @@ const CoverAlt8: React.FC<MasterCoverProps> = ({
           />
         </div>
 
-        <div className="w-[45mm] border-t border-[#444444] mb-6" />
-
-        <div className="space-y-3">
-          <div className="text-[10px] tracking-[0.35em] text-[#888888] uppercase font-mono">
-            PORTFOLIO // {year}
-          </div>
-          <h1 className="text-[40px] font-light tracking-[0.2em] text-[#F5F5F5] uppercase leading-none">
-            {subtitle}
+        {/* Clean, Refined Typography */}
+        <div className="space-y-4 max-w-[140mm]">
+          <h1 className="text-[28px] font-extralight tracking-[0.28em] text-[#E8E8EC] uppercase leading-tight break-words">
+            {displayTitle}
           </h1>
-          <p className="text-[8.5px] tracking-[0.26em] text-[#AAAAAA] uppercase font-light leading-relaxed max-w-[110mm]">
+
+          <div className="w-[36mm] border-t border-[#3A3A40]" />
+
+          <p className="text-[8px] tracking-[0.25em] text-[#7A7A82] uppercase font-light">
             {lang === 'en' 
-              ? 'A CURATED SELECTION OF CONTEMPORARY ARCHITECTURAL OBJECTS.' 
-              : 'ÖZGÜN ÇAĞDAŞ MİMARİ TASARIM VE MOBİLYA SEÇKİSİ.'}
+              ? 'ARCHITECTURAL FURNITURE & SPATIAL DESIGN' 
+              : 'MİMARİ TASARIM & ÇAĞDAŞ MOBİLYA'}
           </p>
         </div>
       </div>
 
-      {/* Bottom Meta */}
-      <div className="relative z-10 w-full border-t border-[#262626] pt-3 flex justify-between items-center text-[8px] font-mono tracking-[0.25em] text-[#777777] uppercase">
-        <span>WWW.BIRIM.COM</span>
-        <span>ARCHIVE REF. 26-A</span>
-        <span>{String(pageNumber).padStart(2, '0')}</span>
+      {/* Bottom Footer */}
+      <div className="relative z-10 w-full pt-3.5 flex justify-between items-center text-[8px] font-mono tracking-[0.25em] text-[#666668] uppercase shrink-0">
+        <span className="lowercase">www.birim.com</span>
+        <span>FOLIO {String(pageNumber).padStart(2, '0')}</span>
       </div>
     </div>
   );
@@ -557,87 +569,100 @@ const CoverAlt8: React.FC<MasterCoverProps> = ({
 /**
  * ALTERNATİF 9: İsviçre Izgara & Brütalist Tipografi (Swiss Architectural Grid)
  * - Sıcak alabaster kağıt fonu (#FAF8F5)
- * - 4-çeyrek mimari kılavuz çizgileri, teknik parametreler
- * - Cesur editoryal tipografi ve asimetrik modern denge
+ * - Matematiksel 4-çeyrek mimari ızgara (2x2 grid)
+ * - Kılavuz çizgileri ve tam kesişim noktasında mimari artı (+) register işareti
+ * - Logo sol kadranda sınırlıdır (max-w-[42mm]), sağ kadrana asla taşmaz
  */
 const CoverAlt9: React.FC<MasterCoverProps> = ({
+  title,
   subtitle = "COLLECTION",
   year = "2026",
   pageNumber = 1,
   lang = 'tr',
 }) => {
+  const displayTitle = (title || subtitle || 'COLLECTION').toUpperCase();
+
   return (
-    <div className="catalog-page bg-[#FAF8F5] p-[18mm] flex flex-col justify-between select-none relative h-full overflow-hidden">
-      {/* Center Horizontal & Vertical Fine Grid Lines */}
-      <div className="absolute top-[48%] left-0 right-0 border-b border-[#E2DFD8] pointer-events-none" />
-      <div className="absolute top-0 bottom-0 left-[55%] border-r border-[#E2DFD8] pointer-events-none" />
+    <div 
+      className="catalog-page !bg-[#FAF8F5] !text-[#111111] p-[18mm] select-none relative h-full overflow-hidden"
+      style={{ backgroundColor: '#FAF8F5', color: '#111111' }}
+    >
+      {/* 2x2 Swiss Architectural Grid Container */}
+      <div className="w-full h-full flex flex-col relative">
 
-      {/* Center Axis Crosshair */}
-      <div className="absolute top-[48%] left-[55%] -translate-x-1/2 -translate-y-1/2 text-[#A8A49C] text-[12px] font-mono pointer-events-none">
-        +
-      </div>
-
-      {/* TOP HALF */}
-      <div className="relative z-10 w-full h-[44%] flex justify-between">
-        {/* Top-Left: Logo & Main Classification */}
-        <div className="w-[52%] pr-6 flex flex-col justify-between">
-          <div className="w-[125mm]">
-            <BirimLogo 
-              variant="black" 
-              className="w-full h-auto object-contain block object-left" 
-              alt="BİRİM"
-            />
-          </div>
-          <div className="text-[9px] tracking-[0.28em] text-[#777777] uppercase font-light">
-            FURNITURE ARCHIVE &nbsp;/&nbsp; {year}
-          </div>
-        </div>
-
-        {/* Top-Right: Technical Specification Matrix */}
-        <div className="w-[42%] pl-6 flex flex-col justify-between text-[8px] font-mono tracking-[0.2em] text-[#666666] leading-relaxed">
-          <div className="space-y-1">
-            <div className="text-[#999999] uppercase">SPECIFICATION</div>
-            <div>SERIES: ARCHITECTURAL</div>
-            <div>YEAR: {year}</div>
-            <div>LOCATION: ISTANBUL</div>
-          </div>
-          <div className="text-[7.5px] text-[#888888] uppercase">
-            EDITION: OFFICIAL MONOGRAPH
-          </div>
-        </div>
-      </div>
-
-      {/* BOTTOM HALF */}
-      <div className="relative z-10 w-full h-[48%] flex justify-between pt-6">
-        {/* Bottom-Left: Massive Year & Subtitle */}
-        <div className="w-[52%] pr-6 flex flex-col justify-between">
-          <div className="space-y-2">
-            <div className="text-[80px] font-extralight tracking-[-0.04em] text-[#111111] leading-[0.85] font-sans">
-              {year}
+        {/* TOP ROW (48% height) */}
+        <div className="w-full h-[48%] flex border-b border-[#D8D4CA]">
+          
+          {/* Quadrant 1: Top-Left (56% width) */}
+          <div className="w-[56%] h-full pr-[6mm] pb-[6mm] border-r border-[#D8D4CA] flex flex-col justify-between">
+            {/* Logo constrained to fit quadrant cleanly with no overflow */}
+            <div className="w-[28mm] pt-1">
+              <BirimLogo 
+                variant="black" 
+                className="w-full h-auto object-contain block object-left" 
+                alt="BİRİM"
+              />
             </div>
-            <h1 className="text-[32px] font-light tracking-[0.2em] text-[#111111] uppercase leading-none">
-              {subtitle}
-            </h1>
+            <div className="text-[8.5px] tracking-[0.28em] text-[#777777] uppercase font-light">
+              {lang === 'en' ? 'FURNITURE ARCHIVE' : 'MOBİLYA ARŞİVİ'} &nbsp;/&nbsp; {year}
+            </div>
           </div>
 
-          <div className="text-[8px] font-mono tracking-[0.25em] text-[#777777] uppercase">
-            WWW.BIRIM.COM
+          {/* Quadrant 2: Top-Right (44% width) */}
+          <div className="w-[44%] h-full pl-[6mm] pb-[6mm] flex flex-col justify-between text-[8px] font-mono tracking-[0.18em] text-[#666666] leading-relaxed">
+            <div className="space-y-1 pt-1">
+              <div className="text-[#999999] uppercase text-[7.5px]">{lang === 'en' ? 'SPECIFICATION' : 'KÜNYE'}</div>
+              <div>{lang === 'en' ? 'SERIES: ARCHITECTURAL' : 'SERİ: MİMARİ'}</div>
+              <div>{lang === 'en' ? 'YEAR' : 'YIL'}: {year}</div>
+              <div>{lang === 'en' ? 'LOCATION: ISTANBUL' : 'KONUM: İSTANBUL'}</div>
+            </div>
+            <div className="text-[7.5px] text-[#888888] uppercase">
+              {lang === 'en' ? 'EDITION: OFFICIAL MONOGRAPH' : 'EDİSYON: RESMİ MONOGRAF'}
+            </div>
           </div>
+
         </div>
 
-        {/* Bottom-Right: Architectural Manifesto & Folio */}
-        <div className="w-[42%] pl-6 flex flex-col justify-between">
-          <p className="text-[8.5px] tracking-[0.22em] text-[#555555] uppercase font-light leading-relaxed">
-            {lang === 'en'
-              ? 'AN ARCHITECTURAL EXPLORATION OF TIMELESS FORMS, CRAFT AND MINIMALIST PROPORTIONS.'
-              : 'ZAMANSIZ FORMLAR, MALZEME DİYALOĞU VE MİMARİ ORANLARIN ÇAĞDAŞ TASARIM KEŞFİ.'}
-          </p>
-
-          <div className="flex justify-between items-center text-[8px] font-mono tracking-widest text-[#777777]">
-            <span>ISTANBUL</span>
-            <span>{String(pageNumber).padStart(2, '0')}</span>
-          </div>
+        {/* Center Intersection Crosshair (+) placed exactly at intersection */}
+        <div className="absolute top-[48%] left-[56%] -translate-x-1/2 -translate-y-1/2 w-4 h-4 flex items-center justify-center text-[#88847C] text-[13px] font-mono pointer-events-none select-none bg-[#FAF8F5]">
+          +
         </div>
+
+        {/* BOTTOM ROW (52% height) */}
+        <div className="w-full h-[52%] flex">
+
+          {/* Quadrant 3: Bottom-Left (56% width) */}
+          <div className="w-[56%] h-full pr-[6mm] pt-[6mm] border-r border-[#D8D4CA] flex flex-col justify-between">
+            <div className="space-y-2">
+              <div className="text-[72px] font-extralight tracking-[-0.04em] text-[#111111] leading-[0.82] font-sans">
+                {year}
+              </div>
+              <h1 className="text-[28px] font-light tracking-[0.16em] text-[#111111] uppercase leading-tight break-words max-w-[90mm]">
+                {displayTitle}
+              </h1>
+            </div>
+
+            <div className="text-[8px] font-mono tracking-[0.25em] text-[#777777] lowercase">
+              www.birim.com
+            </div>
+          </div>
+
+          {/* Quadrant 4: Bottom-Right (44% width) */}
+          <div className="w-[44%] h-full pl-[6mm] pt-[6mm] flex flex-col justify-between">
+            <p className="text-[8px] tracking-[0.2em] text-[#555555] uppercase font-light leading-relaxed">
+              {lang === 'en'
+                ? 'AN ARCHITECTURAL EXPLORATION OF TIMELESS FORMS, CRAFT AND MINIMALIST PROPORTIONS.'
+                : 'ZAMANSIZ FORMLAR, MALZEME DİYALOĞU VE MİMARİ ORANLARIN ÇAĞDAŞ TASARIM KEŞFİ.'}
+            </p>
+
+            <div className="flex justify-between items-center text-[8px] font-mono tracking-widest text-[#777777]">
+              <span>ISTANBUL</span>
+              <span>FOLIO {String(pageNumber).padStart(2, '0')}</span>
+            </div>
+          </div>
+
+        </div>
+
       </div>
     </div>
   );

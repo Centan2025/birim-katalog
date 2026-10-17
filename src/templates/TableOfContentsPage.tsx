@@ -72,10 +72,10 @@ export const TableOfContentsPage: React.FC<TableOfContentsPageProps> = ({
   leftColumnEntries,
   rightColumnEntries,
   tocPageIndex = 0,
-  totalTocPages = 1,
-  totalSectionsCount,
-  format,
-  categoryTitle,
+  totalTocPages: _totalTocPages = 1,
+  totalSectionsCount: _totalSectionsCount,
+  format: _format,
+  categoryTitle: _categoryTitle,
   lang = 'tr',
   onNavigateToPage,
 }) => {
@@ -98,21 +98,11 @@ export const TableOfContentsPage: React.FC<TableOfContentsPageProps> = ({
       className="group cursor-pointer space-y-1 transition-all"
     >
       {/* Category / Main Section Row */}
-      <div className="flex items-baseline justify-between hairline-b pb-1 group-hover:border-neutral-900 transition-colors">
-        <div className="flex items-baseline gap-2.5">
-          <span className="font-mono text-[11px] text-neutral-400 font-semibold tracking-wider group-hover:text-neutral-950 transition-colors">
-            {entry.order}
-          </span>
-          <div>
-            <h3 className="text-[12.5px] font-medium tracking-[0.08em] uppercase text-neutral-900 group-hover:text-neutral-950 leading-tight">
-              {entry.title}
-            </h3>
-            {entry.subtitle && (
-              <p className="text-[8.5px] tracking-[0.15em] text-neutral-400 uppercase font-light">
-                {entry.subtitle}
-              </p>
-            )}
-          </div>
+      <div className="flex items-baseline justify-between pb-1">
+        <div>
+          <h3 className="text-[12.5px] font-medium tracking-[0.08em] uppercase text-neutral-900 group-hover:text-neutral-950 leading-tight">
+            {entry.title}
+          </h3>
         </div>
         <div className="text-right pl-2 shrink-0">
           <span className="font-mono text-[11px] text-neutral-700 font-semibold group-hover:text-neutral-950 transition-colors">
@@ -123,7 +113,7 @@ export const TableOfContentsPage: React.FC<TableOfContentsPageProps> = ({
 
       {/* Sub-Items (Products under this Category) */}
       {entry.subItems && entry.subItems.length > 0 && (
-        <div className="pl-6 space-y-0.5 pt-0.5">
+        <div className="pl-4 space-y-0.5 pt-0.5">
           {entry.subItems.map((sub, sIdx) => (
             <div
               key={sIdx}
@@ -143,7 +133,6 @@ export const TableOfContentsPage: React.FC<TableOfContentsPageProps> = ({
                   </span>
                 )}
               </div>
-              <div className="flex-1 border-b border-dotted border-neutral-300 mx-2 mb-1" />
               <span className="font-mono text-[8.5px] text-neutral-500 font-medium group-hover/sub:text-neutral-900 shrink-0">
                 P. {String(sub.pageNumber).padStart(3, '0')}
               </span>
@@ -157,45 +146,15 @@ export const TableOfContentsPage: React.FC<TableOfContentsPageProps> = ({
   return (
     <div className="catalog-page bg-[#FFFFFF] p-[20mm] flex flex-col justify-between select-none">
       {/* 1. TOP FOLIO HEADER */}
-      <div className="flex justify-between items-center text-[10px] tracking-[0.25em] uppercase text-neutral-500 hairline-b pb-3">
+      <div className="flex justify-between items-center text-[10px] tracking-[0.25em] uppercase text-neutral-500 pb-3">
         <BirimLogo variant="black" className="h-6 w-auto object-contain" />
         <span className="font-mono text-neutral-400">
           {isTr ? 'KOLEKSİYON DİZİNİ / 2026' : 'CATALOG INDEX / 2026'}
         </span>
       </div>
 
-      {/* 2. ARCHITECTURAL HEADLINE */}
-      <div className="pt-2 pb-2">
-        <div className="flex items-baseline justify-between hairline-b pb-3">
-          <div>
-            <span className="text-[9px] font-mono tracking-[0.3em] uppercase text-neutral-400 block mb-1">
-              {isTr 
-                ? (totalTocPages > 1 ? `İÇERİK SIRALAMASI // SAYFA ${tocPageIndex + 1}` : 'İÇERİK SIRALAMASI')
-                : (totalTocPages > 1 ? `TABLE OF CONTENTS // PAGE ${tocPageIndex + 1}` : 'TABLE OF CONTENTS')}
-            </span>
-            <h1 className="text-[32px] font-light tracking-[0.06em] uppercase text-neutral-950 leading-none">
-              {isTr 
-                ? (tocPageIndex > 0 ? 'İÇİNDEKİLER (DEVAM)' : 'İÇİNDEKİLER') 
-                : (tocPageIndex > 0 ? 'INDEX & ARCHIVE (CONT.)' : 'INDEX & ARCHIVE')}
-            </h1>
-          </div>
-          <div className="text-right">
-            <span className="text-[9px] font-mono tracking-[0.2em] text-neutral-400 uppercase block">
-              {format === 'master' 
-                ? (isTr ? 'GENEL KATALOG' : 'MASTER ARCHIVE')
-                : format === 'category'
-                ? (categoryTitle || (isTr ? 'KATEGORİ' : 'CATEGORY'))
-                : (isTr ? 'ÜRÜN MONOGRAFİ' : 'PRODUCT SPEC')}
-            </span>
-            <span className="text-[11px] font-mono text-neutral-800 font-medium">
-              {totalSectionsCount ?? (leftEntries.length + rightEntries.length)} {isTr ? 'BÖLÜM' : 'SECTIONS'}
-            </span>
-          </div>
-        </div>
-      </div>
-
-      {/* 3. MAIN DIRECTORY BODY */}
-      <div className="flex-1 my-auto py-2 grid grid-cols-2 gap-x-10 items-start">
+      {/* 2. MAIN DIRECTORY BODY */}
+      <div className="flex-1 my-auto py-4 grid grid-cols-2 gap-x-10 items-start">
         {/* Left Column */}
         <div className="space-y-4 flex flex-col">
           {leftEntries.map(renderEntry)}
@@ -208,9 +167,8 @@ export const TableOfContentsPage: React.FC<TableOfContentsPageProps> = ({
       </div>
 
       {/* 4. BOTTOM FOLIO FOOTER */}
-      <div className="flex justify-between items-center text-[9px] tracking-[0.25em] text-neutral-500 hairline-t pt-3">
-        <span className="uppercase">BİRİM ARCHIVES / 2026 EDITION</span>
-        <span className="font-mono text-neutral-400 uppercase">WWW.BIRIM.COM</span>
+      <div className="flex justify-between items-center text-[9px] tracking-[0.25em] text-neutral-500 pt-3">
+        <span className="font-mono text-neutral-400 lowercase">www.birim.com</span>
         <span className="font-mono text-neutral-700">{String(pageNumber).padStart(3, '0')}</span>
       </div>
     </div>

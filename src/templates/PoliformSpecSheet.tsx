@@ -87,7 +87,7 @@ export const PoliformSpecSheet: React.FC<PoliformSpecSheetProps> = ({
         <div className="flex items-center space-x-4">
           <BirimLogo variant="black" className="h-8 w-auto object-contain" />
           <span className="text-[10px] tracking-[0.2em] text-neutral-400 uppercase font-light border-l border-neutral-300 pl-3">
-            PRODUCT SPECIFICATION SHEET
+            {lang === 'en' ? 'PRODUCT SPECIFICATION SHEET' : 'ÜRÜN TEKNİK BİLGİ FÖYÜ'}
           </span>
         </div>
         <div className="text-[9.5px] tracking-[0.2em] text-neutral-500 uppercase font-mono">
@@ -108,7 +108,7 @@ export const PoliformSpecSheet: React.FC<PoliformSpecSheetProps> = ({
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-xs text-neutral-400">
-            Görsel Yüklenemedi
+            {lang === 'en' ? 'Image Not Available' : 'Görsel Yüklenemedi'}
           </div>
         )}
       </div>
@@ -122,7 +122,7 @@ export const PoliformSpecSheet: React.FC<PoliformSpecSheetProps> = ({
               {title}
             </h1>
             <p className="text-[8.5px] tracking-[0.2em] uppercase text-neutral-500 mt-1">
-              DESIGN BY {designersStr} {product.design_year ? `(${product.design_year})` : ''}
+              {lang === 'en' ? 'DESIGN BY' : 'TASARIM:'} {designersStr} {product.design_year ? `(${product.design_year})` : ''}
             </p>
           </div>
 
@@ -132,12 +132,12 @@ export const PoliformSpecSheet: React.FC<PoliformSpecSheetProps> = ({
 
           <div className="pt-2 border-t border-neutral-200 space-y-1.5 text-[8px]">
             <div className="flex justify-between text-neutral-500">
-              <span className="uppercase tracking-wider font-medium">Kategori:</span>
+              <span className="uppercase tracking-wider font-medium">{lang === 'en' ? 'Category:' : 'Kategori:'}</span>
               <span className="text-neutral-800">{categoryName}</span>
             </div>
             {product.collection_and_family?.family_name && (
               <div className="flex justify-between text-neutral-500">
-                <span className="uppercase tracking-wider font-medium">Seri / Aile:</span>
+                <span className="uppercase tracking-wider font-medium">{lang === 'en' ? 'Series / Family:' : 'Seri / Aile:'}</span>
                 <span className="text-neutral-800">{product.collection_and_family.family_name}</span>
               </div>
             )}
@@ -162,7 +162,7 @@ export const PoliformSpecSheet: React.FC<PoliformSpecSheetProps> = ({
               <InteractiveCatalogImage
                 id={`poliform-dim-${product.slug}`}
                 src={dimensionImg}
-                alt={`${title} Çizim`}
+                alt={`${title} ${lang === 'en' ? 'Drawing' : 'Çizim'}`}
                 containerClassName="w-full h-full"
                 objectFit="contain"
                 initialScale={1}
@@ -232,8 +232,8 @@ export const PoliformSpecSheet: React.FC<PoliformSpecSheetProps> = ({
       </div>
 
       {/* Bottom Technical Footer */}
-      <div className="flex justify-between items-center border-t border-neutral-200 pt-2.5 mt-2 text-[8px] tracking-[0.2em] text-neutral-400 uppercase">
-        <span>WWW.BIRIM.COM</span>
+      <div className="flex justify-between items-center pt-2.5 mt-2 text-[8px] tracking-[0.2em] text-neutral-400 uppercase">
+        <span className="lowercase">www.birim.com</span>
         <span className="font-mono">{String(pageNumber).padStart(3, '0')}</span>
       </div>
     </div>

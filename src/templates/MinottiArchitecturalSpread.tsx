@@ -17,7 +17,6 @@ export const MinottiArchitecturalSpread: React.FC<MinottiSpreadProps> = ({
   lang = 'tr'
 }) => {
   const title = lang === 'en' ? product.name.en : product.name.tr;
-  const categoryName = lang === 'en' ? product.category.name.en : product.category.name.tr;
   
   // Clean description and avoid "edisyon" terminology safely
   const rawDesc = (product.long_description 
@@ -44,7 +43,7 @@ export const MinottiArchitecturalSpread: React.FC<MinottiSpreadProps> = ({
   const isHeroMirrored = product.cover_image ? product.cover_image.is_mirrored : product.gallery_images?.[0]?.is_mirrored;
 
   return (
-    <div className="catalog-spread-row flex flex-row gap-0 print:block">
+    <div className="catalog-spread-row flex flex-row gap-0">
       {/* LEFT PAGE: Pure White Architectural Presentation with Interactive Drag/Pan/Zoom */}
       <div className="catalog-page catalog-page-bleed bg-white relative overflow-hidden flex flex-col justify-between border-r border-neutral-200">
         {heroImage ? (
@@ -58,34 +57,37 @@ export const MinottiArchitecturalSpread: React.FC<MinottiSpreadProps> = ({
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-neutral-400 uppercase tracking-widest text-xs">
-            Görsel Bulunamadı
+            {lang === 'en' ? 'Image Not Available' : 'Görsel Bulunamadı'}
           </div>
         )}
 
-        {/* Subtle Bottom Left Folio Overlay on Pure White Background */}
-        <div className="relative z-10 p-[16mm] mt-auto flex justify-between items-end text-[10px] tracking-[0.25em] text-neutral-500 font-normal pointer-events-none">
-          <span className="uppercase">{categoryName} / {title}</span>
-          <span className="font-mono text-neutral-700">{String(pageNumberLeft).padStart(3, '0')}</span>
+        {/* Bottom Folio / Product Identity */}
+        <div className="relative z-10 p-[16mm] mt-auto flex items-center justify-center pointer-events-none">
+          <span className="font-mono text-neutral-400 text-[10px] tracking-[0.25em] absolute left-[16mm] bottom-[16mm]">
+            {String(pageNumberLeft).padStart(3, '0')}
+          </span>
+          <span className="text-[16px] font-light tracking-[0.22em] uppercase text-neutral-900 text-center">
+            {title}
+          </span>
         </div>
       </div>
 
       {/* RIGHT PAGE: Architectural Typographic & Dimension Study (High Contrast Crisp White Paper) */}
       <div className="catalog-page bg-[#FFFFFF] p-[20mm] flex flex-col justify-between select-none">
         {/* Top Folio Header with Larger Original Logo */}
-        <div className="flex justify-between items-center text-[10px] tracking-[0.25em] text-neutral-500 uppercase hairline-b pb-3">
+        <div className="flex items-center pb-3.5 mb-10">
           <BirimLogo variant="black" className="h-6 w-auto object-contain" />
-          <span>{categoryName} / {title}</span>
         </div>
 
         {/* Product Identity & Editorial Text */}
         <div className="space-y-4 pt-2">
-          <div className="space-y-1.5">
-            <span className="text-[10px] tracking-[0.25em] uppercase text-neutral-500 font-medium block">
-              DESIGN BY {designersStr} {product.design_year ? `— ${product.design_year}` : ''}
-            </span>
-            <h2 className="text-[34px] font-light tracking-[0.12em] uppercase text-neutral-900 leading-none">
+          <div className="space-y-2">
+            <h2 className="text-[26px] font-light tracking-[0.12em] uppercase text-neutral-900 leading-none">
               {title}
             </h2>
+            <span className="text-[10px] tracking-[0.25em] uppercase text-neutral-500 font-medium block">
+              {designersStr} {product.design_year ? `— ${product.design_year}` : ''}
+            </span>
           </div>
 
           {desc && (
@@ -97,8 +99,8 @@ export const MinottiArchitecturalSpread: React.FC<MinottiSpreadProps> = ({
 
         {/* Center: Technical 2D Line Schematic with Pure White Background and Dynamic Multi-Drawing Grid */}
         <div className="my-auto pt-1 pb-2">
-          <div className="hairline-b pb-1.5 mb-2 flex justify-between items-baseline">
-            <span className="text-[30px] tracking-[0.04em] uppercase text-neutral-900 font-light leading-none">
+          <div className="pb-1.5 mb-2 flex justify-between items-baseline">
+            <span className="text-[26px] font-light tracking-[0.12em] uppercase text-neutral-900 leading-none">
               {lang === 'en' ? 'DIMENSIONS' : 'ÖLÇÜLER'}
             </span>
           </div>
@@ -106,7 +108,7 @@ export const MinottiArchitecturalSpread: React.FC<MinottiSpreadProps> = ({
           {/* Dynamic Unbordered Multi-Drawing Grid */}
           {dimImages.length === 0 && (
             <div className="h-[78mm] w-full bg-white flex items-center justify-center text-[10px] text-neutral-400 font-light">
-              Teknik ölçü çizimi mevcut değil
+              {lang === 'en' ? 'Technical drawing not available' : 'Teknik ölçü çizimi mevcut değil'}
             </div>
           )}
 
@@ -121,7 +123,7 @@ export const MinottiArchitecturalSpread: React.FC<MinottiSpreadProps> = ({
                 <InteractiveCatalogImage
                   id={`dim-${product.slug}-0`}
                   src={dimImages[0].url}
-                  alt={`${title} Ölçüler`}
+                  alt={`${title} ${lang === 'en' ? 'Dimensions' : 'Ölçüler'}`}
                   containerClassName="w-full h-full bg-white"
                   objectFit="contain"
                   initialScale={1}
@@ -183,8 +185,8 @@ export const MinottiArchitecturalSpread: React.FC<MinottiSpreadProps> = ({
         </div>
 
         {/* Bottom Folio Footer */}
-        <div className="flex justify-between items-center text-[9px] tracking-[0.25em] text-neutral-500 hairline-t pt-3 mt-2">
-          <span className="uppercase">WWW.BIRIM.COM</span>
+        <div className="flex justify-between items-center text-[9px] tracking-[0.25em] text-neutral-500 pt-3 mt-2">
+          <span className="lowercase">www.birim.com</span>
           <span className="font-mono text-neutral-700">{String(pageNumberRight).padStart(3, '0')}</span>
         </div>
       </div>

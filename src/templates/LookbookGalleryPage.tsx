@@ -21,10 +21,10 @@ export const LookbookGalleryPage: React.FC<LookbookGalleryProps> = ({
       {/* Top Header */}
       <div className="flex justify-between items-baseline hairline-b pb-3">
         <span className="text-[12px] tracking-[0.25em] uppercase font-light text-neutral-900">
-          {categoryTitle} — KOLEKSİYON GENEL BAKIŞ
+          {categoryTitle} — {lang === 'en' ? 'COLLECTION OVERVIEW' : 'KOLEKSİYON GENEL BAKIŞ'}
         </span>
         <span className="text-[8.5px] tracking-[0.2em] uppercase text-neutral-400 font-mono">
-          LOOKBOOK OVERVIEW
+          {lang === 'en' ? 'LOOKBOOK OVERVIEW' : 'LOOKBOOK GENEL BAKIŞ'}
         </span>
       </div>
 
@@ -49,16 +49,16 @@ export const LookbookGalleryPage: React.FC<LookbookGalleryProps> = ({
                   <img
                     src={cover}
                     alt={title}
-                    className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ${isCoverMirrored ? '-scale-x-100' : ''}`}
+                    className={`w-full h-full object-cover ${isCoverMirrored ? '-scale-x-100' : ''}`}
                     crossOrigin="anonymous"
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center text-[10px] text-neutral-400">
-                    Görsel Yok
+                    {lang === 'en' ? 'No Image' : 'Görsel Yok'}
                   </div>
                 )}
                 <div className="absolute top-2 right-2 bg-neutral-900/80 text-white text-[7px] font-mono px-1.5 py-0.5 uppercase tracking-wider backdrop-blur-sm">
-                  {item.models_and_variations?.length || 1} MODEL
+                  {item.models_and_variations?.length || 1} {lang === 'en' ? 'MODELS' : 'MODEL'}
                 </div>
               </div>
 
@@ -81,8 +81,8 @@ export const LookbookGalleryPage: React.FC<LookbookGalleryProps> = ({
       </div>
 
       {/* Footer */}
-      <div className="flex justify-between items-center hairline-t pt-3 text-[9px] tracking-[0.25em] text-neutral-400 uppercase">
-        <span>BİRİM ARCHIVES</span>
+      <div className="flex justify-between items-center pt-3 text-[9px] tracking-[0.25em] text-neutral-400 uppercase">
+        <span>{lang === 'en' ? 'BİRİM ARCHIVES' : 'BİRİM ARŞİVİ'}</span>
         <span className="font-mono">{String(pageNumber).padStart(3, '0')}</span>
       </div>
     </div>

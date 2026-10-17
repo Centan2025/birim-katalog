@@ -39,7 +39,7 @@ export const CassinaTriennaleSpread: React.FC<CassinaTriennaleSpreadProps> = ({
   const dimImages = product.dimension_images || [];
 
   return (
-    <div className="catalog-spread-row flex flex-row gap-0 print:block">
+    <div className="catalog-spread-row flex flex-row gap-0">
       {/* ========================================================= */}
       {/* LEFT PAGE: Editorial Storyboard, Narrative & Material Study */}
       {/* ========================================================= */}
@@ -56,7 +56,7 @@ export const CassinaTriennaleSpread: React.FC<CassinaTriennaleSpreadProps> = ({
         {/* Product Title & Designer Statement */}
         <div className="pt-5 pb-3">
           <div className="text-[9px] tracking-[0.25em] text-neutral-400 uppercase font-mono mb-2">
-            DESIGN MONOGRAPH // {product.design_year || '2026'}
+            {product.design_year || '2026'}
           </div>
           <h1 className="text-[36px] font-extralight tracking-[0.08em] text-[#111111] uppercase leading-none">
             {title}
@@ -106,7 +106,7 @@ export const CassinaTriennaleSpread: React.FC<CassinaTriennaleSpreadProps> = ({
           ) : (
             <div className="aspect-[4/3] bg-[#FAF9F7] border border-neutral-200 p-4 flex flex-col justify-between">
               <span className="text-[8px] font-mono text-neutral-400 uppercase tracking-widest">
-                CRAFT // SPECIFICATION
+                CRAFT & SPECIFICATION
               </span>
               <p className="text-[8.5px] leading-relaxed text-neutral-600 font-light">
                 {lang === 'en'
@@ -114,15 +114,15 @@ export const CassinaTriennaleSpread: React.FC<CassinaTriennaleSpreadProps> = ({
                   : 'Hassas zanaat, mimari oranlar ve seçkin döşeme detaylarıyla harmanlanmıştır.'}
               </p>
               <span className="text-[7.5px] font-mono text-neutral-400">
-                MADE IN TURKEY // BİRİM
+                MADE IN TURKEY · BİRİM
               </span>
             </div>
           )}
         </div>
 
         {/* Footer */}
-        <div className="w-full border-t border-[#E0E0E0] pt-3 flex justify-between items-center text-[8.5px] font-mono tracking-[0.2em] text-[#888888] uppercase">
-          <span>WWW.BIRIM.COM</span>
+        <div className="w-full pt-3 flex justify-between items-center text-[8.5px] font-mono tracking-[0.2em] text-[#888888] uppercase">
+          <span className="lowercase">www.birim.com</span>
           <span>{String(pageNumberLeft).padStart(2, '0')}</span>
         </div>
       </div>
@@ -134,7 +134,7 @@ export const CassinaTriennaleSpread: React.FC<CassinaTriennaleSpreadProps> = ({
         {/* Top Header */}
         <div className="w-full">
           <div className="flex justify-between items-center text-[8.5px] tracking-[0.3em] uppercase text-neutral-500 font-light">
-            <span>{title} &nbsp;/&nbsp; PERSPECTIVE</span>
+            <span>{title} &nbsp;/&nbsp; {lang === 'en' ? 'PERSPECTIVE' : 'PERSPEKTİF'}</span>
             <span className="font-mono">{String(pageNumberRight).padStart(2, '0')}</span>
           </div>
           <div className="w-full border-b border-[#E0E0E0] mt-3" />
@@ -153,7 +153,7 @@ export const CassinaTriennaleSpread: React.FC<CassinaTriennaleSpreadProps> = ({
             />
           ) : (
             <div className="text-neutral-400 text-xs uppercase tracking-widest font-mono">
-              Görsel Hazırlanıyor
+              {lang === 'en' ? 'Image in Preparation' : 'Görsel Hazırlanıyor'}
             </div>
           )}
         </div>
@@ -195,8 +195,8 @@ export const CassinaTriennaleSpread: React.FC<CassinaTriennaleSpreadProps> = ({
         </div>
 
         {/* Footer */}
-        <div className="w-full border-t border-[#E0E0E0] pt-3 mt-3 flex justify-between items-center text-[8.5px] font-mono tracking-[0.2em] text-[#888888] uppercase">
-          <span>WWW.BIRIM.COM</span>
+        <div className="w-full pt-3 mt-3 flex justify-between items-center text-[8.5px] font-mono tracking-[0.2em] text-[#888888] uppercase">
+          <span className="lowercase">www.birim.com</span>
           <span>{String(pageNumberRight).padStart(2, '0')}</span>
         </div>
       </div>

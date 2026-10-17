@@ -36,7 +36,7 @@ export const FlexformCuratedSpread: React.FC<FlexformCuratedSpreadProps> = ({
   const dimImages = product.dimension_images || [];
 
   return (
-    <div className="catalog-spread-row flex flex-row gap-0 print:block">
+    <div className="catalog-spread-row flex flex-row gap-0">
       {/* ========================================================= */}
       {/* LEFT PAGE: 100% Full-Bleed Architectural Visual Anchor    */}
       {/* ========================================================= */}
@@ -52,7 +52,7 @@ export const FlexformCuratedSpread: React.FC<FlexformCuratedSpreadProps> = ({
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-xs text-neutral-400 font-mono uppercase tracking-widest">
-            Görsel Hazırlanıyor
+            {lang === 'en' ? 'Image in Preparation' : 'Görsel Hazırlanıyor'}
           </div>
         )}
 
@@ -71,7 +71,7 @@ export const FlexformCuratedSpread: React.FC<FlexformCuratedSpreadProps> = ({
         <div className="w-full">
           <div className="flex justify-between items-center text-[8.5px] tracking-[0.3em] uppercase text-neutral-500 font-light">
             <BirimLogo variant="black" className="h-6 w-auto object-contain" />
-            <span>COLLECTION &nbsp;/&nbsp; {product.design_year || '2026'}</span>
+            <span>{lang === 'en' ? 'COLLECTION' : 'KOLEKSİYON'} &nbsp;/&nbsp; {product.design_year || '2026'}</span>
           </div>
           <div className="w-full border-b border-[#E2DFD8] mt-3" />
         </div>
@@ -82,7 +82,7 @@ export const FlexformCuratedSpread: React.FC<FlexformCuratedSpreadProps> = ({
             {title}
           </h1>
           <p className="text-[9px] tracking-[0.24em] text-[#6E6A62] uppercase font-normal mt-2">
-            DESIGN: {designersStr}
+            {lang === 'en' ? 'DESIGN' : 'TASARIM'}: {designersStr}
           </p>
           {desc && (
             <p className="text-[10px] leading-[1.7] text-[#4A4740] font-light mt-3 max-w-[130mm]">
@@ -103,14 +103,14 @@ export const FlexformCuratedSpread: React.FC<FlexformCuratedSpreadProps> = ({
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center text-[8px] text-neutral-400 font-mono uppercase">
-                Atelier Craft
+                {lang === 'en' ? 'Atelier Craft' : 'Atölye Zanaatı'}
               </div>
             )}
           </div>
 
           <div className="space-y-2 text-[8.5px] text-[#5A564E] leading-relaxed font-light">
             <div className="font-mono uppercase text-[#948F85] text-[7.5px] tracking-widest">
-              ATELIER PHILOSOPHY
+              {lang === 'en' ? 'ATELIER PHILOSOPHY' : 'ATÖLYE FELSEFESİ'}
             </div>
             <p>
               {lang === 'en'
@@ -118,7 +118,7 @@ export const FlexformCuratedSpread: React.FC<FlexformCuratedSpreadProps> = ({
                 : 'Heykelsi sadelik; sıcak malzeme paleti ve zanaatkar detaylarla buluşuyor.'}
             </p>
             <div className="pt-1 text-[7.5px] font-mono text-[#8C877E] uppercase">
-              SOLID WOOD / MARBLE / BESPOKE TEXTILE
+              {lang === 'en' ? 'SOLID WOOD / MARBLE / BESPOKE TEXTILE' : 'MASİF AHŞAP / MERMER / SEÇKİN TEKSTİL'}
             </div>
           </div>
         </div>
@@ -130,7 +130,7 @@ export const FlexformCuratedSpread: React.FC<FlexformCuratedSpreadProps> = ({
               {lang === 'en' ? 'DIMENSIONS' : 'ÖLÇÜLER'}
             </span>
             <span className="text-[8px] font-mono text-neutral-400">
-              UNIT: CM
+              {lang === 'en' ? 'UNIT: CM' : 'BİRİM: CM'}
             </span>
           </div>
 
@@ -160,8 +160,8 @@ export const FlexformCuratedSpread: React.FC<FlexformCuratedSpreadProps> = ({
         </div>
 
         {/* Footer */}
-        <div className="w-full border-t border-[#E2DFD8] pt-3 mt-2 flex justify-between items-center text-[8px] font-mono tracking-[0.2em] text-[#888888] uppercase">
-          <span>WWW.BIRIM.COM</span>
+        <div className="w-full pt-3 mt-2 flex justify-between items-center text-[8px] font-mono tracking-[0.2em] text-[#888888] uppercase">
+          <span className="lowercase">www.birim.com</span>
           <span>{String(pageNumberRight).padStart(2, '0')}</span>
         </div>
       </div>

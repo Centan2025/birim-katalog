@@ -5,12 +5,12 @@
     "y": -40
   },
   "minotti-hero-tk0243-bench": {
-    "scale": 2.2,
-    "x": 22,
-    "y": 4
+    "scale": 1,
+    "x": 0,
+    "y": 0
   },
   "dim-tk0243-bench-0": {
-    "scale": 1.72,
+    "scale": 1,
     "x": 0,
     "y": 0
   },
@@ -85,7 +85,7 @@
     "y": 0
   },
   "dim-tk0227-feel-0": {
-    "scale": 1.56,
+    "scale": 1,
     "x": 0,
     "y": 0
   },
@@ -115,12 +115,12 @@
     "y": -15
   },
   "dim-tk0207-kum-0": {
-    "scale": 1.8,
+    "scale": 1,
     "x": 0,
     "y": 0
   },
   "dim-tk0207-kum-1": {
-    "scale": 1.88,
+    "scale": 1,
     "x": 0,
     "y": 0
   },
@@ -155,12 +155,12 @@
     "y": 0
   },
   "dim-tk0175-rich-0": {
-    "scale": 1.48,
+    "scale": 1,
     "x": 0,
     "y": 0
   },
   "dim-tk0175-rich-1": {
-    "scale": 1.48,
+    "scale": 1,
     "x": 0,
     "y": 0
   },
@@ -210,9 +210,9 @@
     "y": -5
   },
   "dim-tk0213a-tay-i-0": {
-    "scale": 1.4,
-    "x": -11,
-    "y": 3
+    "scale": 1,
+    "x": 0,
+    "y": 0
   },
   "minotti-hero-tk0213-tay-ii": {
     "scale": 1.96,

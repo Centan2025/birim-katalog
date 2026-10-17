@@ -7,21 +7,25 @@ import {
   OutputFormat,
   CoverVariant,
   CategoryDividerVariant,
-  EditorialVariant
+  EditorialVariant,
+  PdfLayoutMode
 } from '../types/catalog';
 import { BirimLogo } from './BirimLogo';
 import { 
+  BookOpen, 
   Layers, 
-  Printer, 
   Sliders, 
   Check, 
-  Sparkles,
-  ZoomIn,
-  ZoomOut,
-  Maximize2,
-  Save,
-  Download,
-  Upload
+  Printer, 
+  Save, 
+  Download, 
+  Upload,
+  ChevronDown,
+  RotateCcw,
+  Columns,
+  FileText,
+  Loader2,
+  LayoutGrid
 } from 'lucide-react';
 import {
   saveTransformsToDisk,
@@ -65,12 +69,19 @@ interface SidebarProps {
   onToggleMaterials: (val: boolean) => void;
   includePrices: boolean;
   onTogglePrices: (val: boolean) => void;
+  pdfLayout?: PdfLayoutMode;
+  onChangePdfLayout?: (layout: PdfLayoutMode) => void;
   zoom: number;
   onChangeZoom: (delta: number) => void;
   onResetZoom: () => void;
+  isGeneratingPdf?: boolean;
+  onDownloadPdf?: () => void;
   onPrint: () => void;
   totalPages: number;
+  isOpen?: boolean;
 }
+
+type TabType = 'catalog' | 'pages' | 'presets';
 
 export const Sidebar: React.FC<SidebarProps> = ({
   categories,
@@ -103,12 +114,18 @@ export const Sidebar: React.FC<SidebarProps> = ({
   onToggleMaterials,
   includePrices,
   onTogglePrices,
-  zoom,
-  onChangeZoom,
-  onResetZoom,
+  pdfLayout = 'single',
+  onChangePdfLayout,
+  zoom: _zoom,
+  onChangeZoom: _onChangeZoom,
+  onResetZoom: _onResetZoom,
+  isGeneratingPdf = false,
+  onDownloadPdf,
   onPrint,
   totalPages,
+  isOpen = true
 }) => {
+  const [activeTab, setActiveTab] = useState<TabType>('catalog');
   const [savedCount, setSavedCount] = useState<number>(() => getSavedTransformCount());
   const [isSaving, setIsSaving] = useState(false);
   const [saveMsg, setSaveMsg] = useState<string | null>(null);
@@ -148,55 +165,52 @@ export const Sidebar: React.FC<SidebarProps> = ({
     const res = await saveTransformsToDisk();
     setIsSaving(false);
     setSaveMsg(res.message);
-    refreshPresets();
-    setTimeout(() => setSaveMsg(null), 4000);
+    setTimeout(() => setSaveMsg(null), 3500);
   };
 
   const handleSaveNamedPreset = async () => {
     if (!presetName.trim()) {
-      setSaveMsg('Lütfen bir isim yazın.');
+      setSaveMsg('Lütfen bir isim girin.');
       setTimeout(() => setSaveMsg(null), 3000);
       return;
     }
     setIsSaving(true);
-    setSaveMsg(null);
-    const res = await saveNamedPreset(presetName);
+    const res = await saveNamedPreset(presetName.trim());
     setIsSaving(false);
     setSaveMsg(res.message);
-    refreshPresets();
-    setTimeout(() => setSaveMsg(null), 4000);
+    if (res.success) {
+      setPresetName('');
+      refreshPresets();
+    }
+    setTimeout(() => setSaveMsg(null), 3500);
   };
 
   const handleDownloadNamed = () => {
-    exportTransformsWithCustomName(presetName.trim() || 'catalog-kadraj');
+    exportTransformsWithCustomName(presetName.trim() || 'birim-kadraj-ayarlari');
+    setSaveMsg('JSON dosyası indirildi.');
+    setTimeout(() => setSaveMsg(null), 3000);
   };
 
   const handleLoadSelectedPreset = async () => {
     if (!selectedPreset) return;
     setIsSaving(true);
-    const ok = await loadNamedPreset(selectedPreset);
+    const success = await loadNamedPreset(selectedPreset);
     setIsSaving(false);
-    if (ok) {
-      setSaveMsg(`"${selectedPreset}" yüklendi!`);
-    } else {
-      setSaveMsg('Preset yüklenemedi.');
-    }
-    setTimeout(() => setSaveMsg(null), 3000);
+    setSaveMsg(success ? 'Preset başarıyla yüklendi.' : 'Preset yüklenemedi.');
+    setTimeout(() => setSaveMsg(null), 3500);
   };
 
   const handleFileImport = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
+
     const reader = new FileReader();
     reader.onload = (event) => {
       const content = event.target?.result as string;
       if (content) {
         const success = importTransformsFromJson(content);
         if (success) {
-          // If file had a name, save as preset too
-          const filePresetName = file.name.replace(/\.json$/i, '');
-          saveNamedPreset(filePresetName).then(() => refreshPresets());
-          setSaveMsg(`"${file.name}" başarıyla yüklendi!`);
+          setSaveMsg('Kadraj ayarları başarıyla yüklendi.');
         } else {
           setSaveMsg('Geçersiz dosya formatı.');
         }
@@ -207,748 +221,604 @@ export const Sidebar: React.FC<SidebarProps> = ({
     e.target.value = '';
   };
 
+  const isEn = lang === 'en';
+
+  const templates: {
+    id: CatalogTemplateType;
+    title: string;
+    tag: string;
+    desc: string;
+    isPrimary?: boolean;
+  }[] = [
+    {
+      id: 'birim-collection',
+      title: isEn ? 'Birim Collection' : 'Birim Koleksiyon',
+      tag: isEn ? 'Official Format' : 'Resmi Format',
+      desc: isEn ? 'Minimal top header, elegant typography, and 2D CAD technical drawing grid.' : 'Minimal üst aks, zarif tipografi ve 2D CAD teknik çizim gridi.',
+      isPrimary: true
+    },
+    {
+      id: 'minotti-architectural',
+      title: isEn ? 'Architectural Spread' : 'Mimari Çift Sayfa',
+      tag: 'Architectural',
+      desc: isEn ? 'Left cinematic hero visual, right editorial manifesto and technical specs.' : 'Sol sinematik geniş görsel, sağ editoryal manifesto ve teknik detaylar.'
+    },
+    {
+      id: 'bb-italia-monolith',
+      title: isEn ? 'Monolith Studio' : 'Monolith Stüdyo',
+      tag: 'Minimal Monolith',
+      desc: isEn ? 'Generous negative space, isolated sculptural studio object and technical plan.' : 'Geniş negatif alan, izole heykelsi stüdyo objesi ve teknik plan.'
+    },
+    {
+      id: 'cassina-editorial',
+      title: isEn ? 'Editorial Monograph' : 'Editoryal Monograf',
+      tag: 'Editorial',
+      desc: isEn ? 'Left dual macro craft visual, right floating hero perspective and CAD strip.' : 'Sol çift makro zanaat karesi, sağ yüzen ana perspektif ve CAD bandı.'
+    },
+    {
+      id: 'flexform-curated',
+      title: isEn ? 'Craft & Bleed' : 'Zanaat & Bleed',
+      tag: 'Curated',
+      desc: isEn ? 'Left full-bleed visual, right material texture and 3-column schematic.' : 'Sol tam boy bleed görsel, sağ malzeme dokusu ve 3 sütunlu şematik.'
+    },
+    {
+      id: 'poliform-specsheet',
+      title: isEn ? 'Compact Spec Sheet' : 'Kompakt Ürün Föyü',
+      tag: isEn ? 'Single Page' : 'Tek Sayfa',
+      desc: isEn ? '1-page rapid catalog: 50% photo, description, and technical dimensions.' : '1 sayfalık hızlı katalog: %50 fotoğraf, açıklama ve teknik ölçüler.'
+    }
+  ];
+
+  const coverOptions = isEn ? [
+    { value: 'alt-1', label: 'Alt. 1 — Horizontal Minimal Swiss' },
+    { value: 'alt-2', label: 'Alt. 2 — Typographic 26 & Black Spine' },
+    { value: 'alt-3', label: 'Alt. 3 — Architectural Geometry & Layers' },
+    { value: 'alt-4', label: 'Alt. 4 — Vertical Left Minimal' },
+    { value: 'alt-5', label: 'Alt. 5 — Vertical Black Block Column' },
+    { value: 'alt-6', label: 'Alt. 6 — Vertical Right Poster' },
+    { value: 'alt-7', label: 'Alt. 7 — Gallery Frame Monograph' },
+    { value: 'alt-8', label: 'Alt. 8 — Dark Matte Anthracite' },
+    { value: 'alt-9', label: 'Alt. 9 — Swiss Grid / Brutalist' }
+  ] : [
+    { value: 'alt-1', label: 'Alt. 1 — Yatay Minimal Swiss' },
+    { value: 'alt-2', label: 'Alt. 2 — Tipografik 26 & Siyah Sırt' },
+    { value: 'alt-3', label: 'Alt. 3 — Mimari Geometri & Katmanlar' },
+    { value: 'alt-4', label: 'Alt. 4 — Dikey Sol Minimal' },
+    { value: 'alt-5', label: 'Alt. 5 — Dikey Siyah Blok Kolon' },
+    { value: 'alt-6', label: 'Alt. 6 — Dikey Sağ Poster' },
+    { value: 'alt-7', label: 'Alt. 7 — Galeri Çerçeve Monograf' },
+    { value: 'alt-8', label: 'Alt. 8 — Koyu Mat Antrasit' },
+    { value: 'alt-9', label: 'Alt. 9 — İsviçre Izgara / Brütalist' }
+  ];
+
+  const editorialOptions = isEn ? [
+    { value: 'alt-1', label: 'Alt. 1 — Minotti Typographic Manifesto' },
+    { value: 'alt-2', label: 'Alt. 2 — B&B Visual Anchor & Manifesto' },
+    { value: 'alt-3', label: 'Alt. 3 — Flexform Craft & Materiality' },
+    { value: 'alt-4', label: 'Alt. 4 — Living Divani Pure Silence' },
+    { value: 'alt-5', label: 'Alt. 5 — Cassina 3 Core Principles Grid' }
+  ] : [
+    { value: 'alt-1', label: 'Alt. 1 — Minotti Tipografik Manifesto' },
+    { value: 'alt-2', label: 'Alt. 2 — B&B Görsel Çıpa & Manifesto' },
+    { value: 'alt-3', label: 'Alt. 3 — Flexform Zanaat & Malzeme' },
+    { value: 'alt-4', label: 'Alt. 4 — Living Divani Saf Sessizlik' },
+    { value: 'alt-5', label: 'Alt. 5 — Cassina 3 Temel İlke Gridi' }
+  ];
+
+  const dividerOptions = isEn ? [
+    { value: 'alt-1', label: 'Alt. 1 — Minotti Cinematic Architecture' },
+    { value: 'alt-2', label: 'Alt. 2 — B&B Sculptural Monolith & Index' },
+    { value: 'alt-3', label: 'Alt. 3 — Flexform Full-Bleed & Card' },
+    { value: 'alt-4', label: 'Alt. 4 — Living Divani Pure White' },
+    { value: 'alt-5', label: 'Alt. 5 — Poliform Mosaic Grid' },
+    { value: 'alt-6', label: 'Alt. 6 — Birim Classic Official Line' },
+    { value: 'alt-7', label: 'Alt. 7 — Linear Volumetric & Typology Matrix (B&W)' }
+  ] : [
+    { value: 'alt-1', label: 'Alt. 1 — Minotti Sinematik Mimari' },
+    { value: 'alt-2', label: 'Alt. 2 — B&B Heykelsi Monolit & Fihrist' },
+    { value: 'alt-3', label: 'Alt. 3 — Flexform Full-Bleed & Kart' },
+    { value: 'alt-4', label: 'Alt. 4 — Living Divani Sessiz Beyaz' },
+    { value: 'alt-5', label: 'Alt. 5 — Poliform Mozaik Grid' },
+    { value: 'alt-6', label: 'Alt. 6 — Birim Klasik Resmi Çizgi' },
+    { value: 'alt-7', label: 'Alt. 7 — Çizgisel Hacim & Tipoloji Matrisi (S/B)' }
+  ];
+
+  if (!isOpen) return null;
+
   return (
-    <aside className="w-80 bg-neutral-950 border-r border-neutral-800 text-neutral-300 flex flex-col h-screen select-none no-print">
-      {/* Brand Header */}
-      <div className="p-5 border-b border-neutral-800 flex justify-between items-center bg-neutral-900/50">
-        <div>
-          <div className="flex items-center space-x-2">
-            <BirimLogo variant="white" className="h-6 w-auto object-contain" />
-            <span className="text-[9px] bg-neutral-800 text-neutral-300 px-1.5 py-0.5 rounded font-mono">
-              STUDIO
-            </span>
-          </div>
-          <p className="text-[9px] tracking-wider text-neutral-500 uppercase mt-1">
-            Katalog Tasarım Stüdyosu
-          </p>
+    <aside className="w-80 md:w-84 bg-[#0d0d10] border-r border-neutral-800/80 text-neutral-300 flex flex-col h-full select-none no-print transition-all duration-300 z-30 shrink-0">
+      
+      {/* 1. Header / Brand Strip */}
+      <div className="h-14 px-5 border-b border-neutral-800/80 flex items-center justify-between bg-[#0a0a0c]">
+        <div className="flex items-center space-x-2.5">
+          <BirimLogo variant="white" className="h-5 w-auto object-contain" />
+          <span className="text-[10px] tracking-widest text-neutral-400 font-mono border-l border-neutral-800 pl-2">
+            STUDIO
+          </span>
         </div>
 
-        {/* Language Switcher Tabs */}
-        <div className="flex items-center p-0.5 bg-neutral-900 border border-neutral-800 rounded-md">
+        {/* Minimal Language Toggle */}
+        <div className="inline-flex rounded border border-neutral-800 bg-neutral-900/80 p-0.5 text-[11px] font-mono">
           <button
             onClick={() => onChangeLang('tr')}
-            className={`px-2 py-1 text-[10px] font-mono rounded font-medium transition-all ${
-              lang === 'tr'
-                ? 'bg-neutral-100 text-neutral-950 font-semibold shadow-sm'
+            className={`px-2 py-0.5 rounded transition-colors ${
+              lang === 'tr' 
+                ? 'bg-neutral-100 text-neutral-950 font-semibold' 
                 : 'text-neutral-400 hover:text-white'
             }`}
-            title="Türkçe Katalog"
           >
             TR
           </button>
           <button
             onClick={() => onChangeLang('en')}
-            className={`px-2 py-1 text-[10px] font-mono rounded font-medium transition-all ${
-              lang === 'en'
-                ? 'bg-neutral-100 text-neutral-950 font-semibold shadow-sm'
+            className={`px-2 py-0.5 rounded transition-colors ${
+              lang === 'en' 
+                ? 'bg-neutral-100 text-neutral-950 font-semibold' 
                 : 'text-neutral-400 hover:text-white'
             }`}
-            title="English Catalog"
           >
             EN
           </button>
         </div>
       </div>
 
-      {/* Scrollable Configuration Body */}
+      {/* 2. Flat Minimal Tab Bar */}
+      <div className="grid grid-cols-3 border-b border-neutral-800/80 bg-[#0d0d10] text-[11px]">
+        <button
+          onClick={() => setActiveTab('catalog')}
+          className={`py-3 px-2 flex items-center justify-center gap-1.5 font-medium transition-colors border-b-2 ${
+            activeTab === 'catalog'
+              ? 'border-neutral-100 text-white bg-neutral-900/40'
+              : 'border-transparent text-neutral-400 hover:text-neutral-200 hover:bg-neutral-900/20'
+          }`}
+        >
+          <BookOpen className="w-3.5 h-3.5" />
+          <span>{isEn ? 'Catalog' : 'Katalog'}</span>
+        </button>
+
+        <button
+          onClick={() => setActiveTab('pages')}
+          className={`py-3 px-2 flex items-center justify-center gap-1.5 font-medium transition-colors border-b-2 ${
+            activeTab === 'pages'
+              ? 'border-neutral-100 text-white bg-neutral-900/40'
+              : 'border-transparent text-neutral-400 hover:text-neutral-200 hover:bg-neutral-900/20'
+          }`}
+        >
+          <Layers className="w-3.5 h-3.5" />
+          <span>{isEn ? 'Pages' : 'Sayfalar'}</span>
+        </button>
+
+        <button
+          onClick={() => setActiveTab('presets')}
+          className={`py-3 px-2 flex items-center justify-center gap-1.5 font-medium transition-colors border-b-2 relative ${
+            activeTab === 'presets'
+              ? 'border-neutral-100 text-white bg-neutral-900/40'
+              : 'border-transparent text-neutral-400 hover:text-neutral-200 hover:bg-neutral-900/20'
+          }`}
+        >
+          <Sliders className="w-3.5 h-3.5" />
+          <span>{isEn ? 'Framing' : 'Kadraj'}</span>
+          {savedCount > 0 && (
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 absolute top-2.5 right-2" />
+          )}
+        </button>
+      </div>
+
+      {/* 3. Tab Content Area */}
       <div className="flex-1 overflow-y-auto p-5 space-y-6 text-xs">
-        {/* 1. KATALOG KAPSAMI (SCOPE) */}
-        <div className="space-y-2.5">
-          <label className="text-[9.5px] font-semibold tracking-[0.2em] text-neutral-400 uppercase flex items-center gap-1.5">
-            <Layers className="w-3.5 h-3.5 text-neutral-400" />
-            1. {lang === 'en' ? 'Catalog Scope' : 'Katalog Kapsamı'}
-          </label>
-          <div className="grid grid-cols-3 gap-1.5 p-1 bg-neutral-900 rounded-lg border border-neutral-800">
-            <button
-              onClick={() => onChangeFormat('master')}
-              className={`py-1.5 text-[10px] tracking-wider uppercase font-medium rounded transition-all ${
-                selectedFormat === 'master'
-                  ? 'bg-neutral-100 text-neutral-950 shadow-sm'
-                  : 'text-neutral-400 hover:text-white'
-              }`}
-            >
-              {lang === 'en' ? 'Full Catalog' : 'Tüm Katalog'}
-            </button>
-            <button
-              onClick={() => onChangeFormat('category')}
-              className={`py-1.5 text-[10px] tracking-wider uppercase font-medium rounded transition-all ${
-                selectedFormat === 'category'
-                  ? 'bg-neutral-100 text-neutral-950 shadow-sm'
-                  : 'text-neutral-400 hover:text-white'
-              }`}
-            >
-              {lang === 'en' ? 'Category' : 'Kategori'}
-            </button>
-            <button
-              onClick={() => onChangeFormat('product')}
-              className={`py-1.5 text-[10px] tracking-wider uppercase font-medium rounded transition-all ${
-                selectedFormat === 'product'
-                  ? 'bg-neutral-100 text-neutral-950 shadow-sm'
-                  : 'text-neutral-400 hover:text-white'
-              }`}
-            >
-              {lang === 'en' ? 'Product Sheet' : 'Ürün Föyü'}
-            </button>
-          </div>
-        </div>
-
-        {/* 2. KATEGORİ VEYA ÜRÜN SEÇİMİ */}
-        {selectedFormat === 'category' && (
-          <div className="space-y-2">
-            <label className="text-[9.5px] font-semibold tracking-[0.15em] text-neutral-400 uppercase">
-              {lang === 'en' ? `Target Category (${categories.length})` : `Hedef Kategori (${categories.length})`}
-            </label>
-            <select
-              value={selectedCategory}
-              onChange={(e) => onChangeCategory(e.target.value)}
-              className="w-full bg-neutral-900 border border-neutral-800 rounded px-2.5 py-1.5 text-neutral-200 text-xs focus:outline-none focus:border-neutral-500"
-            >
-              {categories.map((c) => {
-                const name = lang === 'en' ? (c.name.en || c.name.tr) : c.name.tr;
-                return (
-                  <option key={c.slug} value={c.slug}>
-                    {name} ({c.product_count} {lang === 'en' ? 'Products' : 'Ürün'})
-                  </option>
-                );
-              })}
-            </select>
-          </div>
-        )}
-
-        {selectedFormat === 'product' && (
-          <div className="space-y-2">
-            <label className="text-[9.5px] font-semibold tracking-[0.15em] text-neutral-400 uppercase">
-              {lang === 'en' ? `Target Product (${products.length})` : `Hedef Ürün (${products.length})`}
-            </label>
-            <select
-              value={selectedProduct}
-              onChange={(e) => onChangeProduct(e.target.value)}
-              className="w-full bg-neutral-900 border border-neutral-800 rounded px-2.5 py-1.5 text-neutral-200 text-xs focus:outline-none focus:border-neutral-500"
-            >
-              {products.map((p) => {
-                const prodName = lang === 'en' ? (p.name.en || p.name.tr) : p.name.tr;
-                const catName = lang === 'en' ? (p.category.name.en || p.category.name.tr) : p.category.name.tr;
-                return (
-                  <option key={p.slug} value={p.slug}>
-                    {prodName} [{catName}]
-                  </option>
-                );
-              })}
-            </select>
-          </div>
-        )}
-
-        {/* 3. İTALYAN TASARIM ŞABLONLARI */}
-        <div className="space-y-2.5">
-          <label className="text-[9.5px] font-semibold tracking-[0.2em] text-neutral-400 uppercase flex items-center gap-1.5">
-            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            2. Tasarım Şablonu
-          </label>
-          <div className="space-y-1.5">
-            {/* Birim Collection (Resmi Şablon) */}
-            <div
-              onClick={() => onChangeTemplate('birim-collection')}
-              className={`p-2.5 rounded-lg border cursor-pointer transition-all ${
-                selectedTemplate === 'birim-collection'
-                  ? 'border-neutral-300 bg-neutral-900 text-white shadow-sm ring-1 ring-neutral-700/50'
-                  : 'border-neutral-800/80 bg-neutral-900/40 text-neutral-400 hover:border-neutral-700'
-              }`}
-            >
-              <div className="flex justify-between items-center">
-                <span className="font-medium text-[11px] flex items-center gap-1.5 text-white">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  Birim Collection (Resmi Şablon)
-                </span>
-                {selectedTemplate === 'birim-collection' && (
-                  <Check className="w-3.5 h-3.5 text-neutral-200" />
-                )}
+        
+        {/* ================= TAB 1: KATALOG (Scope & Template) ================= */}
+        {activeTab === 'catalog' && (
+          <div className="space-y-6">
+            
+            {/* Kapsam Seçimi */}
+            <div className="space-y-2">
+              <span className="text-[10px] tracking-wider uppercase text-neutral-400 font-mono block">
+                {lang === 'en' ? 'Catalog Scope' : 'Katalog Kapsamı'}
+              </span>
+              <div className="grid grid-cols-3 p-1 bg-neutral-900/90 rounded border border-neutral-800">
+                <button
+                  onClick={() => onChangeFormat('master')}
+                  className={`py-1.5 text-[11px] font-medium rounded transition-all ${
+                    selectedFormat === 'master'
+                      ? 'bg-neutral-100 text-neutral-950 shadow-sm'
+                      : 'text-neutral-400 hover:text-white'
+                  }`}
+                >
+                  {lang === 'en' ? 'Full' : 'Tümü'}
+                </button>
+                <button
+                  onClick={() => onChangeFormat('category')}
+                  className={`py-1.5 text-[11px] font-medium rounded transition-all ${
+                    selectedFormat === 'category'
+                      ? 'bg-neutral-100 text-neutral-950 shadow-sm'
+                      : 'text-neutral-400 hover:text-white'
+                  }`}
+                >
+                  {lang === 'en' ? 'Category' : 'Kategori'}
+                </button>
+                <button
+                  onClick={() => onChangeFormat('product')}
+                  className={`py-1.5 text-[11px] font-medium rounded transition-all ${
+                    selectedFormat === 'product'
+                      ? 'bg-neutral-100 text-neutral-950 shadow-sm'
+                      : 'text-neutral-400 hover:text-white'
+                  }`}
+                >
+                  {lang === 'en' ? 'Product' : 'Ürün'}
+                </button>
               </div>
-              <p className="text-[9px] text-neutral-400 mt-1 leading-relaxed">
-                Birebir PDF: Üst logo çizgisi, büyük zarif tipografi, koleksiyonel hero görsel, alt editoryal detay ve 1-3 model yatay çizim veya 6'lı teknik grid.
-              </p>
             </div>
 
-            {/* Architectural Spread */}
-            <div
-              onClick={() => onChangeTemplate('minotti-architectural')}
-              className={`p-2.5 rounded-lg border cursor-pointer transition-all ${
-                selectedTemplate === 'minotti-architectural'
-                  ? 'border-neutral-300 bg-neutral-900 text-white'
-                  : 'border-neutral-800/80 bg-neutral-900/40 text-neutral-400 hover:border-neutral-700'
-              }`}
-            >
-              <div className="flex justify-between items-center">
-                <span className="font-medium text-[11px]">Architectural Spread (Mimari Çift Sayfa)</span>
-                {selectedTemplate === 'minotti-architectural' && (
-                  <Check className="w-3.5 h-3.5 text-neutral-200" />
-                )}
-              </div>
-              <p className="text-[9px] text-neutral-500 mt-1 leading-relaxed">
-                2-Sayfa Spread: Sol tam boy sinematik görsel, Sağ: Büyük mimari tipografi & CAD ölçüleri.
-              </p>
-            </div>
-
-            {/* Monolith Studio */}
-            <div
-              onClick={() => onChangeTemplate('bb-italia-monolith')}
-              className={`p-2.5 rounded-lg border cursor-pointer transition-all ${
-                selectedTemplate === 'bb-italia-monolith'
-                  ? 'border-neutral-300 bg-neutral-900 text-white'
-                  : 'border-neutral-800/80 bg-neutral-900/40 text-neutral-400 hover:border-neutral-700'
-              }`}
-            >
-              <div className="flex justify-between items-center">
-                <span className="font-medium text-[11px]">Monolith Studio (Heykelsi Çift Sayfa)</span>
-                {selectedTemplate === 'bb-italia-monolith' && (
-                  <Check className="w-3.5 h-3.5 text-neutral-200" />
-                )}
-              </div>
-              <p className="text-[9px] text-neutral-500 mt-1 leading-relaxed">
-                2-Sayfa Spread: Sol izole heykelsi stüdyo objesi + bol negatif alan, Sağ: Detay grid & teknik plan.
-              </p>
-            </div>
-
-            {/* Compact Spec Sheet */}
-            <div
-              onClick={() => onChangeTemplate('poliform-specsheet')}
-              className={`p-2.5 rounded-lg border cursor-pointer transition-all ${
-                selectedTemplate === 'poliform-specsheet'
-                  ? 'border-neutral-300 bg-neutral-900 text-white'
-                  : 'border-neutral-800/80 bg-neutral-900/40 text-neutral-400 hover:border-neutral-700'
-              }`}
-            >
-              <div className="flex justify-between items-center">
-                <span className="font-medium text-[11px]">Compact Spec Sheet (Kompakt Tek Sayfa)</span>
-                {selectedTemplate === 'poliform-specsheet' && (
-                  <Check className="w-3.5 h-3.5 text-neutral-200" />
-                )}
-              </div>
-              <p className="text-[9px] text-neutral-500 mt-1 leading-relaxed">
-                1-Sayfa Compact Föy: Üst yarı %50 fotoğraf, alt sol editoryal, alt sağ teknik çizim ve model tablosu.
-              </p>
-            </div>
-
-            {/* Editorial Spread */}
-            <div
-              onClick={() => onChangeTemplate('cassina-editorial')}
-              className={`p-2.5 rounded-lg border cursor-pointer transition-all ${
-                selectedTemplate === 'cassina-editorial'
-                  ? 'border-neutral-300 bg-neutral-900 text-white'
-                  : 'border-neutral-800/80 bg-neutral-900/40 text-neutral-400 hover:border-neutral-700'
-              }`}
-            >
-              <div className="flex justify-between items-center">
-                <span className="font-medium text-[11px]">Editorial Spread (Editoryal & Çift Detay)</span>
-                {selectedTemplate === 'cassina-editorial' && (
-                  <Check className="w-3.5 h-3.5 text-neutral-200" />
-                )}
-              </div>
-              <p className="text-[9px] text-neutral-500 mt-1 leading-relaxed">
-                2-Sayfa Spread: Sol editoryal monografi & çift makro detay (FIG. 01 & 02), Sağ yüzen perspektif & alt CAD teknik bandı.
-              </p>
-            </div>
-
-            {/* Curated Spread */}
-            <div
-              onClick={() => onChangeTemplate('flexform-curated')}
-              className={`p-2.5 rounded-lg border cursor-pointer transition-all ${
-                selectedTemplate === 'flexform-curated'
-                  ? 'border-neutral-300 bg-neutral-900 text-white'
-                  : 'border-neutral-800/80 bg-neutral-900/40 text-neutral-400 hover:border-neutral-700'
-              }`}
-            >
-              <div className="flex justify-between items-center">
-                <span className="font-medium text-[11px]">Curated Spread (Tam Boy Bleed & Zanaat)</span>
-                {selectedTemplate === 'flexform-curated' && (
-                  <Check className="w-3.5 h-3.5 text-neutral-200" />
-                )}
-              </div>
-              <p className="text-[9px] text-neutral-500 mt-1 leading-relaxed">
-                2-Sayfa Spread: Sol %100 tam boy bleed fotoğraf, Sağ sıcak editoryal zanaat hikayesi, ikincil zanaat görseli & 3 sütun teknik şematik.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* 4. MODÜLER BÖLÜM VE SAYFA SEÇENEKLERİ */}
-        <div className="space-y-2.5">
-          <label className="text-[9.5px] font-semibold tracking-[0.2em] text-neutral-400 uppercase flex items-center gap-1.5">
-            <Sliders className="w-3.5 h-3.5 text-neutral-400" />
-            3. Bölüm & Sayfa Eklentileri
-          </label>
-          <div className="space-y-2 bg-neutral-900/70 p-3 rounded-lg border border-neutral-800 text-[10.5px]">
-            <label className="flex items-center justify-between cursor-pointer">
-              <span className="text-neutral-300">Ana Kapak (Master Cover)</span>
-              <input
-                type="checkbox"
-                checked={includeCover}
-                onChange={(e) => onToggleCover(e.target.checked)}
-                className="rounded border-neutral-700 text-neutral-100 focus:ring-0 w-3.5 h-3.5 accent-white"
-              />
-            </label>
-
-            {includeCover && onChangeCoverVariant && (
-              <div className="pt-2 pb-1 border-t border-neutral-800/80 space-y-2">
-                <div className="flex justify-between items-center text-[9px] text-neutral-400">
-                  <span className="uppercase tracking-wider font-medium">Kapak Tasarımı:</span>
-                  <span className="font-mono text-neutral-300">
-                    {coverVariant === 'alt-1' ? 'Alt. 1 (Yatay Minimal)'
-                      : coverVariant === 'alt-2' ? 'Alt. 2 (Yatay 26)'
-                      : coverVariant === 'alt-3' ? 'Alt. 3 (Yatay Mimari)'
-                      : coverVariant === 'alt-4' ? 'Alt. 4 (Dikey Sol)'
-                      : coverVariant === 'alt-5' ? 'Alt. 5 (Dikey Siyah Blok)'
-                      : coverVariant === 'alt-6' ? 'Alt. 6 (Dikey Sağ)'
-                      : coverVariant === 'alt-7' ? 'Alt. 7 (Galeri Çerçeve)'
-                      : coverVariant === 'alt-8' ? 'Alt. 8 (Koyu Monolit)'
-                      : 'Alt. 9 (İsviçre Izgara)'}
-                  </span>
+            {/* Kategori veya Ürün Dropdown */}
+            {selectedFormat === 'category' && (
+              <div className="space-y-2">
+                <div className="flex justify-between items-center text-[10px] tracking-wider uppercase text-neutral-400 font-mono">
+                  <span>{isEn ? 'Target Category' : 'Hedef Kategori'}</span>
+                  <span className="text-neutral-400">{isEn ? `${categories.length} categories` : `${categories.length} adet`}</span>
                 </div>
-
-                {/* Yatay Logo Alternatifleri */}
-                <div className="space-y-1">
-                  <div className="text-[8px] text-neutral-500 uppercase tracking-widest font-mono">
-                    Yatay Logo
-                  </div>
-                  <div className="grid grid-cols-3 gap-1.5">
-                    <button
-                      onClick={() => onChangeCoverVariant('alt-1')}
-                      className={`py-1.5 px-1.5 text-[9px] rounded font-medium transition-all text-center border ${
-                        coverVariant === 'alt-1'
-                          ? 'bg-neutral-100 text-neutral-950 border-white shadow'
-                          : 'bg-neutral-800/80 text-neutral-300 border-neutral-700 hover:bg-neutral-800 hover:text-white'
-                      }`}
-                      title="Alternatif 1: Minimal Swiss Monolith"
-                    >
-                      Alt. 1
-                    </button>
-                    <button
-                      onClick={() => onChangeCoverVariant('alt-2')}
-                      className={`py-1.5 px-1.5 text-[9px] rounded font-medium transition-all text-center border ${
-                        coverVariant === 'alt-2'
-                          ? 'bg-neutral-100 text-neutral-950 border-white shadow'
-                          : 'bg-neutral-800/80 text-neutral-300 border-neutral-700 hover:bg-neutral-800 hover:text-white'
-                      }`}
-                      title="Alternatif 2: Tipografik 26 & Siyah Sırt"
-                    >
-                      Alt. 2
-                    </button>
-                    <button
-                      onClick={() => onChangeCoverVariant('alt-3')}
-                      className={`py-1.5 px-1.5 text-[9px] rounded font-medium transition-all text-center border ${
-                        coverVariant === 'alt-3'
-                          ? 'bg-neutral-100 text-neutral-950 border-white shadow'
-                          : 'bg-neutral-800/80 text-neutral-300 border-neutral-700 hover:bg-neutral-800 hover:text-white'
-                      }`}
-                      title="Alternatif 3: Mimari Geometri & Katmanlar"
-                    >
-                      Alt. 3
-                    </button>
-                  </div>
-                </div>
-
-                {/* Dikey Logo Alternatifleri */}
-                <div className="space-y-1 pt-1">
-                  <div className="text-[8px] text-neutral-500 uppercase tracking-widest font-mono">
-                    Dikey Logo
-                  </div>
-                  <div className="grid grid-cols-3 gap-1.5">
-                    <button
-                      onClick={() => onChangeCoverVariant('alt-4')}
-                      className={`py-1.5 px-1.5 text-[9px] rounded font-medium transition-all text-center border ${
-                        coverVariant === 'alt-4'
-                          ? 'bg-neutral-100 text-neutral-950 border-white shadow'
-                          : 'bg-neutral-800/80 text-neutral-300 border-neutral-700 hover:bg-neutral-800 hover:text-white'
-                      }`}
-                      title="Alternatif 4: Dikey Sol Minimal Monolith"
-                    >
-                      Alt. 4 (Sol)
-                    </button>
-                    <button
-                      onClick={() => onChangeCoverVariant('alt-5')}
-                      className={`py-1.5 px-1.5 text-[9px] rounded font-medium transition-all text-center border ${
-                        coverVariant === 'alt-5'
-                          ? 'bg-neutral-100 text-neutral-950 border-white shadow'
-                          : 'bg-neutral-800/80 text-neutral-300 border-neutral-700 hover:bg-neutral-800 hover:text-white'
-                      }`}
-                      title="Alternatif 5: Dikey Siyah Monolit Kolon & Beyaz Logo"
-                    >
-                      Alt. 5 (Blok)
-                    </button>
-                    <button
-                      onClick={() => onChangeCoverVariant('alt-6')}
-                      className={`py-1.5 px-1.5 text-[9px] rounded font-medium transition-all text-center border ${
-                        coverVariant === 'alt-6'
-                          ? 'bg-neutral-100 text-neutral-950 border-white shadow'
-                          : 'bg-neutral-800/80 text-neutral-300 border-neutral-700 hover:bg-neutral-800 hover:text-white'
-                      }`}
-                      title="Alternatif 6: Dikey Sağ Kılavuz & Poster Tipografisi"
-                    >
-                      Alt. 6 (Sağ)
-                    </button>
-                  </div>
-                </div>
-
-                {/* Modern & Editoryal Alternatifler */}
-                <div className="space-y-1 pt-1">
-                  <div className="text-[8px] text-neutral-500 uppercase tracking-widest font-mono">
-                    Modern Monograf & Koyu
-                  </div>
-                  <div className="grid grid-cols-3 gap-1.5">
-                    <button
-                      onClick={() => onChangeCoverVariant('alt-7')}
-                      className={`py-1.5 px-1.5 text-[9px] rounded font-medium transition-all text-center border ${
-                        coverVariant === 'alt-7'
-                          ? 'bg-neutral-100 text-neutral-950 border-white shadow'
-                          : 'bg-neutral-800/80 text-neutral-300 border-neutral-700 hover:bg-neutral-800 hover:text-white'
-                      }`}
-                      title="Alternatif 7: Galeri Çerçeveli Minimalist Monograf"
-                    >
-                      Alt. 7 (Galeri)
-                    </button>
-                    <button
-                      onClick={() => onChangeCoverVariant('alt-8')}
-                      className={`py-1.5 px-1.5 text-[9px] rounded font-medium transition-all text-center border ${
-                        coverVariant === 'alt-8'
-                          ? 'bg-neutral-100 text-neutral-950 border-white shadow'
-                          : 'bg-neutral-800/80 text-neutral-300 border-neutral-700 hover:bg-neutral-800 hover:text-white'
-                      }`}
-                      title="Alternatif 8: Koyu Stüdyo Monolit (Mat Antrasit)"
-                    >
-                      Alt. 8 (Koyu)
-                    </button>
-                    <button
-                      onClick={() => onChangeCoverVariant('alt-9')}
-                      className={`py-1.5 px-1.5 text-[9px] rounded font-medium transition-all text-center border ${
-                        coverVariant === 'alt-9'
-                          ? 'bg-neutral-100 text-neutral-950 border-white shadow'
-                          : 'bg-neutral-800/80 text-neutral-300 border-neutral-700 hover:bg-neutral-800 hover:text-white'
-                      }`}
-                      title="Alternatif 9: İsviçre Izgara & Brütalist Tipografi"
-                    >
-                      Alt. 9 (Izgara)
-                    </button>
-                  </div>
+                <div className="relative">
+                  <select
+                    value={selectedCategory}
+                    onChange={(e) => onChangeCategory(e.target.value)}
+                    className="w-full appearance-none bg-neutral-900/90 border border-neutral-800 rounded px-3 py-2 text-neutral-100 text-xs focus:outline-none focus:border-neutral-500 pr-8 font-sans"
+                  >
+                    {categories.map((c) => {
+                      const name = lang === 'en' ? (c.name.en || c.name.tr) : c.name.tr;
+                      return (
+                        <option key={c.slug} value={c.slug}>
+                          {name} ({c.product_count} {isEn ? 'products' : 'ürün'})
+                        </option>
+                      );
+                    })}
+                  </select>
+                  <ChevronDown className="w-3.5 h-3.5 text-neutral-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                 </div>
               </div>
             )}
 
-            <label className="flex items-center justify-between cursor-pointer">
-              <span className="text-neutral-300">Manifesto / Editorial</span>
-              <input
-                type="checkbox"
-                checked={includeEditorial}
-                onChange={(e) => onToggleEditorial(e.target.checked)}
-                className="rounded border-neutral-700 text-neutral-100 focus:ring-0 w-3.5 h-3.5 accent-white"
-              />
-            </label>
-
-            {includeEditorial && onChangeEditorialVariant && (
-              <div className="pt-2 pb-1 border-t border-neutral-800/80 space-y-2">
-                <div className="flex justify-between items-center text-[9px] text-neutral-400">
-                  <span className="uppercase tracking-wider font-medium">Manifesto Stili:</span>
-                  <span className="font-mono text-neutral-300">
-                    {editorialVariant === 'alt-1' ? 'Alt. 1 (Minotti Tipografi)'
-                      : editorialVariant === 'alt-2' ? 'Alt. 2 (B&B Görsel Çıpa)'
-                      : editorialVariant === 'alt-3' ? 'Alt. 3 (Flexform Zanaat)'
-                      : editorialVariant === 'alt-4' ? 'Alt. 4 (Living Divani Sessiz)'
-                      : 'Alt. 5 (Cassina 3 İlke)'}
-                  </span>
+            {selectedFormat === 'product' && (
+              <div className="space-y-2">
+                <div className="flex justify-between items-center text-[10px] tracking-wider uppercase text-neutral-400 font-mono">
+                  <span>{isEn ? 'Target Product' : 'Hedef Ürün'}</span>
+                  <span className="text-neutral-400">{isEn ? `${products.length} products` : `${products.length} adet`}</span>
                 </div>
-
-                <div className="grid grid-cols-3 gap-1.5">
-                  <button
-                    type="button"
-                    onClick={() => onChangeEditorialVariant('alt-1')}
-                    className={`px-2 py-1.5 rounded text-[9.5px] border transition-colors ${
-                      editorialVariant === 'alt-1'
-                        ? 'border-neutral-200 bg-neutral-200 text-neutral-900 font-medium'
-                        : 'border-neutral-800 text-neutral-400 hover:border-neutral-700'
-                    }`}
+                <div className="relative">
+                  <select
+                    value={selectedProduct}
+                    onChange={(e) => onChangeProduct(e.target.value)}
+                    className="w-full appearance-none bg-neutral-900/90 border border-neutral-800 rounded px-3 py-2 text-neutral-100 text-xs focus:outline-none focus:border-neutral-500 pr-8 font-sans"
                   >
-                    Alt 1 (Minotti)
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => onChangeEditorialVariant('alt-2')}
-                    className={`px-2 py-1.5 rounded text-[9.5px] border transition-colors ${
-                      editorialVariant === 'alt-2'
-                        ? 'border-neutral-200 bg-neutral-200 text-neutral-900 font-medium'
-                        : 'border-neutral-800 text-neutral-400 hover:border-neutral-700'
-                    }`}
-                  >
-                    Alt 2 (B&B)
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => onChangeEditorialVariant('alt-3')}
-                    className={`px-2 py-1.5 rounded text-[9.5px] border transition-colors ${
-                      editorialVariant === 'alt-3'
-                        ? 'border-neutral-200 bg-neutral-200 text-neutral-900 font-medium'
-                        : 'border-neutral-800 text-neutral-400 hover:border-neutral-700'
-                    }`}
-                  >
-                    Alt 3 (Flexform)
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => onChangeEditorialVariant('alt-4')}
-                    className={`px-2 py-1.5 rounded text-[9.5px] border transition-colors ${
-                      editorialVariant === 'alt-4'
-                        ? 'border-neutral-200 bg-neutral-200 text-neutral-900 font-medium'
-                        : 'border-neutral-800 text-neutral-400 hover:border-neutral-700'
-                    }`}
-                  >
-                    Alt 4 (L.Divani)
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => onChangeEditorialVariant('alt-5')}
-                    className={`px-2 py-1.5 rounded text-[9.5px] border transition-colors ${
-                      editorialVariant === 'alt-5'
-                        ? 'border-neutral-200 bg-neutral-200 text-neutral-900 font-medium'
-                        : 'border-neutral-800 text-neutral-400 hover:border-neutral-700'
-                    }`}
-                  >
-                    Alt 5 (Cassina)
-                  </button>
+                    {products.map((p) => {
+                      const prodName = lang === 'en' ? (p.name.en || p.name.tr) : p.name.tr;
+                      const catName = lang === 'en' ? (p.category.name.en || p.category.name.tr) : p.category.name.tr;
+                      return (
+                        <option key={p.slug} value={p.slug}>
+                          {prodName} — {catName}
+                        </option>
+                      );
+                    })}
+                  </select>
+                  <ChevronDown className="w-3.5 h-3.5 text-neutral-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                 </div>
               </div>
             )}
 
-            <label className="flex items-center justify-between cursor-pointer">
-              <span className="text-neutral-300">İçindekiler Sayfası (TOC)</span>
-              <input
-                type="checkbox"
-                checked={includeTableOfContents}
-                onChange={(e) => onToggleTableOfContents?.(e.target.checked)}
-                className="rounded border-neutral-700 text-neutral-100 focus:ring-0 w-3.5 h-3.5 accent-white"
-              />
-            </label>
+            {/* Tasarım Şablonları */}
+            <div className="space-y-2.5 pt-2">
+              <span className="text-[10px] tracking-wider uppercase text-neutral-400 font-mono block">
+                {isEn ? 'Design Template' : 'Tasarım Şablonu'}
+              </span>
 
+              <div className="space-y-2">
+                {templates.map((tpl) => {
+                  const isSelected = selectedTemplate === tpl.id;
+                  return (
+                    <div
+                      key={tpl.id}
+                      onClick={() => onChangeTemplate(tpl.id)}
+                      className={`p-3 rounded border cursor-pointer transition-all ${
+                        isSelected
+                          ? 'border-neutral-300 bg-neutral-900/90 text-white shadow-sm'
+                          : 'border-neutral-800/80 bg-neutral-950/40 text-neutral-400 hover:border-neutral-700 hover:text-neutral-300'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <span className={`font-medium text-xs ${isSelected ? 'text-white' : 'text-neutral-300'}`}>
+                            {tpl.title}
+                          </span>
+                          <span className={`text-[9px] font-mono px-1.5 py-0.2 rounded border ${
+                            isSelected 
+                              ? 'border-neutral-700 text-neutral-300 bg-neutral-800' 
+                              : 'border-neutral-800 text-neutral-400 bg-neutral-900'
+                          }`}>
+                            {tpl.tag}
+                          </span>
+                        </div>
+                        {isSelected && <Check className="w-3.5 h-3.5 text-white shrink-0" />}
+                      </div>
+                      <p className="text-[10px] text-neutral-400 mt-1 leading-relaxed">
+                        {tpl.desc}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+          </div>
+        )}
+
+        {/* ================= TAB 2: SAYFALAR (Pages & Add-ons) ================= */}
+        {activeTab === 'pages' && (
+          <div className="space-y-5">
+            
+            {/* 1. Ana Kapak */}
+            <div className="p-3.5 bg-neutral-900/50 rounded border border-neutral-800/80 space-y-3">
+              <label className="flex items-center justify-between cursor-pointer">
+                <div>
+                  <span className="font-medium text-neutral-200 block text-xs">{isEn ? 'Front Cover' : 'Ana Kapak'}</span>
+                  <span className="text-[10px] text-neutral-400">{isEn ? 'Front cover page' : 'Ön kapak sayfası'}</span>
+                </div>
+                <input
+                  type="checkbox"
+                  checked={includeCover}
+                  onChange={(e) => onToggleCover(e.target.checked)}
+                  className="rounded border-neutral-700 bg-neutral-950 text-neutral-100 focus:ring-0 w-4 h-4 accent-white cursor-pointer"
+                />
+              </label>
+
+              {includeCover && onChangeCoverVariant && (
+                <div className="pt-2 border-t border-neutral-800/80 space-y-1.5">
+                  <label className="text-[10px] font-mono uppercase text-neutral-400 tracking-wider">
+                    {isEn ? 'Cover Design' : 'Kapak Tasarımı'}
+                  </label>
+                  <div className="relative">
+                    <select
+                      value={coverVariant}
+                      onChange={(e) => onChangeCoverVariant(e.target.value as CoverVariant)}
+                      className="w-full appearance-none bg-neutral-950 border border-neutral-800 rounded px-2.5 py-1.5 text-neutral-200 text-xs focus:outline-none focus:border-neutral-500 pr-7 font-sans"
+                    >
+                      {coverOptions.map((opt) => (
+                        <option key={opt.value} value={opt.value}>
+                          {opt.label}
+                        </option>
+                      ))}
+                    </select>
+                    <ChevronDown className="w-3 h-3 text-neutral-400 absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none" />
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* 2. Manifesto / Editorial */}
+            <div className="p-3.5 bg-neutral-900/50 rounded border border-neutral-800/80 space-y-3">
+              <label className="flex items-center justify-between cursor-pointer">
+                <div>
+                  <span className="font-medium text-neutral-200 block text-xs">{isEn ? 'Architectural Statement' : 'Mimari Yaklaşım'}</span>
+                  <span className="text-[10px] text-neutral-400">{isEn ? 'Manifesto & philosophy page' : 'Manifesto ve felsefe sayfası'}</span>
+                </div>
+                <input
+                  type="checkbox"
+                  checked={includeEditorial}
+                  onChange={(e) => onToggleEditorial(e.target.checked)}
+                  className="rounded border-neutral-700 bg-neutral-950 text-neutral-100 focus:ring-0 w-4 h-4 accent-white cursor-pointer"
+                />
+              </label>
+
+              {includeEditorial && onChangeEditorialVariant && (
+                <div className="pt-2 border-t border-neutral-800/80 space-y-1.5">
+                  <label className="text-[10px] font-mono uppercase text-neutral-400 tracking-wider">
+                    {isEn ? 'Manifesto Layout' : 'Manifesto Düzeni'}
+                  </label>
+                  <div className="relative">
+                    <select
+                      value={editorialVariant}
+                      onChange={(e) => onChangeEditorialVariant(e.target.value as EditorialVariant)}
+                      className="w-full appearance-none bg-neutral-950 border border-neutral-800 rounded px-2.5 py-1.5 text-neutral-200 text-xs focus:outline-none focus:border-neutral-500 pr-7 font-sans"
+                    >
+                      {editorialOptions.map((opt) => (
+                        <option key={opt.value} value={opt.value}>
+                          {opt.label}
+                        </option>
+                      ))}
+                    </select>
+                    <ChevronDown className="w-3 h-3 text-neutral-400 absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none" />
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* 3. İçindekiler Sayfası (TOC) */}
+            <div className="p-3.5 bg-neutral-900/50 rounded border border-neutral-800/80">
+              <label className="flex items-center justify-between cursor-pointer">
+                <div>
+                  <span className="font-medium text-neutral-200 block text-xs">{isEn ? 'Table of Contents (TOC)' : 'İçindekiler (TOC)'}</span>
+                  <span className="text-[10px] text-neutral-400">{isEn ? 'Page directory' : 'Sayfa fihristi'}</span>
+                </div>
+                <input
+                  type="checkbox"
+                  checked={includeTableOfContents}
+                  onChange={(e) => onToggleTableOfContents?.(e.target.checked)}
+                  className="rounded border-neutral-700 bg-neutral-950 text-neutral-100 focus:ring-0 w-4 h-4 accent-white cursor-pointer"
+                />
+              </label>
+            </div>
+
+            {/* 4. Kategori Ara Kapakları */}
             {selectedFormat !== 'product' && (
-              <>
+              <div className="p-3.5 bg-neutral-900/50 rounded border border-neutral-800/80 space-y-3">
                 <label className="flex items-center justify-between cursor-pointer">
-                  <span className="text-neutral-300">Kategori Ara Kapakları</span>
+                  <div>
+                    <span className="font-medium text-neutral-200 block text-xs">{isEn ? 'Category Dividers' : 'Kategori Ara Kapakları'}</span>
+                    <span className="text-[10px] text-neutral-400">{isEn ? 'Section divider pages' : 'Bölüm geçiş kapakları'}</span>
+                  </div>
                   <input
                     type="checkbox"
                     checked={includeCategoryDividers}
                     onChange={(e) => onToggleCategoryDividers(e.target.checked)}
-                    className="rounded border-neutral-700 text-neutral-100 focus:ring-0 w-3.5 h-3.5 accent-white"
+                    className="rounded border-neutral-700 bg-neutral-950 text-neutral-100 focus:ring-0 w-4 h-4 accent-white cursor-pointer"
                   />
                 </label>
 
                 {includeCategoryDividers && onChangeCategoryDividerVariant && (
-                  <div className="pt-2 pb-1 border-t border-neutral-800/80 space-y-2">
-                    <div className="flex justify-between items-center text-[9px] text-neutral-400">
-                      <span className="uppercase tracking-wider font-medium">Ara Kapak Stili:</span>
-                      <span className="font-mono text-neutral-300">
-                        {categoryDividerVariant === 'alt-1' ? 'Alt. 1 (Minotti Mimari)'
-                          : categoryDividerVariant === 'alt-2' ? 'Alt. 2 (B&B Monolit)'
-                          : categoryDividerVariant === 'alt-3' ? 'Alt. 3 (Flexform Bleed)'
-                          : categoryDividerVariant === 'alt-4' ? 'Alt. 4 (Living Divani)'
-                          : categoryDividerVariant === 'alt-5' ? 'Alt. 5 (Poliform Mozaik)'
-                          : 'Alt. 6 (Birim Klasik)'}
-                      </span>
-                    </div>
-
-                    <div className="grid grid-cols-3 gap-1.5">
-                      <button
-                        type="button"
-                        onClick={() => onChangeCategoryDividerVariant('alt-1')}
-                        className={`px-2 py-1.5 rounded text-[9.5px] border transition-colors ${
-                          categoryDividerVariant === 'alt-1'
-                            ? 'border-neutral-200 bg-neutral-200 text-neutral-900 font-medium'
-                            : 'border-neutral-800 text-neutral-400 hover:border-neutral-700'
-                        }`}
+                  <div className="pt-2 border-t border-neutral-800/80 space-y-1.5">
+                    <label className="text-[10px] font-mono uppercase text-neutral-400 tracking-wider">
+                      {isEn ? 'Divider Style' : 'Ara Kapak Stili'}
+                    </label>
+                    <div className="relative">
+                      <select
+                        value={categoryDividerVariant}
+                        onChange={(e) => onChangeCategoryDividerVariant(e.target.value as CategoryDividerVariant)}
+                        className="w-full appearance-none bg-neutral-950 border border-neutral-800 rounded px-2.5 py-1.5 text-neutral-200 text-xs focus:outline-none focus:border-neutral-500 pr-7 font-sans"
                       >
-                        Alt 1 (Minotti)
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => onChangeCategoryDividerVariant('alt-2')}
-                        className={`px-2 py-1.5 rounded text-[9.5px] border transition-colors ${
-                          categoryDividerVariant === 'alt-2'
-                            ? 'border-neutral-200 bg-neutral-200 text-neutral-900 font-medium'
-                            : 'border-neutral-800 text-neutral-400 hover:border-neutral-700'
-                        }`}
-                      >
-                        Alt 2 (B&B)
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => onChangeCategoryDividerVariant('alt-3')}
-                        className={`px-2 py-1.5 rounded text-[9.5px] border transition-colors ${
-                          categoryDividerVariant === 'alt-3'
-                            ? 'border-neutral-200 bg-neutral-200 text-neutral-900 font-medium'
-                            : 'border-neutral-800 text-neutral-400 hover:border-neutral-700'
-                        }`}
-                      >
-                        Alt 3 (Flexform)
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => onChangeCategoryDividerVariant('alt-4')}
-                        className={`px-2 py-1.5 rounded text-[9.5px] border transition-colors ${
-                          categoryDividerVariant === 'alt-4'
-                            ? 'border-neutral-200 bg-neutral-200 text-neutral-900 font-medium'
-                            : 'border-neutral-800 text-neutral-400 hover:border-neutral-700'
-                        }`}
-                      >
-                        Alt 4 (L.Divani)
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => onChangeCategoryDividerVariant('alt-5')}
-                        className={`px-2 py-1.5 rounded text-[9.5px] border transition-colors ${
-                          categoryDividerVariant === 'alt-5'
-                            ? 'border-neutral-200 bg-neutral-200 text-neutral-900 font-medium'
-                            : 'border-neutral-800 text-neutral-400 hover:border-neutral-700'
-                        }`}
-                      >
-                        Alt 5 (Poliform)
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => onChangeCategoryDividerVariant('alt-6')}
-                        className={`px-2 py-1.5 rounded text-[9.5px] border transition-colors ${
-                          categoryDividerVariant === 'alt-6'
-                            ? 'border-neutral-200 bg-neutral-200 text-neutral-900 font-medium'
-                            : 'border-neutral-800 text-neutral-400 hover:border-neutral-700'
-                        }`}
-                      >
-                        Alt 6 (Birim)
-                      </button>
+                        {dividerOptions.map((opt) => (
+                          <option key={opt.value} value={opt.value}>
+                            {opt.label}
+                          </option>
+                        ))}
+                      </select>
+                      <ChevronDown className="w-3 h-3 text-neutral-400 absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none" />
                     </div>
                   </div>
                 )}
-              </>
+              </div>
             )}
 
-            <label className="flex items-center justify-between cursor-pointer">
-              <span className="text-neutral-300">Malzeme Kartela Sayfası</span>
-              <input
-                type="checkbox"
-                checked={includeMaterials}
-                onChange={(e) => onToggleMaterials(e.target.checked)}
-                className="rounded border-neutral-700 text-neutral-100 focus:ring-0 w-3.5 h-3.5 accent-white"
-              />
-            </label>
+            {/* 5. Malzeme & Fiyat Sayfaları */}
+            <div className="p-3.5 bg-neutral-900/50 rounded border border-neutral-800/80 space-y-3">
+              <label className="flex items-center justify-between cursor-pointer">
+                <div>
+                  <span className="font-medium text-neutral-200 block text-xs">{isEn ? 'Material Swatches' : 'Malzeme Kartelası'}</span>
+                  <span className="text-[10px] text-neutral-400">{isEn ? 'Fabric, leather and finish samples' : 'Kumaş, deri ve kaplama örnekleri'}</span>
+                </div>
+                <input
+                  type="checkbox"
+                  checked={includeMaterials}
+                  onChange={(e) => onToggleMaterials(e.target.checked)}
+                  className="rounded border-neutral-700 bg-neutral-950 text-neutral-100 focus:ring-0 w-4 h-4 accent-white cursor-pointer"
+                />
+              </label>
 
-            <label className="flex items-center justify-between cursor-pointer">
-              <span className="text-neutral-300">Fiyat Listesi Sayfası</span>
-              <input
-                type="checkbox"
-                checked={includePrices}
-                onChange={(e) => onTogglePrices(e.target.checked)}
-                className="rounded border-neutral-700 text-neutral-100 focus:ring-0 w-3.5 h-3.5 accent-white"
-              />
-            </label>
+              <div className="pt-2 border-t border-neutral-800/80">
+                <label className="flex items-center justify-between cursor-pointer">
+                  <div>
+                    <span className="font-medium text-neutral-200 block text-xs">{isEn ? 'Price List' : 'Fiyat Listesi'}</span>
+                    <span className="text-[10px] text-neutral-400">{isEn ? 'Tabular pricing and dimension specs' : 'Tablolu fiyat ve ölçü dökümü'}</span>
+                  </div>
+                  <input
+                    type="checkbox"
+                    checked={includePrices}
+                    onChange={(e) => onTogglePrices(e.target.checked)}
+                    className="rounded border-neutral-700 bg-neutral-950 text-neutral-100 focus:ring-0 w-4 h-4 accent-white cursor-pointer"
+                  />
+                </label>
+              </div>
+            </div>
+
           </div>
-        </div>
+        )}
 
-        {/* 4. GÖRSEL KADRAJ & PRESET YÖNETİMİ */}
-        <div className="space-y-2.5">
-          <div className="flex items-center justify-between">
-            <label className="text-[9.5px] font-semibold tracking-[0.2em] text-neutral-400 uppercase flex items-center gap-1.5">
-              <Save className="w-3.5 h-3.5 text-neutral-400" />
-              4. Kadraj Ayarları & Preset
-            </label>
-            {savedCount > 0 && (
-              <span className="text-[8.5px] font-mono text-emerald-400 bg-emerald-950/70 px-1.5 py-0.5 rounded border border-emerald-800/60">
-                {savedCount} Kadraj
-              </span>
-            )}
-          </div>
-
-          <div className="space-y-2.5 bg-neutral-900/70 p-3 rounded-lg border border-neutral-800 text-[10.5px]">
+        {/* ================= TAB 3: KADRAJ & PRESET ================= */}
+        {activeTab === 'presets' && (
+          <div className="space-y-5">
+            
             {saveMsg && (
-              <div className="text-[9px] text-emerald-400 bg-emerald-950/70 p-2 rounded border border-emerald-800/80 font-medium">
+              <div className="text-[11px] text-emerald-400 bg-emerald-950/60 p-2.5 rounded border border-emerald-800/60 font-medium">
                 {saveMsg}
               </div>
             )}
 
-            {/* A. Özel İsimle Kaydet & İndir */}
-            <div className="space-y-1.5 border-b border-neutral-800/80 pb-2.5">
-              <label className="text-[8.5px] text-neutral-400 font-medium uppercase tracking-wider block">
-                Özel İsimle Kaydet:
+            {/* Kadraj Durumu Bilgisi */}
+            <div className="flex items-center justify-between p-3 bg-neutral-900/50 rounded border border-neutral-800/80">
+              <span className="text-xs text-neutral-300">{isEn ? 'Custom Framed Images' : 'Özel Kadrajlanmış Görseller'}</span>
+              <span className="text-[11px] font-mono text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-800/80">
+                {isEn ? `${savedCount} images` : `${savedCount} adet`}
+              </span>
+            </div>
+
+            {/* Özel İsimle Kaydet & İndir */}
+            <div className="p-3.5 bg-neutral-900/50 rounded border border-neutral-800/80 space-y-3">
+              <label className="text-[10px] font-mono uppercase text-neutral-400 tracking-wider block">
+                {isEn ? 'Create Custom Preset' : 'Özel Preset Oluştur'}
               </label>
               <input
                 type="text"
                 value={presetName}
                 onChange={(e) => setPresetName(e.target.value)}
-                placeholder="Örn: Koltuklar-V1, Baski-Kadraj..."
-                className="w-full bg-neutral-950 border border-neutral-800 rounded px-2.5 py-1 text-neutral-200 text-xs focus:outline-none focus:border-neutral-500 placeholder:text-neutral-600 font-mono"
+                placeholder={isEn ? 'e.g. Print-Framing, Catalog-2026...' : 'Örn: Baski-Kadraj, Katalog-2026...'}
+                className="w-full bg-neutral-950 border border-neutral-800 rounded px-3 py-2 text-neutral-200 text-xs focus:outline-none focus:border-neutral-500 placeholder:text-neutral-600 font-mono"
               />
-              <div className="grid grid-cols-2 gap-1.5 pt-1">
+              <div className="grid grid-cols-2 gap-2">
                 <button
                   onClick={handleSaveNamedPreset}
                   disabled={isSaving}
-                  className="py-1.5 px-2 bg-neutral-100 hover:bg-white text-neutral-950 text-[9.5px] font-semibold rounded flex items-center justify-center gap-1 transition-all shadow-sm"
-                  title="Bu isimle diske ve tarayıcıya preset olarak kaydeder"
+                  className="py-2 px-2 bg-neutral-100 hover:bg-white text-neutral-950 text-xs font-medium rounded flex items-center justify-center gap-1.5 transition-all shadow-sm disabled:opacity-50"
                 >
-                  <Save className="w-3 h-3 text-neutral-900" />
-                  <span>{isSaving ? '...' : 'İsimle Kaydet'}</span>
+                  <Save className="w-3.5 h-3.5 text-neutral-900" />
+                  <span>{isSaving ? '...' : (isEn ? 'Save Preset' : 'Preset Kaydet')}</span>
                 </button>
                 <button
                   onClick={handleDownloadNamed}
-                  className="py-1.5 px-2 bg-neutral-800 hover:bg-neutral-700 text-neutral-200 text-[9.5px] font-medium rounded flex items-center justify-center gap-1 transition-all border border-neutral-700"
-                  title="Bu isimle .json dosyası olarak indirir"
+                  className="py-2 px-2 bg-neutral-800 hover:bg-neutral-700 text-neutral-200 text-xs font-medium rounded flex items-center justify-center gap-1.5 transition-all border border-neutral-700"
                 >
-                  <Download className="w-3 h-3 text-neutral-400" />
-                  <span>İsimle İndir</span>
+                  <Download className="w-3.5 h-3.5 text-neutral-400" />
+                  <span>{isEn ? 'Download JSON' : 'JSON İndir'}</span>
                 </button>
               </div>
             </div>
 
-            {/* B. Kayıtlı Presetlerden Yükle */}
+            {/* Kayıtlı Presetler */}
             {availablePresets.length > 0 && (
-              <div className="space-y-1.5 border-b border-neutral-800/80 pb-2.5">
-                <label className="text-[8.5px] text-neutral-400 font-medium uppercase tracking-wider block">
-                  Kayıtlı Preset'ten Yükle ({availablePresets.length}):
-                </label>
-                <div className="flex gap-1.5">
-                  <select
-                    value={selectedPreset}
-                    onChange={(e) => setSelectedPreset(e.target.value)}
-                    className="flex-1 bg-neutral-950 border border-neutral-800 rounded px-2 py-1 text-neutral-200 text-xs focus:outline-none focus:border-neutral-500 font-mono"
-                  >
-                    {availablePresets.map((p) => (
-                      <option key={p} value={p}>
-                        {p}
-                      </option>
-                    ))}
-                  </select>
+              <div className="p-3.5 bg-neutral-900/50 rounded border border-neutral-800/80 space-y-2.5">
+                <div className="flex justify-between items-center text-[10px] font-mono uppercase text-neutral-400 tracking-wider">
+                  <span>{isEn ? 'Saved Presets' : 'Kayıtlı Presetler'}</span>
+                  <span>{availablePresets.length}</span>
+                </div>
+                <div className="flex gap-2">
+                  <div className="relative flex-1">
+                    <select
+                      value={selectedPreset}
+                      onChange={(e) => setSelectedPreset(e.target.value)}
+                      className="w-full appearance-none bg-neutral-950 border border-neutral-800 rounded px-2.5 py-1.5 text-neutral-200 text-xs focus:outline-none focus:border-neutral-500 pr-7 font-mono"
+                    >
+                      {availablePresets.map((p) => (
+                        <option key={p} value={p}>
+                          {p}
+                        </option>
+                      ))}
+                    </select>
+                    <ChevronDown className="w-3 h-3 text-neutral-400 absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none" />
+                  </div>
                   <button
                     onClick={handleLoadSelectedPreset}
                     disabled={isSaving}
-                    className="py-1 px-3 bg-neutral-100 hover:bg-white text-neutral-950 text-[9.5px] font-semibold rounded transition-colors shadow-sm"
-                    title="Seçili preset'i anında yükle ve uygula"
+                    className="py-1.5 px-3 bg-neutral-100 hover:bg-white text-neutral-950 text-xs font-medium rounded transition-colors shadow-sm disabled:opacity-50"
                   >
-                    Yükle
+                    {isEn ? 'Load' : 'Yükle'}
                   </button>
                 </div>
               </div>
             )}
 
-            {/* C. Dosyadan JSON Yükle & Hızlı İşlemler */}
-            <div className="flex items-center justify-between pt-0.5">
+            {/* Hızlı İşlemler */}
+            <div className="p-3 bg-neutral-900/30 rounded border border-neutral-800/60 flex items-center justify-between text-xs">
               <button
                 onClick={() => fileInputRef.current?.click()}
-                className="text-[9.5px] text-neutral-300 hover:text-white flex items-center gap-1 transition-colors"
-                title="Bilgisayarınızdaki herhangi bir isimdeki .json kadraj dosyasını yükleyin"
+                className="text-neutral-300 hover:text-white flex items-center gap-1.5 transition-colors"
               >
-                <Upload className="w-3 h-3 text-neutral-400" />
-                <span>Dosyadan JSON Yükle</span>
+                <Upload className="w-3.5 h-3.5 text-neutral-400" />
+                <span>{isEn ? 'Import JSON' : 'JSON Yükle'}</span>
               </button>
 
               <button
                 onClick={handleSaveDisk}
                 disabled={isSaving}
-                className="text-[9.5px] text-emerald-400 hover:text-emerald-300 flex items-center gap-1 transition-colors"
-                title="Varsayılan catalog-image-transforms.json dosyasına hızlı kaydet"
+                className="text-emerald-400 hover:text-emerald-300 flex items-center gap-1.5 transition-colors"
               >
-                <Save className="w-3 h-3" />
-                <span>Hızlı Kaydet</span>
+                <Save className="w-3.5 h-3.5" />
+                <span>{isEn ? 'Quick Save' : 'Hızlı Kaydet'}</span>
               </button>
 
               <input
@@ -961,66 +831,113 @@ export const Sidebar: React.FC<SidebarProps> = ({
             </div>
 
             {savedCount > 0 && (
-              <div className="pt-1 border-t border-neutral-800/60">
-                <button
-                  onClick={() => {
-                    if (window.confirm('Tüm görsel kadrajlarını sıfırlamak istediğinize emin misiniz?')) {
-                      resetAllTransforms();
-                    }
-                  }}
-                  className="w-full text-[9px] text-neutral-500 hover:text-red-400 transition-colors text-center block"
-                >
-                  Tüm Kadrajları Sıfırla
-                </button>
-              </div>
+              <button
+                onClick={() => {
+                  if (window.confirm(isEn ? 'Are you sure you want to reset all image framing?' : 'Tüm görsel kadrajlarını sıfırlamak istediğinize emin misiniz?')) {
+                    resetAllTransforms();
+                  }
+                }}
+                className="w-full py-2 text-[11px] text-neutral-400 hover:text-red-400 border border-transparent hover:border-red-900/50 rounded transition-colors flex items-center justify-center gap-1.5"
+              >
+                <RotateCcw className="w-3 h-3" />
+                <span>{isEn ? 'Reset All Framing' : 'Tüm Kadrajları Sıfırla'}</span>
+              </button>
             )}
+
           </div>
+        )}
+
+      </div>
+
+      {/* 4. Bottom Sticky Summary / Quick Actions */}
+      <div className="p-4 border-t border-neutral-800/80 bg-[#0a0a0c] space-y-3">
+        {/* PDF Layout Mode Switcher */}
+        <div className="space-y-1.5">
+          <label className="text-[10px] font-mono uppercase text-neutral-400 tracking-wider block">
+            {isEn ? 'PDF Layout / Spread' : 'PDF Sayfa Düzeni'}
+          </label>
+          <div className="grid grid-cols-3 gap-1 bg-neutral-900/90 p-1 rounded border border-neutral-800">
+            <button
+              onClick={() => onChangePdfLayout?.('mixed')}
+              className={`py-1.5 px-1.5 rounded text-[10px] font-medium transition-all flex flex-col items-center justify-center gap-1 ${
+                pdfLayout === 'mixed'
+                  ? 'bg-neutral-100 text-neutral-950 font-semibold shadow-sm'
+                  : 'text-neutral-400 hover:text-white'
+              }`}
+              title={isEn ? 'As Seen on Screen (Cover Single A4 + Products 2-Page Spread)' : 'Ekrandaki Gibi (Kapak Tek A4 + Ürünler 2\'li Açılım)'}
+            >
+              <LayoutGrid className="w-3 h-3" />
+              <span>{isEn ? 'Screen' : 'Ekrandaki'}</span>
+            </button>
+            <button
+              onClick={() => onChangePdfLayout?.('spread')}
+              className={`py-1.5 px-1.5 rounded text-[10px] font-medium transition-all flex flex-col items-center justify-center gap-1 ${
+                pdfLayout === 'spread'
+                  ? 'bg-neutral-100 text-neutral-950 font-semibold shadow-sm'
+                  : 'text-neutral-400 hover:text-white'
+              }`}
+              title={isEn ? 'All 2-Page Spreads (A3 Landscape 420x297)' : 'Tüm Sayfalar 2\'li Açılım (A3 Yatay)'}
+            >
+              <Columns className="w-3 h-3" />
+              <span>{isEn ? 'Spread' : 'Açılım'}</span>
+            </button>
+            <button
+              onClick={() => onChangePdfLayout?.('single')}
+              className={`py-1.5 px-1.5 rounded text-[10px] font-medium transition-all flex flex-col items-center justify-center gap-1 ${
+                pdfLayout === 'single'
+                  ? 'bg-neutral-100 text-neutral-950 font-semibold shadow-sm'
+                  : 'text-neutral-400 hover:text-white'
+              }`}
+              title={isEn ? 'All Single Pages (A4 Portrait 210x297)' : 'Tüm Sayfalar Tekli A4 Dikey'}
+            >
+              <FileText className="w-3 h-3" />
+              <span>{isEn ? 'Single' : 'Tekli A4'}</span>
+            </button>
+          </div>
+        </div>
+
+        <div className="flex justify-between items-center text-[11px] text-neutral-400">
+          <span className="font-mono">{isEn ? 'Total Scope' : 'Toplam Hacim'}</span>
+          <span className="font-mono text-white font-medium bg-neutral-900 px-2 py-0.5 rounded border border-neutral-800">
+            {pdfLayout === 'spread' 
+              ? `${Math.ceil(totalPages / 2)} ${isEn ? 'Spreads (A3)' : 'Açılım (A3)'} · ${totalPages} S.`
+              : `${totalPages} ${isEn ? 'Pages A4' : 'Sayfa A4'}`}
+          </span>
+        </div>
+
+        <div className="flex gap-1.5">
+          <button
+            onClick={onDownloadPdf || onPrint}
+            disabled={isGeneratingPdf}
+            className="flex-1 flex items-center justify-center space-x-2 py-2.5 px-3 bg-white hover:bg-neutral-200 disabled:bg-neutral-800 disabled:text-neutral-500 text-neutral-950 font-medium text-xs tracking-wider uppercase rounded transition-all active:scale-[0.99] shadow-sm"
+          >
+            {isGeneratingPdf ? (
+              <>
+                <Loader2 className="w-3.5 h-3.5 animate-spin text-neutral-950" />
+                <span>{isEn ? 'Generating PDF...' : 'PDF İndiriliyor...'}</span>
+              </>
+            ) : (
+              <>
+                <Download className="w-3.5 h-3.5 text-neutral-950" />
+                <span>
+                  {pdfLayout === 'spread'
+                    ? (isEn ? 'Download Spread PDF' : 'İkili Açılım PDF İndir')
+                    : (isEn ? 'Download PDF' : 'PDF İndir')}
+                </span>
+              </>
+            )}
+          </button>
+
+          <button
+            onClick={onPrint}
+            title={isEn ? 'Print Dialog (Preview)' : 'Yazıcı İletişim Kutusu (Önizleme)'}
+            className="p-2.5 bg-neutral-900 hover:bg-neutral-800 text-neutral-400 hover:text-white border border-neutral-800 rounded transition-colors"
+          >
+            <Printer className="w-3.5 h-3.5" />
+          </button>
         </div>
       </div>
 
-      {/* Bottom Bar: Zoom Controls & High-Res PDF Action */}
-      <div className="p-4 border-t border-neutral-800 bg-neutral-900/60 space-y-3">
-        {/* Zoom & Page Count */}
-        <div className="flex justify-between items-center text-[10px] text-neutral-400">
-          <div className="flex items-center space-x-1">
-            <button
-              onClick={() => onChangeZoom(-10)}
-              className="p-1 rounded hover:bg-neutral-800 hover:text-white transition-colors"
-              title="Uzaklaş"
-            >
-              <ZoomOut className="w-3.5 h-3.5" />
-            </button>
-            <span className="font-mono text-neutral-300 w-10 text-center">{zoom}%</span>
-            <button
-              onClick={() => onChangeZoom(10)}
-              className="p-1 rounded hover:bg-neutral-800 hover:text-white transition-colors"
-              title="Yakınlaş"
-            >
-              <ZoomIn className="w-3.5 h-3.5" />
-            </button>
-            <button
-              onClick={onResetZoom}
-              className="p-1 rounded hover:bg-neutral-800 hover:text-white transition-colors"
-              title="Sıfırla"
-            >
-              <Maximize2 className="w-3 h-3" />
-            </button>
-          </div>
-
-          <div className="font-mono">
-            {totalPages} Sayfa Derlendi
-          </div>
-        </div>
-
-        {/* Direct High-Res PDF / Print Export */}
-        <button
-          onClick={onPrint}
-          className="w-full flex items-center justify-center space-x-2 py-2.5 px-4 bg-neutral-100 hover:bg-white text-neutral-950 font-medium text-[11px] tracking-wider uppercase rounded-lg shadow-lg transition-all active:scale-[0.98]"
-        >
-          <Printer className="w-4 h-4 text-neutral-900" />
-          <span>300 DPI PDF İndir / Yazdır</span>
-        </button>
-      </div>
     </aside>
   );
 };

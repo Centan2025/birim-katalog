@@ -11,6 +11,7 @@ interface CategoryDividerProps {
   pageNumber?: number;
   lang?: Language;
   variant?: CategoryDividerVariant;
+  onSelectProduct?: (product: CatalogProduct) => void;
 }
 
 const capitalizeTr = (text: string): string => {
@@ -27,6 +28,7 @@ export const CategoryDivider: React.FC<CategoryDividerProps> = ({
   pageNumber = 1,
   lang = 'tr',
   variant = 'alt-1',
+  onSelectProduct,
 }) => {
   const isTr = lang === 'tr';
   const indexStr = String(categoryIndex + 1).padStart(2, '0');
@@ -52,9 +54,6 @@ export const CategoryDivider: React.FC<CategoryDividerProps> = ({
         {/* Top Folio */}
         <div className="flex justify-between items-center text-[10px] tracking-[0.25em] uppercase text-neutral-600 font-medium hairline-b pb-3">
           <BirimLogo variant="black" className="h-6 w-auto object-contain" />
-          <span className="font-mono text-neutral-400">
-            {isTr ? `BÖLÜM ${indexStr} // MİMARİ SERİLER` : `SECTION ${indexStr} // ARCHITECTURAL SERIES`}
-          </span>
         </div>
 
         {/* Central Frameless Hero Visual */}
@@ -120,8 +119,8 @@ export const CategoryDivider: React.FC<CategoryDividerProps> = ({
         </div>
 
         {/* Footer */}
-        <div className="flex justify-between items-center text-[9px] tracking-[0.2em] uppercase text-neutral-400 hairline-t pt-3 mt-2">
-          <span>WWW.BIRIM.COM</span>
+        <div className="flex justify-between items-center text-[9px] tracking-[0.2em] uppercase text-neutral-400 pt-3 mt-2">
+          <span className="lowercase">www.birim.com</span>
           <span className="font-mono">{String(pageNumber).padStart(2, '0')}</span>
         </div>
       </div>
@@ -170,7 +169,7 @@ export const CategoryDivider: React.FC<CategoryDividerProps> = ({
             {categoryProducts.length > 0 && (
               <div className="space-y-1.5 pt-2">
                 <span className="text-[8px] font-mono tracking-[0.25em] uppercase text-neutral-400 font-semibold block">
-                  {isTr ? 'BÖLÜM MODELLERİ' : 'INDEXED MODELS'}
+                  {isTr ? 'MODELLER' : 'MODELS'}
                 </span>
                 <div className="space-y-1">
                   {categoryProducts.slice(0, 7).map((p, idx) => (
@@ -211,8 +210,8 @@ export const CategoryDivider: React.FC<CategoryDividerProps> = ({
         </div>
 
         {/* Footer */}
-        <div className="flex justify-between items-center text-[9px] tracking-[0.25em] uppercase text-neutral-400 hairline-t pt-3">
-          <span>WWW.BIRIM.COM</span>
+        <div className="flex justify-between items-center text-[9px] tracking-[0.25em] uppercase text-neutral-400 pt-3">
+          <span className="lowercase">www.birim.com</span>
           <span className="font-mono">{String(pageNumber).padStart(2, '0')}</span>
         </div>
       </div>
@@ -243,9 +242,6 @@ export const CategoryDivider: React.FC<CategoryDividerProps> = ({
         {/* Top Folio Overlay */}
         <div className="relative z-10 p-[18mm] pb-0 flex justify-between items-center text-white/90">
           <BirimLogo variant="white" className="h-6 w-auto object-contain drop-shadow" />
-          <span className="text-[9.5px] font-mono tracking-[0.25em] uppercase drop-shadow text-white/80">
-            CHAPTER // {indexStr}
-          </span>
         </div>
 
         {/* Bottom Floating Luxury Glass Card */}
@@ -262,9 +258,9 @@ export const CategoryDivider: React.FC<CategoryDividerProps> = ({
                 {displaySubtitle}
               </p>
             )}
-            <div className="flex justify-between items-center hairline-t pt-3 text-[8.5px] font-mono text-neutral-500 uppercase tracking-widest">
+            <div className="flex justify-between items-center pt-3 text-[8.5px] font-mono text-neutral-500 uppercase tracking-widest">
               <span>{categoryProducts.length} {isTr ? 'SEÇKİN MODEL' : 'CURATED MODELS'}</span>
-              <span>WWW.BIRIM.COM</span>
+              <span className="lowercase">www.birim.com</span>
             </div>
           </div>
         </div>
@@ -316,7 +312,7 @@ export const CategoryDivider: React.FC<CategoryDividerProps> = ({
           </div>
 
           <div className="flex justify-between items-center text-[8.5px] font-mono tracking-[0.25em] text-neutral-400 uppercase pt-1">
-            <span>WWW.BIRIM.COM</span>
+            <span className="lowercase">www.birim.com</span>
             <span>{String(pageNumber).padStart(2, '0')}</span>
           </div>
         </div>
@@ -333,9 +329,6 @@ export const CategoryDivider: React.FC<CategoryDividerProps> = ({
         {/* Top Folio */}
         <div className="flex justify-between items-center text-[9.5px] tracking-[0.25em] uppercase text-neutral-500 hairline-b pb-3">
           <BirimLogo variant="black" className="h-6 w-auto object-contain" />
-          <span className="font-mono text-neutral-400">
-            {isTr ? `BÖLÜM DİZİNİ / ${indexStr}` : `SECTION DIRECTORY / ${indexStr}`}
-          </span>
         </div>
 
         {/* Title Bar */}
@@ -406,9 +399,153 @@ export const CategoryDivider: React.FC<CategoryDividerProps> = ({
         </div>
 
         {/* Footer */}
-        <div className="flex justify-between items-center text-[9px] tracking-[0.25em] uppercase text-neutral-400 hairline-t pt-3">
-          <span>WWW.BIRIM.COM</span>
+        <div className="flex justify-between items-center text-[9px] tracking-[0.25em] uppercase text-neutral-400 pt-3">
+          <span className="lowercase">www.birim.com</span>
           <span className="font-mono">{String(pageNumber).padStart(2, '0')}</span>
+        </div>
+      </div>
+    );
+  }
+
+  // =========================================================================
+  // ALT 7: MONOCHROME VOLUMETRIC TYPOLOGY (Çizgisel Hacim & Ürün Matrisi)
+  // =========================================================================
+  if (variant === 'alt-7') {
+    // Dynamic grid columns & card heights to guarantee perfect fit on A4
+    const count = categoryProducts.length;
+    let gridColsClass = 'grid-cols-4 gap-x-4 gap-y-3';
+    let cardHeightClass = 'h-[37mm]';
+    let thumbHeightClass = 'h-[29mm]';
+
+    if (count <= 6) {
+      gridColsClass = 'grid-cols-3 gap-6';
+      cardHeightClass = 'h-[50mm]';
+      thumbHeightClass = 'h-[40mm]';
+    } else if (count <= 12) {
+      gridColsClass = 'grid-cols-4 gap-4';
+      cardHeightClass = 'h-[44mm]';
+      thumbHeightClass = 'h-[35mm]';
+    } else if (count <= 20) {
+      gridColsClass = 'grid-cols-4 gap-x-4 gap-y-3';
+      cardHeightClass = 'h-[37mm]';
+      thumbHeightClass = 'h-[29mm]';
+    } else {
+      // 21-25+ products
+      gridColsClass = 'grid-cols-4 gap-x-3 gap-y-2';
+      cardHeightClass = 'h-[33mm]';
+      thumbHeightClass = 'h-[26mm]';
+    }
+
+    return (
+      <div className="catalog-page bg-[#FFFFFF] p-[16mm] flex flex-col justify-between select-none relative">
+        {/* SVG Contour Edge-Detection Filter: Deep dark lines, noise-suppression, 100% white background */}
+        <svg className="absolute w-0 h-0 pointer-events-none opacity-0" aria-hidden="true">
+          <filter id="photo-contour" colorInterpolationFilters="sRGB">
+            <feColorMatrix
+              type="matrix"
+              values="0.33 0.33 0.33 0 0
+                      0.33 0.33 0.33 0 0
+                      0.33 0.33 0.33 0 0
+                      0    0    0    1 0"
+              result="gray"
+            />
+            <feComponentTransfer in="gray" result="cleaned">
+              <feFuncR type="linear" slope="1.4" intercept="-0.15" />
+              <feFuncG type="linear" slope="1.4" intercept="-0.15" />
+              <feFuncB type="linear" slope="1.4" intercept="-0.15" />
+            </feComponentTransfer>
+            <feGaussianBlur in="cleaned" stdDeviation="0.75" result="smooth" />
+            <feConvolveMatrix
+              in="smooth"
+              order="3"
+              kernelMatrix="-1 -1 -1 -1 8 -1 -1 -1 -1"
+              preserveAlpha="true"
+              result="edges"
+            />
+            <feComponentTransfer in="edges" result="inverted">
+              <feFuncR type="linear" slope="-16" intercept="1.08" />
+              <feFuncG type="linear" slope="-16" intercept="1.08" />
+              <feFuncB type="linear" slope="-16" intercept="1.08" />
+            </feComponentTransfer>
+          </filter>
+        </svg>
+
+        {/* Top Folio Header (No lines, clean logo only) */}
+        <div className="w-full">
+          <div className="flex justify-between items-center pb-2">
+            <BirimLogo variant="black" className="h-6 w-auto object-contain" />
+          </div>
+        </div>
+
+        {/* Category Title Header (No lines, no subtitle, no counters) */}
+        <div className="pt-2 pb-3">
+          <h1 className="text-[28px] font-extralight tracking-[0.06em] text-neutral-950 uppercase leading-none">
+            {displayTitle}
+          </h1>
+        </div>
+
+        {/* Architectural Monochromatic Product Grid */}
+        <div className="flex-1 my-auto py-2 flex flex-col justify-center">
+          {count === 0 ? (
+            <div className="text-center py-12 text-[10px] text-neutral-400 font-mono">
+              {isTr ? 'Bu kategoride ürün bulunamadı.' : 'No products found in this category.'}
+            </div>
+          ) : (
+            <div className={`grid ${gridColsClass} w-full`}>
+              {categoryProducts.map((p, idx) => {
+                const pImg = p.cover_image?.url || p.gallery_images?.[0]?.url;
+                const pMirrored = Boolean(p.cover_image ? p.cover_image.is_mirrored : p.gallery_images?.[0]?.is_mirrored);
+                const prodName = isTr ? p.name.tr : (p.name.en || p.name.tr);
+                const designerName = p.designers?.[0]
+                  ? (isTr ? p.designers[0].name.tr : p.designers[0].name.en)
+                  : '';
+
+                return (
+                  <div
+                    key={p.id || idx}
+                    onClick={() => onSelectProduct?.(p)}
+                    className={`${cardHeightClass} p-1 flex flex-col justify-between`}
+                  >
+                    {/* Pure Dark Contour Thumbnail (Clipped border to eliminate rectangular convolution frames) */}
+                    <div className={`${thumbHeightClass} w-full flex items-center justify-center relative overflow-hidden`}>
+                      {pImg ? (
+                        <img
+                          src={pImg}
+                          alt={prodName}
+                          className={`max-h-full max-w-full object-contain mix-blend-multiply [clip-path:inset(4px)] ${
+                            pMirrored ? '-scale-x-100' : ''
+                          }`}
+                          style={{ filter: 'url(#photo-contour)' }}
+                          crossOrigin="anonymous"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <span className="text-[8px] font-mono text-neutral-300">N/A</span>
+                      )}
+                    </div>
+
+                    {/* Product Name (Left) & Designer Name (Right) side-by-side with close gap */}
+                    <div className="w-full flex items-baseline gap-2 pt-1 overflow-hidden">
+                      <span className="text-[8.5px] font-medium tracking-[0.06em] uppercase text-neutral-900 shrink-0">
+                        {prodName}
+                      </span>
+                      {designerName && (
+                        <span className="text-[7px] font-mono tracking-wider text-neutral-400 uppercase truncate">
+                          {designerName}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </div>
+
+        {/* Footer Pagination */}
+        <div className="flex justify-between items-center text-[9px] tracking-[0.25em] text-neutral-400 pt-3">
+          <span className="lowercase">www.birim.com</span>
+          <span className="font-mono text-neutral-700">{String(pageNumber).padStart(2, '0')}</span>
         </div>
       </div>
     );
@@ -459,11 +596,10 @@ export const CategoryDivider: React.FC<CategoryDividerProps> = ({
         ) : null}
       </div>
 
-      {/* Footer Rule & Pagination */}
+      {/* Footer Pagination */}
       <div className="w-full">
-        <div className="w-full border-t border-[#D8D8D8] mb-3" />
         <div className="flex justify-between items-center text-[9px] tracking-[0.22em] text-[#888888] uppercase font-light">
-          <span>WWW.BIRIM.COM</span>
+          <span className="lowercase">www.birim.com</span>
           <span className="tracking-widest font-mono">{String(pageNumber).padStart(2, '0')}</span>
         </div>
       </div>

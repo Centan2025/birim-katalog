@@ -77,9 +77,8 @@ export const BirimCategoryDivider: React.FC<BirimCategoryDividerProps> = ({
         ) : null}
       </div>
 
-      {/* Footer Rule & Pagination */}
+      {/* Footer Pagination */}
       <div className="w-full">
-        <div className="w-full border-t border-[#D8D8D8] mb-3" />
         <div className="flex justify-between items-center text-[9px] tracking-[0.22em] text-[#888888] uppercase font-light">
           <span>BIRIM / COLLECTION</span>
           <span className="tracking-widest font-mono">{String(pageNumber).padStart(2, '0')}</span>

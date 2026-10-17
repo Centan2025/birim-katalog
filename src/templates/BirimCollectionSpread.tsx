@@ -2,6 +2,7 @@ import React from 'react';
 import { CatalogProduct, Language } from '../types/catalog';
 import { BirimLogo } from '../components/BirimLogo';
 import { InteractiveCatalogImage } from '../components/InteractiveCatalogImage';
+import { BlankCatalogPage } from './BlankCatalogPage';
 
 export interface TechnicalItem {
   model_code: string;
@@ -48,20 +49,26 @@ export const extractProductDrawings = (product: CatalogProduct): TechnicalItem[]
   return items;
 };
 
-export const getBirimCollectionPageCount = (product: CatalogProduct): number => {
+export const getBirimCollectionPageCount = (product: CatalogProduct, isSpreadMode = false): number => {
   const drawings = extractProductDrawings(product);
-  // 1 Hero page + technical pages
+  let count = 1;
   if (drawings.length <= 3) {
-    return drawings.length > 0 ? 2 : 1;
+    count = drawings.length > 0 ? 2 : 1;
+  } else {
+    const techPages = Math.ceil(drawings.length / 6);
+    count = 1 + techPages;
   }
-  const techPages = Math.ceil(drawings.length / 6);
-  return 1 + techPages;
+  if (isSpreadMode && count % 2 !== 0) {
+    count += 1; // Pad with blank page so spread is complete
+  }
+  return count;
 };
 
 interface BirimCollectionSpreadProps {
   product: CatalogProduct;
   startPageNumber: number;
   lang?: Language;
+  isSpreadMode?: boolean;
 }
 
 const getCountWord = (count: number, lang: Language): string => {
@@ -87,7 +94,8 @@ const getCountWord = (count: number, lang: Language): string => {
 export const BirimCollectionSpread: React.FC<BirimCollectionSpreadProps> = ({
   product,
   startPageNumber,
-  lang = 'tr'
+  lang = 'tr',
+  isSpreadMode = false
 }) => {
   const title = (lang === 'en' ? product.name.en : product.name.tr).toUpperCase();
   const designersStr = product.designers?.length
@@ -219,9 +227,8 @@ export const BirimCollectionSpread: React.FC<BirimCollectionSpreadProps> = ({
         </div>
       )}
 
-      {/* Footer Rule & Pagination */}
+      {/* Footer Pagination */}
       <div className="w-full">
-        <div className="w-full border-t border-[#D8D8D8] mb-3" />
         <div className="flex justify-between items-center text-[9px] tracking-[0.22em] text-[#888888] uppercase font-light">
           <span>BIRIM / COLLECTION</span>
           <span className="tracking-widest font-mono">{String(currentPage).padStart(2, '0')}</span>
@@ -297,9 +304,8 @@ export const BirimCollectionSpread: React.FC<BirimCollectionSpreadProps> = ({
           ))}
         </div>
 
-        {/* Footer Rule & Pagination */}
+        {/* Footer Pagination */}
         <div className="w-full">
-          <div className="w-full border-t border-[#D8D8D8] mb-3" />
           <div className="flex justify-between items-center text-[9px] tracking-[0.22em] text-[#888888] uppercase font-light">
             <span>BIRIM / COLLECTION</span>
             <span className="tracking-widest font-mono">{String(currentPage).padStart(2, '0')}</span>
@@ -369,9 +375,8 @@ export const BirimCollectionSpread: React.FC<BirimCollectionSpreadProps> = ({
             ))}
           </div>
 
-          {/* Footer Rule & Pagination */}
+          {/* Footer Pagination */}
           <div className="w-full">
-            <div className="w-full border-t border-[#D8D8D8] mb-3" />
             <div className="flex justify-between items-center text-[9px] tracking-[0.22em] text-[#888888] uppercase font-light">
               <span>BIRIM / COLLECTION</span>
               <span className="tracking-widest font-mono">{String(currentPage).padStart(2, '0')}</span>
@@ -383,8 +388,30 @@ export const BirimCollectionSpread: React.FC<BirimCollectionSpreadProps> = ({
     });
   }
 
+  if (isSpreadMode) {
+    if (pages.length % 2 !== 0) {
+      pages.push(
+        <BlankCatalogPage
+          key={`blank-${product.slug}-${currentPage}`}
+          pageNumber={currentPage}
+          lang={lang}
+        />
+      );
+    }
+    const spreads: React.ReactNode[] = [];
+    for (let i = 0; i < pages.length; i += 2) {
+      spreads.push(
+        <div key={`spread-${product.slug}-${i}`} className="catalog-spread-row flex flex-row gap-0">
+          {pages[i]}
+          {pages[i + 1]}
+        </div>
+      );
+    }
+    return <>{spreads}</>;
+  }
+
   return (
-    <div className="catalog-spread-row flex flex-row flex-wrap justify-center gap-6 print:block print:gap-0">
+    <div className="catalog-spread-row flex flex-row flex-wrap justify-center gap-6 print:gap-0">
       {pages}
     </div>
   );

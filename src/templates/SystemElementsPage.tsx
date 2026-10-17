@@ -50,53 +50,54 @@ export const SystemElementsPage: React.FC<SystemElementsPageProps> = ({
   lang = 'tr',
 }) => {
   const title = lang === 'en' ? product.name.en : product.name.tr;
-  const categoryName = lang === 'en' ? product.category.name.en : product.category.name.tr;
 
   return (
     <div className="catalog-page bg-[#FFFFFF] p-[20mm] flex flex-col justify-between select-none">
       {/* Top Folio Header with Left-Aligned Logo */}
-      <div className="flex justify-between items-center text-[10px] tracking-[0.25em] text-neutral-500 uppercase hairline-b pb-3">
+      <div className="flex items-center pb-3.5 mb-8">
         <BirimLogo variant="black" className="h-6 w-auto object-contain" />
-        <span>{categoryName} / {title}</span>
       </div>
 
       {/* Page Title: ÖLÇÜLER */}
-      <div className="hairline-b pb-1.5 mb-2 flex justify-between items-baseline pt-1">
-        <span className="text-[30px] tracking-[0.04em] uppercase text-neutral-900 font-light leading-none">
+      <div className="pb-1.5 mb-4 flex justify-between items-baseline pt-1">
+        <span className="text-[26px] font-light tracking-[0.12em] uppercase text-neutral-900 leading-none">
           {lang === 'en' ? 'DIMENSIONS' : 'ÖLÇÜLER'}
         </span>
       </div>
 
-      {/* 2-Column Dynamic Row Grid — Fills page with as many rows as fit (up to 3 rows / 6 items per sheet) */}
-      <div className="my-auto pt-1 pb-2 grid grid-cols-2 gap-x-6 gap-y-3 w-full bg-white">
-        {drawings.map((dim, idx) => (
-          <div
-            key={idx}
-            className="flex flex-col justify-between bg-white h-[68mm] overflow-hidden"
-          >
-            <div className="w-full flex justify-start pb-1 relative z-20 flex-shrink-0">
-              <span className="text-[9px] font-mono text-neutral-800 uppercase tracking-wider font-semibold leading-none select-none">
-                {dim.model_code}
-              </span>
+      {/* 2-Column Dynamic Row Grid — Aligned top and left */}
+      <div className="flex-1 w-full bg-white mt-2 flex flex-col justify-start">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-6 w-full">
+          {drawings.map((dim, idx) => (
+            <div
+              key={idx}
+              className="flex flex-col justify-start bg-white h-[68mm] overflow-hidden"
+            >
+              <div className="w-full flex justify-start pb-1 relative z-20 flex-shrink-0">
+                <span className="text-[9px] font-mono text-neutral-800 uppercase tracking-wider font-semibold leading-none select-none">
+                  {dim.model_code}
+                </span>
+              </div>
+              <div className="flex-1 w-full bg-white overflow-hidden relative z-10 flex items-start justify-start">
+                <InteractiveCatalogImage
+                  id={`annex-dim-${product.slug}-${startIndex + idx}`}
+                  src={dim.url}
+                  alt={`${title} ${dim.model_code}`}
+                  containerClassName="w-full h-full bg-white"
+                  objectFit="contain"
+                  initialScale={1}
+                  isMirrored={dim.is_mirrored}
+                  align="left-top"
+                />
+              </div>
             </div>
-            <div className="flex-1 w-full bg-white overflow-hidden relative z-10">
-              <InteractiveCatalogImage
-                id={`annex-dim-${product.slug}-${startIndex + idx}`}
-                src={dim.url}
-                alt={`${title} ${dim.model_code}`}
-                containerClassName="w-full h-full bg-white"
-                objectFit="contain"
-                initialScale={1}
-                isMirrored={dim.is_mirrored}
-              />
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
       {/* Bottom Folio Footer */}
-      <div className="flex justify-between items-center text-[9px] tracking-[0.25em] text-neutral-500 hairline-t pt-3 mt-2">
-        <span className="uppercase">WWW.BIRIM.COM</span>
+      <div className="flex justify-between items-center text-[9px] tracking-[0.25em] text-neutral-500 pt-3 mt-2">
+        <span className="lowercase">www.birim.com</span>
         <span className="font-mono text-neutral-700">{String(pageNumber).padStart(3, '0')}</span>
       </div>
     </div>

@@ -20,18 +20,31 @@ interface MaterialCatalogPageProps {
 export const MaterialCatalogPage: React.FC<MaterialCatalogPageProps> = ({
   categoryTitle,
   pageNumber,
-  materials = [
-    { code: 'LT-01', name: 'Nubuk Vizon', category: 'Deri / Leather' },
-    { code: 'LT-04', name: 'Antrasit Yarı Anilin', category: 'Deri / Leather' },
-    { code: 'FB-12', name: 'Bouclé Krem', category: 'Kumaş / Fabric' },
-    { code: 'FB-18', name: 'Keten Dokuma Kül', category: 'Kumaş / Fabric' },
-    { code: 'WD-02', name: 'Doğal Masif Meşe', category: 'Ahşap / Wood' },
-    { code: 'WD-07', name: 'Füme Ceviz', category: 'Ahşap / Wood' },
-    { code: 'MT-01', name: 'Fırçalanmış Paslanmaz Çelik', category: 'Metal' },
-    { code: 'MT-05', name: 'Bronz Eloksal', category: 'Metal' },
-  ],
+  materials,
   lang = 'tr'
 }) => {
+  const defaultMaterials: MaterialItem[] = lang === 'en' ? [
+    { code: 'LT-01', name: 'Nubuck Mink', category: 'Leather' },
+    { code: 'LT-04', name: 'Anthracite Semi-Aniline', category: 'Leather' },
+    { code: 'FB-12', name: 'Bouclé Cream', category: 'Fabric' },
+    { code: 'FB-18', name: 'Woven Linen Ash', category: 'Fabric' },
+    { code: 'WD-02', name: 'Natural Solid Oak', category: 'Wood' },
+    { code: 'WD-07', name: 'Smoked Walnut', category: 'Wood' },
+    { code: 'MT-01', name: 'Brushed Stainless Steel', category: 'Metal' },
+    { code: 'MT-05', name: 'Bronze Anodized', category: 'Metal' },
+  ] : [
+    { code: 'LT-01', name: 'Nubuk Vizon', category: 'Deri' },
+    { code: 'LT-04', name: 'Antrasit Yarı Anilin', category: 'Deri' },
+    { code: 'FB-12', name: 'Bouclé Krem', category: 'Kumaş' },
+    { code: 'FB-18', name: 'Keten Dokuma Kül', category: 'Kumaş' },
+    { code: 'WD-02', name: 'Doğal Masif Meşe', category: 'Ahşap' },
+    { code: 'WD-07', name: 'Füme Ceviz', category: 'Ahşap' },
+    { code: 'MT-01', name: 'Fırçalanmış Paslanmaz Çelik', category: 'Metal' },
+    { code: 'MT-05', name: 'Bronz Eloksal', category: 'Metal' },
+  ];
+
+  const items = materials || defaultMaterials;
+
   return (
     <div className="catalog-page bg-[#FFFFFF] p-[20mm] flex flex-col justify-between select-none">
       {/* Top Header */}
@@ -43,13 +56,13 @@ export const MaterialCatalogPage: React.FC<MaterialCatalogPageProps> = ({
           </span>
         </div>
         <span className="text-[8.5px] font-mono text-neutral-400">
-          SWATCH MATRIX
+          {lang === 'en' ? 'SWATCH MATRIX' : 'KARTELA MATRİSİ'}
         </span>
       </div>
 
       {/* Swatch Grid (4x2 clean architectural tiles) */}
       <div className="grid grid-cols-4 gap-6 my-auto">
-        {materials.map((item, idx) => (
+        {items.map((item, idx) => (
           <div key={idx} className="space-y-2">
             <div className="aspect-square bg-neutral-100 border border-neutral-200 overflow-hidden relative shadow-sm flex items-center justify-center">
               {item.imageUrl ? (
@@ -82,7 +95,7 @@ export const MaterialCatalogPage: React.FC<MaterialCatalogPageProps> = ({
       </div>
 
       {/* Footer */}
-      <div className="flex justify-between items-center hairline-t pt-3 text-[9px] tracking-[0.25em] text-neutral-400 uppercase">
+      <div className="flex justify-between items-center pt-3 text-[9px] tracking-[0.25em] text-neutral-400 uppercase">
         <span>{lang === 'en' ? 'SWATCHES ARCHIVE' : 'BİRİM KARTELA ARŞİVİ'}</span>
         <span className="font-mono">{String(pageNumber).padStart(3, '0')}</span>
       </div>

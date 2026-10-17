@@ -258,6 +258,7 @@ interface InteractiveCatalogImageProps {
   objectFit?: 'contain' | 'cover';
   initialScale?: number;
   isMirrored?: boolean;
+  align?: 'center' | 'left-top';
 }
 
 export const InteractiveCatalogImage: React.FC<InteractiveCatalogImageProps> = ({
@@ -267,7 +268,8 @@ export const InteractiveCatalogImage: React.FC<InteractiveCatalogImageProps> = (
   className = '',
   containerClassName = '',
   initialScale = 1,
-  isMirrored = false
+  isMirrored = false,
+  align = 'center',
 }) => {
   const [transform, setTransform] = useState<TransformState>(() => {
     return transformCache.get(id) || { scale: initialScale, x: 0, y: 0 };
@@ -485,7 +487,7 @@ export const InteractiveCatalogImage: React.FC<InteractiveCatalogImageProps> = (
       {/* Target Image: Uses pure object-contain baseline so 100% of original photo is accessible and never pre-cropped! */}
       <div
         onMouseDown={handleMouseDown}
-        className={`w-full h-full flex items-center justify-center cursor-grab active:cursor-grabbing ${
+        className={`w-full h-full flex ${align === 'left-top' ? 'items-start justify-start' : 'items-center justify-center'} cursor-grab active:cursor-grabbing ${
           isDragging ? 'cursor-grabbing' : ''
         }`}
       >
@@ -494,7 +496,7 @@ export const InteractiveCatalogImage: React.FC<InteractiveCatalogImageProps> = (
           alt={alt}
           crossOrigin="anonymous"
           draggable={false}
-          className={`pointer-events-none transition-transform duration-75 origin-center object-contain max-h-full max-w-full ${className}`}
+          className={`pointer-events-none transition-transform duration-75 ${align === 'left-top' ? 'origin-top-left object-left-top' : 'origin-center'} object-contain max-h-full max-w-full ${className}`}
           style={{
             transform: `translate3d(${transform.x}px, ${transform.y}px, 0) scale(${transform.scale * (isMirrored ? -1 : 1)}, ${transform.scale})`,
           }}

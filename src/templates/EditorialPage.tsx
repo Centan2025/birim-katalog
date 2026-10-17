@@ -32,9 +32,6 @@ export const EditorialPage: React.FC<EditorialPageProps> = ({
         {/* Top Folio */}
         <div className="flex justify-between items-center text-[10px] tracking-[0.3em] uppercase text-neutral-500 hairline-b pb-3">
           <BirimLogo variant="black" className="h-6 w-auto object-contain" />
-          <span className="font-mono text-neutral-400">
-            {isTr ? 'MİMARİ YAKLAŞIM // ARCHITECTURAL STATEMENT' : 'ARCHITECTURAL STATEMENT // 2026'}
-          </span>
         </div>
 
         {/* Main Editorial Text & Quotation */}
@@ -89,8 +86,8 @@ export const EditorialPage: React.FC<EditorialPageProps> = ({
         </div>
 
         {/* Bottom Folio */}
-        <div className="flex justify-between items-center text-[9px] tracking-[0.25em] uppercase text-neutral-400 hairline-t pt-3">
-          <span>WWW.BIRIM.COM</span>
+        <div className="flex justify-between items-center text-[9px] tracking-[0.25em] uppercase text-neutral-400 pt-3">
+          <span className="lowercase">www.birim.com</span>
           <span className="font-mono text-neutral-700">{String(pageNumber).padStart(2, '0')}</span>
         </div>
       </div>
@@ -106,7 +103,6 @@ export const EditorialPage: React.FC<EditorialPageProps> = ({
         {/* Top Folio */}
         <div className="flex justify-between items-center text-[9.5px] tracking-[0.25em] uppercase text-neutral-400 hairline-b pb-3">
           <BirimLogo variant="black" className="h-5 w-auto object-contain" />
-          <span className="font-mono text-neutral-400">MANIFESTO // 2026</span>
         </div>
 
         {/* Asymmetrical 2-Column Split: Visual Left + Editorial Right */}
@@ -157,14 +153,14 @@ export const EditorialPage: React.FC<EditorialPageProps> = ({
             </div>
 
             <div className="pt-2 hairline-t text-[8px] font-mono tracking-widest text-neutral-400 uppercase">
-              BİRİM STUDIO // MERKEZ ATÖLYE & FABRİKA
+              {isTr ? 'BİRİM STUDIO · MERKEZ ATÖLYE & FABRİKA' : 'BİRİM STUDIO · MAIN ATELIER & FACTORY'}
             </div>
           </div>
         </div>
 
         {/* Footer */}
-        <div className="flex justify-between items-center text-[9px] tracking-[0.25em] uppercase text-neutral-400 hairline-t pt-3">
-          <span>WWW.BIRIM.COM</span>
+        <div className="flex justify-between items-center text-[9px] tracking-[0.25em] uppercase text-neutral-400 pt-3">
+          <span className="lowercase">www.birim.com</span>
           <span className="font-mono text-neutral-700">{String(pageNumber).padStart(2, '0')}</span>
         </div>
       </div>
@@ -180,7 +176,7 @@ export const EditorialPage: React.FC<EditorialPageProps> = ({
         {/* Top Folio */}
         <div className="flex justify-between items-center text-[9.5px] tracking-[0.25em] uppercase text-[#77726A] hairline-b pb-3">
           <BirimLogo variant="black" className="h-6 w-auto object-contain" />
-          <span className="font-mono text-[#8C877E]">ATELIER CRAFT & HERITAGE</span>
+          <span className="font-mono text-[#8C877E]">{isTr ? 'ATÖLYE ZANAATI & MİRAS' : 'ATELIER CRAFT & HERITAGE'}</span>
         </div>
 
         {/* Main Content */}
@@ -252,8 +248,8 @@ export const EditorialPage: React.FC<EditorialPageProps> = ({
         </div>
 
         {/* Footer */}
-        <div className="flex justify-between items-center text-[9px] tracking-[0.25em] uppercase text-[#8C877E] hairline-t pt-3">
-          <span>WWW.BIRIM.COM</span>
+        <div className="flex justify-between items-center text-[9px] tracking-[0.25em] uppercase text-[#8C877E] pt-3">
+          <span className="lowercase">www.birim.com</span>
           <span className="font-mono text-neutral-700">{String(pageNumber).padStart(2, '0')}</span>
         </div>
       </div>
@@ -269,7 +265,7 @@ export const EditorialPage: React.FC<EditorialPageProps> = ({
         {/* Top Minimal Folio */}
         <div className="flex justify-between items-center text-[9px] tracking-[0.3em] uppercase text-neutral-400">
           <BirimLogo variant="black" className="h-5 w-auto object-contain" />
-          <span className="font-mono text-neutral-400">ARCHITECTURAL STATEMENT</span>
+          <span className="font-mono text-neutral-400">{isTr ? 'MİMARİ MANİFESTO' : 'ARCHITECTURAL STATEMENT'}</span>
         </div>
 
         {/* Central Monolithic Aphorism */}
@@ -312,8 +308,8 @@ export const EditorialPage: React.FC<EditorialPageProps> = ({
         </div>
 
         {/* Footer */}
-        <div className="flex justify-between items-center text-[8.5px] font-mono tracking-[0.25em] text-neutral-400 uppercase hairline-t pt-3 mt-4">
-          <span>WWW.BIRIM.COM</span>
+        <div className="flex justify-between items-center text-[8.5px] font-mono tracking-[0.25em] text-neutral-400 uppercase pt-3 mt-4">
+          <span className="lowercase">www.birim.com</span>
           <span>{String(pageNumber).padStart(2, '0')}</span>
         </div>
       </div>
@@ -328,7 +324,7 @@ export const EditorialPage: React.FC<EditorialPageProps> = ({
       {/* Top Folio */}
       <div className="flex justify-between items-center text-[9.5px] tracking-[0.25em] uppercase text-neutral-500 hairline-b pb-3">
         <BirimLogo variant="black" className="h-6 w-auto object-contain" />
-        <span className="font-mono text-neutral-400">DESIGN HERITAGE & PRINCIPLES</span>
+        <span className="font-mono text-neutral-400">{isTr ? 'TASARIM MİRASI VE İLKELERİ' : 'DESIGN HERITAGE & PRINCIPLES'}</span>
       </div>
 
       {/* Headline Block */}
@@ -358,7 +354,7 @@ export const EditorialPage: React.FC<EditorialPageProps> = ({
             </p>
           </div>
           <div className="text-[8px] font-mono text-neutral-400 uppercase tracking-widest pt-2 hairline-t">
-            ARCHITECTURAL ACCURACY
+            {isTr ? 'MİMARİ HASSASİYET' : 'ARCHITECTURAL ACCURACY'}
           </div>
         </div>
 
@@ -377,7 +373,7 @@ export const EditorialPage: React.FC<EditorialPageProps> = ({
             </p>
           </div>
           <div className="text-[8px] font-mono text-neutral-400 uppercase tracking-widest pt-2 hairline-t">
-            NOBLE TEXTURES
+            {isTr ? 'SEÇKİN DOKULAR' : 'NOBLE TEXTURES'}
           </div>
         </div>
 
@@ -396,13 +392,13 @@ export const EditorialPage: React.FC<EditorialPageProps> = ({
             </p>
           </div>
           <div className="text-[8px] font-mono text-neutral-400 uppercase tracking-widest pt-2 hairline-t">
-            TIMELESS IDENTITY
+            {isTr ? 'ZAMANSIZ KİMLİK' : 'TIMELESS IDENTITY'}
           </div>
         </div>
       </div>
 
       {/* Bottom Summary & Signature */}
-      <div className="space-y-2 hairline-t pt-3">
+      <div className="space-y-2 pt-3">
         <p className="text-[10.5px] font-light leading-[1.8] text-neutral-700 max-w-[145mm] text-justify">
           {isTr
             ? 'Bu katalog, BİRİM atölyelerinin çağdaş mobilya tasarımına getirdiği zanaat ustalığını ve mimari ölçek hassasiyetini belgeleyen yaşayan bir tasarım arşividir.'
@@ -411,8 +407,8 @@ export const EditorialPage: React.FC<EditorialPageProps> = ({
       </div>
 
       {/* Footer */}
-      <div className="flex justify-between items-center text-[9px] tracking-[0.25em] uppercase text-neutral-400 hairline-t pt-3 mt-1">
-        <span>WWW.BIRIM.COM</span>
+      <div className="flex justify-between items-center text-[9px] tracking-[0.25em] uppercase text-neutral-400 pt-3 mt-1">
+        <span className="lowercase">www.birim.com</span>
         <span className="font-mono text-neutral-700">{String(pageNumber).padStart(2, '0')}</span>
       </div>
     </div>
