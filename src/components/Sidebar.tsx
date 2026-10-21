@@ -25,7 +25,8 @@ import {
   Columns,
   FileText,
   Loader2,
-  LayoutGrid
+  LayoutGrid,
+  RefreshCw
 } from 'lucide-react';
 import {
   saveTransformsToDisk,
@@ -79,6 +80,9 @@ interface SidebarProps {
   onPrint: () => void;
   totalPages: number;
   isOpen?: boolean;
+  isSyncing?: boolean;
+  onSyncData?: () => void;
+  lastSyncedAt?: string;
 }
 
 type TabType = 'catalog' | 'pages' | 'presets';
@@ -123,7 +127,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
   onDownloadPdf,
   onPrint,
   totalPages,
-  isOpen = true
+  isOpen = true,
+  isSyncing = false,
+  onSyncData,
+  lastSyncedAt
 }) => {
   const [activeTab, setActiveTab] = useState<TabType>('catalog');
   const [savedCount, setSavedCount] = useState<number>(() => getSavedTransformCount());
@@ -337,28 +344,42 @@ export const Sidebar: React.FC<SidebarProps> = ({
           </span>
         </div>
 
-        {/* Minimal Language Toggle */}
-        <div className="inline-flex rounded border border-neutral-800 bg-neutral-900/80 p-0.5 text-[11px] font-mono">
-          <button
-            onClick={() => onChangeLang('tr')}
-            className={`px-2 py-0.5 rounded transition-colors ${
-              lang === 'tr' 
-                ? 'bg-neutral-100 text-neutral-950 font-semibold' 
-                : 'text-neutral-400 hover:text-white'
-            }`}
-          >
-            TR
-          </button>
-          <button
-            onClick={() => onChangeLang('en')}
-            className={`px-2 py-0.5 rounded transition-colors ${
-              lang === 'en' 
-                ? 'bg-neutral-100 text-neutral-950 font-semibold' 
-                : 'text-neutral-400 hover:text-white'
-            }`}
-          >
-            EN
-          </button>
+        <div className="flex items-center space-x-2">
+          {/* Web Sync Icon Button */}
+          {onSyncData && (
+            <button
+              onClick={onSyncData}
+              disabled={isSyncing}
+              title={isEn ? 'Sync catalog data from web (Sanity CMS)' : 'Web sitesinden katalog verilerini güncelle'}
+              className="p-1.5 rounded border border-neutral-800 bg-neutral-900/80 text-neutral-400 hover:text-white hover:bg-neutral-800 transition-colors disabled:opacity-50"
+            >
+              <RefreshCw className={`w-3.5 h-3.5 ${isSyncing ? 'animate-spin text-amber-400' : ''}`} />
+            </button>
+          )}
+
+          {/* Minimal Language Toggle */}
+          <div className="inline-flex rounded border border-neutral-800 bg-neutral-900/80 p-0.5 text-[11px] font-mono">
+            <button
+              onClick={() => onChangeLang('tr')}
+              className={`px-2 py-0.5 rounded transition-colors ${
+                lang === 'tr' 
+                  ? 'bg-neutral-100 text-neutral-950 font-semibold' 
+                  : 'text-neutral-400 hover:text-white'
+              }`}
+            >
+              TR
+            </button>
+            <button
+              onClick={() => onChangeLang('en')}
+              className={`px-2 py-0.5 rounded transition-colors ${
+                lang === 'en' 
+                  ? 'bg-neutral-100 text-neutral-950 font-semibold' 
+                  : 'text-neutral-400 hover:text-white'
+              }`}
+            >
+              EN
+            </button>
+          </div>
         </div>
       </div>
 
@@ -411,6 +432,47 @@ export const Sidebar: React.FC<SidebarProps> = ({
         {activeTab === 'catalog' && (
           <div className="space-y-6">
             
+            {/* Web Sitesi Senkronizasyonu */}
+            {onSyncData && (
+              <div className="p-3 bg-neutral-900/60 rounded border border-neutral-800 space-y-2.5">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-1.5">
+                    <RefreshCw className={`w-3.5 h-3.5 text-neutral-400 ${isSyncing ? 'animate-spin text-amber-400' : ''}`} />
+                    <span className="text-[11px] font-medium text-neutral-200">
+                      {isEn ? 'Live Website Data' : 'Web Sayfası Verileri'}
+                    </span>
+                  </div>
+                  {lastSyncedAt && (
+                    <span className="text-[9px] font-mono text-neutral-500">
+                      {new Date(lastSyncedAt).toLocaleDateString(isEn ? 'en-US' : 'tr-TR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })}
+                    </span>
+                  )}
+                </div>
+                <p className="text-[10px] text-neutral-400 leading-relaxed">
+                  {isEn
+                    ? 'Sync latest products, categories and CAD drawings from the website.'
+                    : 'Web sayfasındaki en son ürün, kategori ve CAD teknik çizimlerini günceller.'}
+                </p>
+                <button
+                  onClick={onSyncData}
+                  disabled={isSyncing}
+                  className="w-full py-1.5 px-3 bg-neutral-800 hover:bg-neutral-700 disabled:bg-neutral-900 disabled:text-neutral-600 text-neutral-200 hover:text-white rounded text-[11px] font-medium transition-colors flex items-center justify-center gap-1.5 border border-neutral-700/60 active:scale-[0.99]"
+                >
+                  {isSyncing ? (
+                    <>
+                      <Loader2 className="w-3.5 h-3.5 animate-spin text-amber-400" />
+                      <span>{isEn ? 'Syncing...' : 'Veriler Güncelleniyor...'}</span>
+                    </>
+                  ) : (
+                    <>
+                      <RefreshCw className="w-3 h-3 text-neutral-400" />
+                      <span>{isEn ? 'Sync Data from Web' : 'Web Sayfasından Verileri Güncelle'}</span>
+                    </>
+                  )}
+                </button>
+              </div>
+            )}
+
             {/* Kapsam Seçimi */}
             <div className="space-y-2">
               <span className="text-[10px] tracking-wider uppercase text-neutral-400 font-mono block">

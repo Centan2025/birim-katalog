@@ -10,7 +10,10 @@ import {
   FileText,
   Download,
   Loader2,
-  LayoutGrid
+  LayoutGrid,
+  RefreshCw,
+  CheckCircle2,
+  AlertCircle
 } from 'lucide-react';
 import rawCatalogData from './data/catalog-products.json';
 import { 
@@ -113,9 +116,55 @@ export const App: React.FC = () => {
   const [zoom, setZoom] = useState<number>(75);
   const [isPrinting, setIsPrinting] = useState<boolean>(false);
   const [isGeneratingPdf, setIsGeneratingPdf] = useState<boolean>(false);
+  const [isSyncing, setIsSyncing] = useState<boolean>(false);
+  const [syncFeedback, setSyncFeedback] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
   const [pdfLayout, setPdfLayout] = useState<PdfLayoutMode>(
     () => (getInitialParam('layout', 'mixed') as PdfLayoutMode)
   );
+
+  const handleSyncData = async () => {
+    if (isSyncing) return;
+    setIsSyncing(true);
+    setSyncFeedback(null);
+
+    try {
+      const response = await fetch('/api/sync-catalog-data', {
+        method: 'POST',
+      });
+      const data = await response.json() as {
+        success?: boolean;
+        message?: string;
+        error?: string;
+        totalProducts?: number;
+        totalCategories?: number;
+      };
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || 'Senkronizasyon başarısız oldu.');
+      }
+
+      setSyncFeedback({
+        type: 'success',
+        message: data.message || (lang === 'en' ? 'Catalog data synced! Reloading...' : 'Veriler güncellendi! Yenileniyor...')
+      });
+
+      // Allow user to see confirmation before reloading
+      setTimeout(() => {
+        window.location.reload();
+      }, 1200);
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : String(err);
+      setSyncFeedback({
+        type: 'error',
+        message: `${lang === 'en' ? 'Sync error: ' : 'Güncelleme hatası: '}${message}`
+      });
+      setTimeout(() => {
+        setSyncFeedback(null);
+      }, 5000);
+    } finally {
+      setIsSyncing(false);
+    }
+  };
 
   // Sync state to URL search parameters for Puppeteer & Shareability
   useEffect(() => {
@@ -1092,8 +1141,21 @@ export const App: React.FC = () => {
           </button>
         </div>
 
-        {/* Right Controls: Layout Mode, Zoom & Print */}
-        <div className="flex items-center space-x-3">
+        {/* Right Controls: Sync, Layout Mode, Zoom & Print */}
+        <div className="flex items-center space-x-2.5">
+          {/* Direct Sync from Live Website CTA */}
+          <button
+            onClick={handleSyncData}
+            disabled={isSyncing}
+            className="flex items-center space-x-1.5 py-1.5 px-2.5 bg-neutral-900 hover:bg-neutral-800 disabled:opacity-50 text-neutral-300 hover:text-white border border-neutral-800 rounded transition-colors text-xs font-mono"
+            title={lang === 'en' ? 'Sync live catalog data from web (Sanity CMS)' : 'Web sayfasından (Sanity CMS) güncel verileri çek'}
+          >
+            <RefreshCw className={`w-3.5 h-3.5 ${isSyncing ? 'animate-spin text-amber-400' : 'text-neutral-400'}`} />
+            <span className="hidden xl:inline">
+              {isSyncing ? (lang === 'en' ? 'Syncing...' : 'Güncelleniyor...') : (lang === 'en' ? 'Sync Web Data' : 'Verileri Güncelle')}
+            </span>
+          </button>
+
           {/* PDF Layout Mode Switcher */}
           <div className="flex items-center bg-neutral-900 border border-neutral-800 rounded p-0.5 text-xs">
             <button
@@ -1252,6 +1314,9 @@ export const App: React.FC = () => {
           onPrint={handlePrint}
           totalPages={renderedDocument.totalPages}
           isOpen={isSidebarOpen}
+          isSyncing={isSyncing}
+          onSyncData={handleSyncData}
+          lastSyncedAt={catalogData.metadata?.generated_at}
         />
 
         {/* Main Canvas / A4 Book Viewport */}
@@ -1265,6 +1330,22 @@ export const App: React.FC = () => {
           </div>
         </main>
       </div>
+
+      {/* Sync Feedback Toast Notification */}
+      {syncFeedback && (
+        <div className={`fixed bottom-6 right-6 z-50 px-4 py-3 rounded shadow-2xl flex items-center space-x-2.5 text-xs transition-all border ${
+          syncFeedback.type === 'success' 
+            ? 'bg-[#0d0d10] border-emerald-500/60 text-emerald-300' 
+            : 'bg-[#0d0d10] border-red-500/60 text-red-300'
+        }`}>
+          {syncFeedback.type === 'success' ? (
+            <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+          ) : (
+            <AlertCircle className="w-4 h-4 text-red-400 shrink-0" />
+          )}
+          <span className="font-medium">{syncFeedback.message}</span>
+        </div>
+      )}
     </div>
   );
 };

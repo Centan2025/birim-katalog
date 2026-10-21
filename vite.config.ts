@@ -292,6 +292,71 @@ function saveTransformsPlugin(): Plugin {
           res.end();
         }
       });
+
+      // 5. Sync Catalog Data from Sanity CMS
+      server.middlewares.use('/api/sync-catalog-data', async (req, res) => {
+        if (req.method === 'POST' || req.method === 'GET') {
+          try {
+            console.log('[Catalog Sync] Starting sync-catalog-data.mjs execution...');
+            const { exec } = await import('child_process');
+            const scriptPath = path.resolve(__dirname, './scripts/sync-catalog-data.mjs');
+
+            exec(`node "${scriptPath}"`, (error, stdout, stderr) => {
+              if (error) {
+                const errMsg = stderr || error.message;
+                console.error('[Catalog Sync Error]', errMsg);
+                res.statusCode = 500;
+                res.setHeader('Content-Type', 'application/json');
+                res.end(JSON.stringify({ success: false, error: errMsg }));
+                return;
+              }
+
+              console.log('[Catalog Sync Success]', stdout);
+              try {
+                const jsonPath = path.resolve(__dirname, './src/data/catalog-products.json');
+                const fileContent = fs.readFileSync(jsonPath, 'utf8');
+                const parsed = JSON.parse(fileContent) as {
+                  metadata?: {
+                    total_published_products?: number;
+                    total_categories?: number;
+                    generated_at?: string;
+                  };
+                  all_products?: unknown[];
+                  categories?: unknown[];
+                };
+
+                const totalProducts = parsed.metadata?.total_published_products ?? parsed.all_products?.length ?? 0;
+                const totalCategories = parsed.metadata?.total_categories ?? parsed.categories?.length ?? 0;
+
+                res.statusCode = 200;
+                res.setHeader('Content-Type', 'application/json');
+                res.end(JSON.stringify({
+                  success: true,
+                  message: `Katalog verileri başarıyla güncellendi (${totalProducts} ürün, ${totalCategories} kategori).`,
+                  totalProducts,
+                  totalCategories,
+                  generatedAt: parsed.metadata?.generated_at
+                }));
+              } catch {
+                res.statusCode = 200;
+                res.setHeader('Content-Type', 'application/json');
+                res.end(JSON.stringify({
+                  success: true,
+                  message: stdout || 'Katalog verileri başarıyla güncellendi.'
+                }));
+              }
+            });
+          } catch (err: unknown) {
+            const message = err instanceof Error ? err.message : String(err);
+            res.statusCode = 500;
+            res.setHeader('Content-Type', 'application/json');
+            res.end(JSON.stringify({ success: false, error: message }));
+          }
+        } else {
+          res.statusCode = 404;
+          res.end();
+        }
+      });
     }
   };
 }

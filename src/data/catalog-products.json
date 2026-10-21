@@ -6,8 +6,8 @@
     "sanity_dataset": "production",
     "primary_asset_domain": "https://assets.birim.com",
     "worker_asset_domain": "https://birim-assets.web-birim.workers.dev",
-    "generated_at": "2026-10-16T13:15:54.530Z",
-    "total_published_products": 91,
+    "generated_at": "2026-10-21T09:15:13.227Z",
+    "total_published_products": 92,
     "total_categories": 10,
     "featured_sample_products_count": 6,
     "catalog_print_target": "A4 / A3 Yüksek Çözünürlüklü Otomatik Baskı Kataloğu (300 DPI)"
@@ -115,7 +115,7 @@
         "tr": "Yakın Ölçek",
         "en": "Intimate Scale"
       },
-      "product_count": 12
+      "product_count": 13
     },
     {
       "id": "PBmZKgD0TypOug6iXTRQf1",
@@ -9493,9 +9493,33 @@
           }
         }
       ],
-      "dimension_images": [],
+      "dimension_images": [
+        {
+          "key": "bulk-1792400432222-b9erm98wj",
+          "model_code": "PF0207-65X55",
+          "title": {
+            "tr": "PF0207-65X55",
+            "en": "PF0207-65X55"
+          },
+          "url": "https://birim-assets.web-birim.workers.dev/migration/products/pf0207-kum-puf/media/1792400429309-pf0207-65x55.webp",
+          "is_mirrored": false,
+          "width": 3840,
+          "height": 2160,
+          "aspect_ratio": 1.778,
+          "mime_type": "image/webp"
+        }
+      ],
       "technical_pdf_links": [],
-      "models_and_variations": [],
+      "models_and_variations": [
+        {
+          "model_code": "PF0207-65X55",
+          "name": {
+            "tr": "PF0207-65X55",
+            "en": "PF0207-65X55"
+          },
+          "technical_drawing_url": "https://birim-assets.web-birim.workers.dev/migration/products/pf0207-kum-puf/media/1792400429309-pf0207-65x55.webp"
+        }
+      ],
       "collection_and_family": {
         "family_name": null,
         "related_products": [],
@@ -11437,30 +11461,30 @@
       ],
       "dimension_images": [
         {
-          "key": "bulk-1791285944445-wwdfdt5hm",
-          "model_code": "0216 160 CM - LD",
+          "key": "bulk-1791797197448-7i0k02a0p",
+          "model_code": "KN0216-160X160-RK",
           "title": {
-            "tr": "0216 160 CM - LD",
-            "en": "0216 160 CM - LD"
+            "tr": "KN0216-160X160-RK",
+            "en": "KN0216-160X160-RK"
           },
-          "url": "https://birim-assets.web-birim.workers.dev/migration/products/kn0216-mira/media/1791285943341-0216-160-cm-ld.webp",
+          "url": "https://assets.birim.com/migration/products/kn0216-mira/media/1791797194978-kn0216-160x160-rk.webp",
           "is_mirrored": false,
-          "width": 1191,
-          "height": 670,
+          "width": 3840,
+          "height": 2160,
           "aspect_ratio": 1.778,
           "mime_type": "image/webp"
         },
         {
-          "key": "bulk-1791285944520-7eycpgkyt",
-          "model_code": "0216 160 CM - RD",
+          "key": "bulk-1791797197506-biiyzi1vp",
+          "model_code": "KN0216-160X160-LK",
           "title": {
-            "tr": "0216 160 CM - RD",
-            "en": "0216 160 CM - RD"
+            "tr": "KN0216-160X160-LK",
+            "en": "KN0216-160X160-LK"
           },
-          "url": "https://birim-assets.web-birim.workers.dev/migration/products/kn0216-mira/media/1791285943345-0216-160-cm-rd.webp",
+          "url": "https://assets.birim.com/migration/products/kn0216-mira/media/1791797194981-kn0216-160x160-lk.webp",
           "is_mirrored": false,
-          "width": 1197,
-          "height": 673,
+          "width": 3840,
+          "height": 2160,
           "aspect_ratio": 1.778,
           "mime_type": "image/webp"
         }
@@ -11468,20 +11492,20 @@
       "technical_pdf_links": [],
       "models_and_variations": [
         {
-          "model_code": "0216 160 CM - LD",
+          "model_code": "KN0216-160X160-RK",
           "name": {
-            "tr": "0216 160 CM - LD",
-            "en": "0216 160 CM - LD"
+            "tr": "KN0216-160X160-RK",
+            "en": "KN0216-160X160-RK"
           },
-          "technical_drawing_url": "https://birim-assets.web-birim.workers.dev/migration/products/kn0216-mira/media/1791285943341-0216-160-cm-ld.webp"
+          "technical_drawing_url": "https://assets.birim.com/migration/products/kn0216-mira/media/1791797194978-kn0216-160x160-rk.webp"
         },
         {
-          "model_code": "0216 160 CM - RD",
+          "model_code": "KN0216-160X160-LK",
           "name": {
-            "tr": "0216 160 CM - RD",
-            "en": "0216 160 CM - RD"
+            "tr": "KN0216-160X160-LK",
+            "en": "KN0216-160X160-LK"
           },
-          "technical_drawing_url": "https://birim-assets.web-birim.workers.dev/migration/products/kn0216-mira/media/1791285943345-0216-160-cm-rd.webp"
+          "technical_drawing_url": "https://assets.birim.com/migration/products/kn0216-mira/media/1791797194981-kn0216-160x160-lk.webp"
         }
       ],
       "collection_and_family": {
@@ -11846,9 +11870,55 @@
           }
         }
       ],
-      "dimension_images": [],
+      "dimension_images": [
+        {
+          "key": "bulk-1792400661645-4g568tyat",
+          "model_code": "PF0003-135X135",
+          "title": {
+            "tr": "PF0003-135X135",
+            "en": "PF0003-135X135"
+          },
+          "url": "https://birim-assets.web-birim.workers.dev/migration/products/pf0003-nox/media/1792400659058-pf0003-135x135.webp",
+          "is_mirrored": false,
+          "width": 3840,
+          "height": 2160,
+          "aspect_ratio": 1.778,
+          "mime_type": "image/webp"
+        },
+        {
+          "key": "bulk-1792400661790-1d6vxqzfr",
+          "model_code": "PF0003-55X55",
+          "title": {
+            "tr": "PF0003-55X55",
+            "en": "PF0003-55X55"
+          },
+          "url": "https://birim-assets.web-birim.workers.dev/migration/products/pf0003-nox/media/1792400659062-pf0003-55x55.webp",
+          "is_mirrored": false,
+          "width": 3840,
+          "height": 2160,
+          "aspect_ratio": 1.778,
+          "mime_type": "image/webp"
+        }
+      ],
       "technical_pdf_links": [],
-      "models_and_variations": [],
+      "models_and_variations": [
+        {
+          "model_code": "PF0003-135X135",
+          "name": {
+            "tr": "PF0003-135X135",
+            "en": "PF0003-135X135"
+          },
+          "technical_drawing_url": "https://birim-assets.web-birim.workers.dev/migration/products/pf0003-nox/media/1792400659058-pf0003-135x135.webp"
+        },
+        {
+          "model_code": "PF0003-55X55",
+          "name": {
+            "tr": "PF0003-55X55",
+            "en": "PF0003-55X55"
+          },
+          "technical_drawing_url": "https://birim-assets.web-birim.workers.dev/migration/products/pf0003-nox/media/1792400659062-pf0003-55x55.webp"
+        }
+      ],
       "collection_and_family": {
         "family_name": null,
         "related_products": [],
@@ -17387,9 +17457,187 @@
           }
         }
       ],
-      "dimension_images": [],
+      "dimension_images": [
+        {
+          "key": "bulk-1792497037041-n0vbx5mwh",
+          "model_code": "SH0033-100X100-K",
+          "title": {
+            "tr": "SH0033-100X100-K",
+            "en": "SH0033-100X100-K"
+          },
+          "url": "https://assets.birim.com/migration/products/sh0033-sur/media/1792497030406-sh0033-100x100-k.webp",
+          "is_mirrored": false,
+          "width": 3840,
+          "height": 2160,
+          "aspect_ratio": 1.778,
+          "mime_type": "image/webp"
+        },
+        {
+          "key": "bulk-1792497039387-wneft0i71",
+          "model_code": "SH0033-90X90-K",
+          "title": {
+            "tr": "SH0033-90X90-K",
+            "en": "SH0033-90X90-K"
+          },
+          "url": "https://assets.birim.com/migration/products/sh0033-sur/media/1792497030421-sh0033-90x90-k.webp",
+          "is_mirrored": false,
+          "width": 3840,
+          "height": 2160,
+          "aspect_ratio": 1.778,
+          "mime_type": "image/webp"
+        },
+        {
+          "key": "bulk-1792497039032-s6a43pfog",
+          "model_code": "SH0033-80X80-K",
+          "title": {
+            "tr": "SH0033-80X80-K",
+            "en": "SH0033-80X80-K"
+          },
+          "url": "https://assets.birim.com/migration/products/sh0033-sur/media/1792497030420-sh0033-80x80-k.webp",
+          "is_mirrored": false,
+          "width": 3840,
+          "height": 2160,
+          "aspect_ratio": 1.778,
+          "mime_type": "image/webp"
+        },
+        {
+          "key": "bulk-1792497038310-j1pgi7fwq",
+          "model_code": "SH0033-130X90",
+          "title": {
+            "tr": "SH0033-130X90",
+            "en": "SH0033-130X90"
+          },
+          "url": "https://assets.birim.com/migration/products/sh0033-sur/media/1792497030420-sh0033-130x90.webp",
+          "is_mirrored": false,
+          "width": 3840,
+          "height": 2160,
+          "aspect_ratio": 1.778,
+          "mime_type": "image/webp"
+        },
+        {
+          "key": "bulk-1792497039046-6rrtt8quc",
+          "model_code": "SH0033-120X120-O",
+          "title": {
+            "tr": "SH0033-120X120-O",
+            "en": "SH0033-120X120-O"
+          },
+          "url": "https://assets.birim.com/migration/products/sh0033-sur/media/1792497030420-sh0033-120x120-o.webp",
+          "is_mirrored": false,
+          "width": 3840,
+          "height": 2160,
+          "aspect_ratio": 1.778,
+          "mime_type": "image/webp"
+        },
+        {
+          "key": "bulk-1792497039753-21ay41k3d",
+          "model_code": "SH0033-100X100-O",
+          "title": {
+            "tr": "SH0033-100X100-O",
+            "en": "SH0033-100X100-O"
+          },
+          "url": "https://assets.birim.com/migration/products/sh0033-sur/media/1792497030411-sh0033-100x100-o.webp",
+          "is_mirrored": false,
+          "width": 3840,
+          "height": 2160,
+          "aspect_ratio": 1.778,
+          "mime_type": "image/webp"
+        },
+        {
+          "key": "bulk-1792497039834-pxpemxyl4",
+          "model_code": "SH0033-90X90-O",
+          "title": {
+            "tr": "SH0033-90X90-O",
+            "en": "SH0033-90X90-O"
+          },
+          "url": "https://assets.birim.com/migration/products/sh0033-sur/media/1792497030422-sh0033-90x90-o.webp",
+          "is_mirrored": false,
+          "width": 3840,
+          "height": 2160,
+          "aspect_ratio": 1.778,
+          "mime_type": "image/webp"
+        },
+        {
+          "key": "bulk-1792497038131-lrzsjv0vw",
+          "model_code": "SH0033-80X80-O",
+          "title": {
+            "tr": "SH0033-80X80-O",
+            "en": "SH0033-80X80-O"
+          },
+          "url": "https://assets.birim.com/migration/products/sh0033-sur/media/1792497030421-sh0033-80x80-o.webp",
+          "is_mirrored": false,
+          "width": 3840,
+          "height": 2160,
+          "aspect_ratio": 1.778,
+          "mime_type": "image/webp"
+        }
+      ],
       "technical_pdf_links": [],
-      "models_and_variations": [],
+      "models_and_variations": [
+        {
+          "model_code": "SH0033-100X100-K",
+          "name": {
+            "tr": "SH0033-100X100-K",
+            "en": "SH0033-100X100-K"
+          },
+          "technical_drawing_url": "https://assets.birim.com/migration/products/sh0033-sur/media/1792497030406-sh0033-100x100-k.webp"
+        },
+        {
+          "model_code": "SH0033-90X90-K",
+          "name": {
+            "tr": "SH0033-90X90-K",
+            "en": "SH0033-90X90-K"
+          },
+          "technical_drawing_url": "https://assets.birim.com/migration/products/sh0033-sur/media/1792497030421-sh0033-90x90-k.webp"
+        },
+        {
+          "model_code": "SH0033-80X80-K",
+          "name": {
+            "tr": "SH0033-80X80-K",
+            "en": "SH0033-80X80-K"
+          },
+          "technical_drawing_url": "https://assets.birim.com/migration/products/sh0033-sur/media/1792497030420-sh0033-80x80-k.webp"
+        },
+        {
+          "model_code": "SH0033-130X90",
+          "name": {
+            "tr": "SH0033-130X90",
+            "en": "SH0033-130X90"
+          },
+          "technical_drawing_url": "https://assets.birim.com/migration/products/sh0033-sur/media/1792497030420-sh0033-130x90.webp"
+        },
+        {
+          "model_code": "SH0033-120X120-O",
+          "name": {
+            "tr": "SH0033-120X120-O",
+            "en": "SH0033-120X120-O"
+          },
+          "technical_drawing_url": "https://assets.birim.com/migration/products/sh0033-sur/media/1792497030420-sh0033-120x120-o.webp"
+        },
+        {
+          "model_code": "SH0033-100X100-O",
+          "name": {
+            "tr": "SH0033-100X100-O",
+            "en": "SH0033-100X100-O"
+          },
+          "technical_drawing_url": "https://assets.birim.com/migration/products/sh0033-sur/media/1792497030411-sh0033-100x100-o.webp"
+        },
+        {
+          "model_code": "SH0033-90X90-O",
+          "name": {
+            "tr": "SH0033-90X90-O",
+            "en": "SH0033-90X90-O"
+          },
+          "technical_drawing_url": "https://assets.birim.com/migration/products/sh0033-sur/media/1792497030422-sh0033-90x90-o.webp"
+        },
+        {
+          "model_code": "SH0033-80X80-O",
+          "name": {
+            "tr": "SH0033-80X80-O",
+            "en": "SH0033-80X80-O"
+          },
+          "technical_drawing_url": "https://assets.birim.com/migration/products/sh0033-sur/media/1792497030421-sh0033-80x80-o.webp"
+        }
+      ],
       "collection_and_family": {
         "family_name": null,
         "related_products": [],
@@ -17614,9 +17862,77 @@
           }
         }
       ],
-      "dimension_images": [],
+      "dimension_images": [
+        {
+          "key": "bulk-1792414191536-sep2kfgik",
+          "model_code": "DR0002B-180X35",
+          "title": {
+            "tr": "DR0002B-180X35",
+            "en": "DR0002B-180X35"
+          },
+          "url": "https://birim-assets.web-birim.workers.dev/migration/products/dr002-tab-bank/media/1792414187837-dr0002b-180x35.webp",
+          "is_mirrored": false,
+          "width": 3840,
+          "height": 2160,
+          "aspect_ratio": 1.778,
+          "mime_type": "image/webp"
+        },
+        {
+          "key": "bulk-1792414190860-j32z3023w",
+          "model_code": "DR0002B-160X35",
+          "title": {
+            "tr": "DR0002B-160X35",
+            "en": "DR0002B-160X35"
+          },
+          "url": "https://birim-assets.web-birim.workers.dev/migration/products/dr002-tab-bank/media/1792414187825-dr0002b-160x35.webp",
+          "is_mirrored": false,
+          "width": 3840,
+          "height": 2160,
+          "aspect_ratio": 1.778,
+          "mime_type": "image/webp"
+        },
+        {
+          "key": "bulk-1792414190911-3914wf3vb",
+          "model_code": "DR0002B-140X35",
+          "title": {
+            "tr": "DR0002B-140X35",
+            "en": "DR0002B-140X35"
+          },
+          "url": "https://birim-assets.web-birim.workers.dev/migration/products/dr002-tab-bank/media/1792414187813-dr0002b-140x35.webp",
+          "is_mirrored": false,
+          "width": 3840,
+          "height": 2160,
+          "aspect_ratio": 1.778,
+          "mime_type": "image/webp"
+        }
+      ],
       "technical_pdf_links": [],
-      "models_and_variations": [],
+      "models_and_variations": [
+        {
+          "model_code": "DR0002B-180X35",
+          "name": {
+            "tr": "DR0002B-180X35",
+            "en": "DR0002B-180X35"
+          },
+          "technical_drawing_url": "https://birim-assets.web-birim.workers.dev/migration/products/dr002-tab-bank/media/1792414187837-dr0002b-180x35.webp"
+        },
+        {
+          "model_code": "DR0002B-160X35",
+          "name": {
+            "tr": "DR0002B-160X35",
+            "en": "DR0002B-160X35"
+          },
+          "technical_drawing_url": "https://birim-assets.web-birim.workers.dev/migration/products/dr002-tab-bank/media/1792414187825-dr0002b-160x35.webp"
+        },
+        {
+          "model_code": "DR0002B-140X35",
+          "name": {
+            "tr": "DR0002B-140X35",
+            "en": "DR0002B-140X35"
+          },
+          "technical_drawing_url": "https://birim-assets.web-birim.workers.dev/migration/products/dr002-tab-bank/media/1792414187813-dr0002b-140x35.webp"
+        }
+      ],
       "collection_and_family": {
         "family_name": null,
         "related_products": [],
@@ -17708,9 +18024,77 @@
           }
         }
       ],
-      "dimension_images": [],
+      "dimension_images": [
+        {
+          "key": "bulk-1792414170028-5p1ckcjtp",
+          "model_code": "DR0002A-180X35",
+          "title": {
+            "tr": "DR0002A-180X35",
+            "en": "DR0002A-180X35"
+          },
+          "url": "https://birim-assets.web-birim.workers.dev/migration/products/dr002-tab-dresuar/media/1792414166134-dr0002a-180x35.webp",
+          "is_mirrored": false,
+          "width": 3840,
+          "height": 2160,
+          "aspect_ratio": 1.778,
+          "mime_type": "image/webp"
+        },
+        {
+          "key": "bulk-1792414169956-lmatnr2qn",
+          "model_code": "DR0002A-160X35",
+          "title": {
+            "tr": "DR0002A-160X35",
+            "en": "DR0002A-160X35"
+          },
+          "url": "https://birim-assets.web-birim.workers.dev/migration/products/dr002-tab-dresuar/media/1792414166121-dr0002a-160x35.webp",
+          "is_mirrored": false,
+          "width": 3840,
+          "height": 2160,
+          "aspect_ratio": 1.778,
+          "mime_type": "image/webp"
+        },
+        {
+          "key": "bulk-1792414170102-wohk1ap4l",
+          "model_code": "DR0002A-140X35",
+          "title": {
+            "tr": "DR0002A-140X35",
+            "en": "DR0002A-140X35"
+          },
+          "url": "https://birim-assets.web-birim.workers.dev/migration/products/dr002-tab-dresuar/media/1792414166118-dr0002a-140x35.webp",
+          "is_mirrored": false,
+          "width": 3840,
+          "height": 2160,
+          "aspect_ratio": 1.778,
+          "mime_type": "image/webp"
+        }
+      ],
       "technical_pdf_links": [],
-      "models_and_variations": [],
+      "models_and_variations": [
+        {
+          "model_code": "DR0002A-180X35",
+          "name": {
+            "tr": "DR0002A-180X35",
+            "en": "DR0002A-180X35"
+          },
+          "technical_drawing_url": "https://birim-assets.web-birim.workers.dev/migration/products/dr002-tab-dresuar/media/1792414166134-dr0002a-180x35.webp"
+        },
+        {
+          "model_code": "DR0002A-160X35",
+          "name": {
+            "tr": "DR0002A-160X35",
+            "en": "DR0002A-160X35"
+          },
+          "technical_drawing_url": "https://birim-assets.web-birim.workers.dev/migration/products/dr002-tab-dresuar/media/1792414166121-dr0002a-160x35.webp"
+        },
+        {
+          "model_code": "DR0002A-140X35",
+          "name": {
+            "tr": "DR0002A-140X35",
+            "en": "DR0002A-140X35"
+          },
+          "technical_drawing_url": "https://birim-assets.web-birim.workers.dev/migration/products/dr002-tab-dresuar/media/1792414166118-dr0002a-140x35.webp"
+        }
+      ],
       "collection_and_family": {
         "family_name": null,
         "related_products": [],
@@ -17989,20 +18373,6 @@
           "height": 2160,
           "aspect_ratio": 1.778,
           "mime_type": "image/webp"
-        },
-        {
-          "key": "bulk-1792150619786-bp1oucw2p",
-          "model_code": "KN0213-170X74X68",
-          "title": {
-            "tr": "KN0213-170X74X68",
-            "en": "KN0213-170X74X68"
-          },
-          "url": "https://assets.birim.com/migration/products/kn0213-tayii/media/1792150616061-kn0213-170x74x68.webp",
-          "is_mirrored": false,
-          "width": 3840,
-          "height": 2160,
-          "aspect_ratio": 1.778,
-          "mime_type": "image/webp"
         }
       ],
       "technical_pdf_links": [],
@@ -18014,14 +18384,6 @@
             "en": "KN0213-170X74"
           },
           "technical_drawing_url": "https://assets.birim.com/migration/products/kn0213-tayii/media/1792150616056-kn0213-170x74.webp"
-        },
-        {
-          "model_code": "KN0213-170X74X68",
-          "name": {
-            "tr": "KN0213-170X74X68",
-            "en": "KN0213-170X74X68"
-          },
-          "technical_drawing_url": "https://assets.birim.com/migration/products/kn0213-tayii/media/1792150616061-kn0213-170x74x68.webp"
         }
       ],
       "collection_and_family": {
@@ -19146,9 +19508,275 @@
           }
         }
       ],
-      "dimension_images": [],
+      "dimension_images": [
+        {
+          "key": "bulk-1792412588432-39d7otz2s",
+          "model_code": "DR0001A-200X35",
+          "title": {
+            "tr": "DR0001A-200X35",
+            "en": "DR0001A-200X35"
+          },
+          "url": "https://birim-assets.web-birim.workers.dev/migration/products/dr0001-tin-dresuar/media/1792412578712-dr0001a-200x35.webp",
+          "is_mirrored": false,
+          "width": 3840,
+          "height": 2160,
+          "aspect_ratio": 1.778,
+          "mime_type": "image/webp"
+        },
+        {
+          "key": "bulk-1792412588954-n119wr4sl",
+          "model_code": "DR0001A-170X35",
+          "title": {
+            "tr": "DR0001A-170X35",
+            "en": "DR0001A-170X35"
+          },
+          "url": "https://birim-assets.web-birim.workers.dev/migration/products/dr0001-tin-dresuar/media/1792412578712-dr0001a-170x35.webp",
+          "is_mirrored": false,
+          "width": 3840,
+          "height": 2160,
+          "aspect_ratio": 1.778,
+          "mime_type": "image/webp"
+        },
+        {
+          "key": "bulk-1792412587349-d38g3jdj1",
+          "model_code": "DR0001A-140X35",
+          "title": {
+            "tr": "DR0001A-140X35",
+            "en": "DR0001A-140X35"
+          },
+          "url": "https://birim-assets.web-birim.workers.dev/migration/products/dr0001-tin-dresuar/media/1792412578704-dr0001a-140x35.webp",
+          "is_mirrored": false,
+          "width": 3840,
+          "height": 2160,
+          "aspect_ratio": 1.778,
+          "mime_type": "image/webp"
+        },
+        {
+          "key": "bulk-1792412588802-dy568u00r",
+          "model_code": "DR0001A-110X35",
+          "title": {
+            "tr": "DR0001A-110X35",
+            "en": "DR0001A-110X35"
+          },
+          "url": "https://birim-assets.web-birim.workers.dev/migration/products/dr0001-tin-dresuar/media/1792412578699-dr0001a-110x35.webp",
+          "is_mirrored": false,
+          "width": 3840,
+          "height": 2160,
+          "aspect_ratio": 1.778,
+          "mime_type": "image/webp"
+        },
+        {
+          "key": "bulk-1792412588153-kkrifdk0i",
+          "model_code": "DR0001B-200X35",
+          "title": {
+            "tr": "DR0001B-200X35",
+            "en": "DR0001B-200X35"
+          },
+          "url": "https://birim-assets.web-birim.workers.dev/migration/products/dr0001-tin-dresuar/media/1792412578717-dr0001b-200x35.webp",
+          "is_mirrored": false,
+          "width": 3840,
+          "height": 2160,
+          "aspect_ratio": 1.778,
+          "mime_type": "image/webp"
+        },
+        {
+          "key": "bulk-1792412588188-khpniy922",
+          "model_code": "DR0001B-170X35",
+          "title": {
+            "tr": "DR0001B-170X35",
+            "en": "DR0001B-170X35"
+          },
+          "url": "https://birim-assets.web-birim.workers.dev/migration/products/dr0001-tin-dresuar/media/1792412578716-dr0001b-170x35.webp",
+          "is_mirrored": false,
+          "width": 3840,
+          "height": 2160,
+          "aspect_ratio": 1.778,
+          "mime_type": "image/webp"
+        },
+        {
+          "key": "bulk-1792412588598-dsruzteup",
+          "model_code": "DR0001B-140X35",
+          "title": {
+            "tr": "DR0001B-140X35",
+            "en": "DR0001B-140X35"
+          },
+          "url": "https://birim-assets.web-birim.workers.dev/migration/products/dr0001-tin-dresuar/media/1792412578713-dr0001b-140x35.webp",
+          "is_mirrored": false,
+          "width": 3840,
+          "height": 2160,
+          "aspect_ratio": 1.778,
+          "mime_type": "image/webp"
+        },
+        {
+          "key": "bulk-1792412587238-gl6sa1vpt",
+          "model_code": "DR0001B-110X35",
+          "title": {
+            "tr": "DR0001B-110X35",
+            "en": "DR0001B-110X35"
+          },
+          "url": "https://birim-assets.web-birim.workers.dev/migration/products/dr0001-tin-dresuar/media/1792412578713-dr0001b-110x35.webp",
+          "is_mirrored": false,
+          "width": 3840,
+          "height": 2160,
+          "aspect_ratio": 1.778,
+          "mime_type": "image/webp"
+        },
+        {
+          "key": "bulk-1792412589150-2np3gkom6",
+          "model_code": "DR0001C-200X35",
+          "title": {
+            "tr": "DR0001C-200X35",
+            "en": "DR0001C-200X35"
+          },
+          "url": "https://birim-assets.web-birim.workers.dev/migration/products/dr0001-tin-dresuar/media/1792412578718-dr0001c-200x35.webp",
+          "is_mirrored": false,
+          "width": 3840,
+          "height": 2160,
+          "aspect_ratio": 1.778,
+          "mime_type": "image/webp"
+        },
+        {
+          "key": "bulk-1792412587837-4ke5ezyf9",
+          "model_code": "DR0001C-170X35",
+          "title": {
+            "tr": "DR0001C-170X35",
+            "en": "DR0001C-170X35"
+          },
+          "url": "https://birim-assets.web-birim.workers.dev/migration/products/dr0001-tin-dresuar/media/1792412578718-dr0001c-170x35.webp",
+          "is_mirrored": false,
+          "width": 3840,
+          "height": 2160,
+          "aspect_ratio": 1.778,
+          "mime_type": "image/webp"
+        },
+        {
+          "key": "bulk-1792412588002-1lt4ps9bp",
+          "model_code": "DR0001C-140X35",
+          "title": {
+            "tr": "DR0001C-140X35",
+            "en": "DR0001C-140X35"
+          },
+          "url": "https://birim-assets.web-birim.workers.dev/migration/products/dr0001-tin-dresuar/media/1792412578717-dr0001c-140x35.webp",
+          "is_mirrored": false,
+          "width": 3840,
+          "height": 2160,
+          "aspect_ratio": 1.778,
+          "mime_type": "image/webp"
+        },
+        {
+          "key": "bulk-1792412588833-soj3ft414",
+          "model_code": "DR0001C-110X35",
+          "title": {
+            "tr": "DR0001C-110X35",
+            "en": "DR0001C-110X35"
+          },
+          "url": "https://birim-assets.web-birim.workers.dev/migration/products/dr0001-tin-dresuar/media/1792412578717-dr0001c-110x35.webp",
+          "is_mirrored": false,
+          "width": 3840,
+          "height": 2160,
+          "aspect_ratio": 1.778,
+          "mime_type": "image/webp"
+        }
+      ],
       "technical_pdf_links": [],
-      "models_and_variations": [],
+      "models_and_variations": [
+        {
+          "model_code": "DR0001A-200X35",
+          "name": {
+            "tr": "DR0001A-200X35",
+            "en": "DR0001A-200X35"
+          },
+          "technical_drawing_url": "https://birim-assets.web-birim.workers.dev/migration/products/dr0001-tin-dresuar/media/1792412578712-dr0001a-200x35.webp"
+        },
+        {
+          "model_code": "DR0001A-170X35",
+          "name": {
+            "tr": "DR0001A-170X35",
+            "en": "DR0001A-170X35"
+          },
+          "technical_drawing_url": "https://birim-assets.web-birim.workers.dev/migration/products/dr0001-tin-dresuar/media/1792412578712-dr0001a-170x35.webp"
+        },
+        {
+          "model_code": "DR0001A-140X35",
+          "name": {
+            "tr": "DR0001A-140X35",
+            "en": "DR0001A-140X35"
+          },
+          "technical_drawing_url": "https://birim-assets.web-birim.workers.dev/migration/products/dr0001-tin-dresuar/media/1792412578704-dr0001a-140x35.webp"
+        },
+        {
+          "model_code": "DR0001A-110X35",
+          "name": {
+            "tr": "DR0001A-110X35",
+            "en": "DR0001A-110X35"
+          },
+          "technical_drawing_url": "https://birim-assets.web-birim.workers.dev/migration/products/dr0001-tin-dresuar/media/1792412578699-dr0001a-110x35.webp"
+        },
+        {
+          "model_code": "DR0001B-200X35",
+          "name": {
+            "tr": "DR0001B-200X35",
+            "en": "DR0001B-200X35"
+          },
+          "technical_drawing_url": "https://birim-assets.web-birim.workers.dev/migration/products/dr0001-tin-dresuar/media/1792412578717-dr0001b-200x35.webp"
+        },
+        {
+          "model_code": "DR0001B-170X35",
+          "name": {
+            "tr": "DR0001B-170X35",
+            "en": "DR0001B-170X35"
+          },
+          "technical_drawing_url": "https://birim-assets.web-birim.workers.dev/migration/products/dr0001-tin-dresuar/media/1792412578716-dr0001b-170x35.webp"
+        },
+        {
+          "model_code": "DR0001B-140X35",
+          "name": {
+            "tr": "DR0001B-140X35",
+            "en": "DR0001B-140X35"
+          },
+          "technical_drawing_url": "https://birim-assets.web-birim.workers.dev/migration/products/dr0001-tin-dresuar/media/1792412578713-dr0001b-140x35.webp"
+        },
+        {
+          "model_code": "DR0001B-110X35",
+          "name": {
+            "tr": "DR0001B-110X35",
+            "en": "DR0001B-110X35"
+          },
+          "technical_drawing_url": "https://birim-assets.web-birim.workers.dev/migration/products/dr0001-tin-dresuar/media/1792412578713-dr0001b-110x35.webp"
+        },
+        {
+          "model_code": "DR0001C-200X35",
+          "name": {
+            "tr": "DR0001C-200X35",
+            "en": "DR0001C-200X35"
+          },
+          "technical_drawing_url": "https://birim-assets.web-birim.workers.dev/migration/products/dr0001-tin-dresuar/media/1792412578718-dr0001c-200x35.webp"
+        },
+        {
+          "model_code": "DR0001C-170X35",
+          "name": {
+            "tr": "DR0001C-170X35",
+            "en": "DR0001C-170X35"
+          },
+          "technical_drawing_url": "https://birim-assets.web-birim.workers.dev/migration/products/dr0001-tin-dresuar/media/1792412578718-dr0001c-170x35.webp"
+        },
+        {
+          "model_code": "DR0001C-140X35",
+          "name": {
+            "tr": "DR0001C-140X35",
+            "en": "DR0001C-140X35"
+          },
+          "technical_drawing_url": "https://birim-assets.web-birim.workers.dev/migration/products/dr0001-tin-dresuar/media/1792412578717-dr0001c-140x35.webp"
+        },
+        {
+          "model_code": "DR0001C-110X35",
+          "name": {
+            "tr": "DR0001C-110X35",
+            "en": "DR0001C-110X35"
+          },
+          "technical_drawing_url": "https://birim-assets.web-birim.workers.dev/migration/products/dr0001-tin-dresuar/media/1792412578717-dr0001c-110x35.webp"
+        }
+      ],
       "collection_and_family": {
         "family_name": null,
         "related_products": [],
@@ -19956,6 +20584,197 @@
             "en": "MS0018-240X115"
           },
           "technical_drawing_url": "https://assets.birim.com/migration/products/ms0018-SAN/media/1791962968140-ms0018-240x115.webp"
+        }
+      ],
+      "collection_and_family": {
+        "family_name": null,
+        "related_products": [],
+        "has_art_edition": false,
+        "art_edition": null
+      },
+      "missing_fields": []
+    },
+    {
+      "id": "de86d0c7-69cf-4677-8a29-7ad369edbac9",
+      "slug": "sh0029-duo",
+      "is_published": true,
+      "name": {
+        "tr": "DUO",
+        "en": "DUO"
+      },
+      "category": {
+        "id": "PBmZKgD0TypOug6iXTRLL0",
+        "slug": "sehpalar",
+        "name": {
+          "tr": "SEHPALAR",
+          "en": "COFFEE & SIDE TABLES"
+        }
+      },
+      "subcategory": null,
+      "designers": [
+        {
+          "id": "PBmZKgD0TypOug6iXTRBDn",
+          "slug": "tasarimci-tanju-ozelgin",
+          "name": {
+            "tr": "TANJU ÖZELGİN",
+            "en": "TANJU ÖZELGİN"
+          }
+        }
+      ],
+      "design_year": 2021,
+      "short_description": {
+        "tr": "Doğal taşın güçlü varlığı, keskin metal detaylarla çerçeveleniyor. Tek parça mermer yüzeyi ve altındaki fonksiyonel metal rafıyla yalın, dengeli ve zamansız bir form dili sunar. Modern salon ve lounge alanları için rafine bir merkez parçası.",
+        "en": "The strong presence of natural stone is framed by sharp metal details. It offers a simple, balanced and timeless form language with its one-piece marble surface and functional metal shelf underneath. A refined centerpiece for modern lounge and lounge areas."
+      },
+      "long_description": {
+        "tr": "Doğal taşın güçlü varlığı, keskin metal detaylarla çerçeveleniyor. Tek parça mermer yüzeyi ve altındaki fonksiyonel metal rafıyla yalın, dengeli ve zamansız bir form dili sunar. Modern salon ve lounge alanları için rafine bir merkez parçası.",
+        "en": "The strong presence of natural stone is framed by sharp metal details. It offers a simple, balanced and timeless form language with its one-piece marble surface and functional metal shelf underneath. A refined centerpiece for modern lounge and lounge areas."
+      },
+      "cover_image": {
+        "url": "https://birim-assets.web-birim.workers.dev/migration/products/sh0029-duo/media/1792494838143-sh0029-duo.webp",
+        "is_cover": false,
+        "is_mirrored": false,
+        "width": 1672,
+        "height": 941,
+        "aspect_ratio": 1.777,
+        "aspect_ratio_label": "16:9 Landscape",
+        "mime_type": "image/webp",
+        "alt": "sh0029-duo",
+        "print_suitability": {
+          "max_print_size_300dpi_cm": "14.2 x 8.0 cm",
+          "recommended_format": "A4 Standart"
+        }
+      },
+      "gallery_images": [
+        {
+          "url": "https://birim-assets.web-birim.workers.dev/migration/products/sh0029-duo/media/1792494838143-sh0029-duo.webp",
+          "is_cover": false,
+          "is_mirrored": false,
+          "width": 1672,
+          "height": 941,
+          "aspect_ratio": 1.777,
+          "aspect_ratio_label": "16:9 Landscape",
+          "mime_type": "image/webp",
+          "alt": "sh0029-duo",
+          "print_suitability": {
+            "max_print_size_300dpi_cm": "14.2 x 8.0 cm",
+            "recommended_format": "A4 Standart"
+          }
+        }
+      ],
+      "dimension_images": [
+        {
+          "key": "bulk-1792494846326-o64mlsboa",
+          "model_code": "SH0029-160X160-O",
+          "title": {
+            "tr": "SH0029-160X160-O",
+            "en": "SH0029-160X160-O"
+          },
+          "url": "https://birim-assets.web-birim.workers.dev/migration/products/sh0029-duo/media/1792494842919-sh0029-160x160-o.webp",
+          "is_mirrored": false,
+          "width": 3840,
+          "height": 2160,
+          "aspect_ratio": 1.778,
+          "mime_type": "image/webp"
+        },
+        {
+          "key": "bulk-1792494846480-sisdae6d0",
+          "model_code": "SH0029-140X140-O",
+          "title": {
+            "tr": "SH0029-140X140-O",
+            "en": "SH0029-140X140-O"
+          },
+          "url": "https://birim-assets.web-birim.workers.dev/migration/products/sh0029-duo/media/1792494842918-sh0029-140x140-o.webp",
+          "is_mirrored": false,
+          "width": 3840,
+          "height": 2160,
+          "aspect_ratio": 1.778,
+          "mime_type": "image/webp"
+        },
+        {
+          "key": "bulk-1792494846376-djigjkr4s",
+          "model_code": "SH0029-120X120-O",
+          "title": {
+            "tr": "SH0029-120X120-O",
+            "en": "SH0029-120X120-O"
+          },
+          "url": "https://birim-assets.web-birim.workers.dev/migration/products/sh0029-duo/media/1792494842909-sh0029-120x120-o.webp",
+          "is_mirrored": false,
+          "width": 3840,
+          "height": 2160,
+          "aspect_ratio": 1.778,
+          "mime_type": "image/webp"
+        },
+        {
+          "key": "bulk-1792494846334-mr41yjiik",
+          "model_code": "SH0029-100X100-O",
+          "title": {
+            "tr": "SH0029-100X100-O",
+            "en": "SH0029-100X100-O"
+          },
+          "url": "https://birim-assets.web-birim.workers.dev/migration/products/sh0029-duo/media/1792494842904-sh0029-100x100-o.webp",
+          "is_mirrored": false,
+          "width": 3840,
+          "height": 2160,
+          "aspect_ratio": 1.778,
+          "mime_type": "image/webp"
+        },
+        {
+          "key": "bulk-1792494846609-1aftbcw57",
+          "model_code": "SH0029-155X75",
+          "title": {
+            "tr": "SH0029-155X75",
+            "en": "SH0029-155X75"
+          },
+          "url": "https://birim-assets.web-birim.workers.dev/migration/products/sh0029-duo/media/1792494842918-sh0029-155x75.webp",
+          "is_mirrored": false,
+          "width": 3840,
+          "height": 2160,
+          "aspect_ratio": 1.778,
+          "mime_type": "image/webp"
+        }
+      ],
+      "technical_pdf_links": [],
+      "models_and_variations": [
+        {
+          "model_code": "SH0029-160X160-O",
+          "name": {
+            "tr": "SH0029-160X160-O",
+            "en": "SH0029-160X160-O"
+          },
+          "technical_drawing_url": "https://birim-assets.web-birim.workers.dev/migration/products/sh0029-duo/media/1792494842919-sh0029-160x160-o.webp"
+        },
+        {
+          "model_code": "SH0029-140X140-O",
+          "name": {
+            "tr": "SH0029-140X140-O",
+            "en": "SH0029-140X140-O"
+          },
+          "technical_drawing_url": "https://birim-assets.web-birim.workers.dev/migration/products/sh0029-duo/media/1792494842918-sh0029-140x140-o.webp"
+        },
+        {
+          "model_code": "SH0029-120X120-O",
+          "name": {
+            "tr": "SH0029-120X120-O",
+            "en": "SH0029-120X120-O"
+          },
+          "technical_drawing_url": "https://birim-assets.web-birim.workers.dev/migration/products/sh0029-duo/media/1792494842909-sh0029-120x120-o.webp"
+        },
+        {
+          "model_code": "SH0029-100X100-O",
+          "name": {
+            "tr": "SH0029-100X100-O",
+            "en": "SH0029-100X100-O"
+          },
+          "technical_drawing_url": "https://birim-assets.web-birim.workers.dev/migration/products/sh0029-duo/media/1792494842904-sh0029-100x100-o.webp"
+        },
+        {
+          "model_code": "SH0029-155X75",
+          "name": {
+            "tr": "SH0029-155X75",
+            "en": "SH0029-155X75"
+          },
+          "technical_drawing_url": "https://birim-assets.web-birim.workers.dev/migration/products/sh0029-duo/media/1792494842918-sh0029-155x75.webp"
         }
       ],
       "collection_and_family": {
