@@ -344,42 +344,28 @@ export const Sidebar: React.FC<SidebarProps> = ({
           </span>
         </div>
 
-        <div className="flex items-center space-x-2">
-          {/* Web Sync Icon Button */}
-          {onSyncData && (
-            <button
-              onClick={onSyncData}
-              disabled={isSyncing}
-              title={isEn ? 'Sync catalog data from web (Sanity CMS)' : 'Web sitesinden katalog verilerini güncelle'}
-              className="p-1.5 rounded border border-neutral-800 bg-neutral-900/80 text-neutral-400 hover:text-white hover:bg-neutral-800 transition-colors disabled:opacity-50"
-            >
-              <RefreshCw className={`w-3.5 h-3.5 ${isSyncing ? 'animate-spin text-amber-400' : ''}`} />
-            </button>
-          )}
-
-          {/* Minimal Language Toggle */}
-          <div className="inline-flex rounded border border-neutral-800 bg-neutral-900/80 p-0.5 text-[11px] font-mono">
-            <button
-              onClick={() => onChangeLang('tr')}
-              className={`px-2 py-0.5 rounded transition-colors ${
-                lang === 'tr' 
-                  ? 'bg-neutral-100 text-neutral-950 font-semibold' 
-                  : 'text-neutral-400 hover:text-white'
-              }`}
-            >
-              TR
-            </button>
-            <button
-              onClick={() => onChangeLang('en')}
-              className={`px-2 py-0.5 rounded transition-colors ${
-                lang === 'en' 
-                  ? 'bg-neutral-100 text-neutral-950 font-semibold' 
-                  : 'text-neutral-400 hover:text-white'
-              }`}
-            >
-              EN
-            </button>
-          </div>
+        {/* Minimal Language Toggle */}
+        <div className="inline-flex rounded border border-neutral-800 bg-neutral-900/80 p-0.5 text-[11px] font-mono shrink-0">
+          <button
+            onClick={() => onChangeLang('tr')}
+            className={`px-2 py-0.5 rounded transition-colors ${
+              lang === 'tr' 
+                ? 'bg-neutral-100 text-neutral-950 font-semibold' 
+                : 'text-neutral-400 hover:text-white'
+            }`}
+          >
+            TR
+          </button>
+          <button
+            onClick={() => onChangeLang('en')}
+            className={`px-2 py-0.5 rounded transition-colors ${
+              lang === 'en' 
+                ? 'bg-neutral-100 text-neutral-950 font-semibold' 
+                : 'text-neutral-400 hover:text-white'
+            }`}
+          >
+            EN
+          </button>
         </div>
       </div>
 
